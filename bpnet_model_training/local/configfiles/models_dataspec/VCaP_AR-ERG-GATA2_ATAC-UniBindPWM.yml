@@ -1,0 +1,21 @@
+fasta_file: /lustre/bmt-data/genomics/reference/hg38.fa
+
+task_specs: 
+
+    ERG:
+        tracks:
+            - bam/in_house_atac/tmp_test/ERG/VCaP_pos.bw
+            - bam/in_house_atac/tmp_test/ERG/VCaP_neg.bw
+        peaks: bed/in_house_atac/VCaP_UniBindPWM_ERG_peaks.bed
+  
+    GATA2:
+        tracks:
+            - bam/in_house_atac/tmp_test/GATA2/VCaP_pos.bw
+            - bam/in_house_atac/tmp_test/GATA2/VCaP_neg.bw
+        peaks: bed/in_house_atac/VCaP_UniBindPWM_GATA1_peaks.bed 
+
+    AR:
+        tracks:
+            - bam/in_house_atac/tmp_test/AR/VCaP_pos.bw
+            - bam/in_house_atac/tmp_test/AR/VCaP_neg.bw
+        peaks: bed/in_house_atac/VCaP_UniBindPWM_AR_peaks.bed

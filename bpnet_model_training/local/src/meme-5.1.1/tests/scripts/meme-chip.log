@@ -1,0 +1,8 @@
+*******************************************************************************
+Test meme-chip1 ...
+meme-chip -oc results/meme-chip1 -db meme-chip/JASPAR_CORE_2014_vertebrates.meme meme-chip/Klf1.100.fa &> log
+Can't locate XML/Simple.pm in @INC (@INC contains: /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/scripts /usr/local/lib64/perl5 /usr/local/share/perl5 /usr/lib64/perl5/vendor_perl /usr/share/perl5/vendor_perl /usr/lib64/perl5 /usr/share/perl5 .) at /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/scripts/meme-chip line 113.
+BEGIN failed--compilation aborted at /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/scripts/meme-chip line 113.
+-------------------------------------------------------------------------------
+meme-chip exited with value 2 indicating failure.
+FAILED!

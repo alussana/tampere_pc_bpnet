@@ -1,0 +1,266 @@
+*******************************************************************************
+Test meme1 ...
+meme -p 4 common/crp0.s -oc results/meme1 -mod oops -dna -revcomp -nmotifs 2 -objfun classic -minw 8 -nostatus &> log
+Option '-p' given but Parallel MEME not configured. Running Serial MEME.
+Can't locate XML/Parser/Expat.pm in @INC (@INC contains: /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/scripts /home/hgallu/meme/lib/meme-5.1.1/perl /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/scripts /usr/local/lib64/perl5 /usr/local/share/perl5 /usr/lib64/perl5/vendor_perl /usr/share/perl5/vendor_perl /usr/lib64/perl5 /usr/share/perl5 .) at /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/scripts/CheckingSAX.pm line 12.
+BEGIN failed--compilation aborted at /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/scripts/CheckingSAX.pm line 12.
+Compilation failed in require at (eval 13) line 2.
+	...propagated at /usr/share/perl5/base.pm line 84.
+BEGIN failed--compilation aborted at /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/scripts/MemeSAX.pm line 3.
+Compilation failed in require at /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/scripts/meme_xml_to_html line 48.
+Warning: meme_xml_to_html exited abnormally and may have failed to create HTML output.
+-------------------------------------------------------------------------------
+meme exited with value 1 indicating failure.
+FAILED!
+*******************************************************************************
+Test meme2 ...
+meme -p 4 -minsites 3 -maxsites 17 common/crp0.s -oc results/meme2 -mod zoops -dna -revcomp -nmotifs 2 -objfun classic -minw 8 -nostatus &> log
+Option '-p' given but Parallel MEME not configured. Running Serial MEME.
+Can't locate XML/Parser/Expat.pm in @INC (@INC contains: /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/scripts /home/hgallu/meme/lib/meme-5.1.1/perl /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/scripts /usr/local/lib64/perl5 /usr/local/share/perl5 /usr/lib64/perl5/vendor_perl /usr/share/perl5/vendor_perl /usr/lib64/perl5 /usr/share/perl5 .) at /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/scripts/CheckingSAX.pm line 12.
+BEGIN failed--compilation aborted at /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/scripts/CheckingSAX.pm line 12.
+Compilation failed in require at (eval 13) line 2.
+	...propagated at /usr/share/perl5/base.pm line 84.
+BEGIN failed--compilation aborted at /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/scripts/MemeSAX.pm line 3.
+Compilation failed in require at /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/scripts/meme_xml_to_html line 48.
+Warning: meme_xml_to_html exited abnormally and may have failed to create HTML output.
+-------------------------------------------------------------------------------
+meme exited with value 1 indicating failure.
+FAILED!
+*******************************************************************************
+Test meme3 ...
+meme -p 4 -minsites 3 -maxsites 17 common/crp0.s -oc results/meme3 -mod anr -dna -revcomp -nmotifs 2 -objfun classic -minw 8 -nostatus &> log
+Option '-p' given but Parallel MEME not configured. Running Serial MEME.
+Can't locate XML/Parser/Expat.pm in @INC (@INC contains: /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/scripts /home/hgallu/meme/lib/meme-5.1.1/perl /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/scripts /usr/local/lib64/perl5 /usr/local/share/perl5 /usr/lib64/perl5/vendor_perl /usr/share/perl5/vendor_perl /usr/lib64/perl5 /usr/share/perl5 .) at /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/scripts/CheckingSAX.pm line 12.
+BEGIN failed--compilation aborted at /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/scripts/CheckingSAX.pm line 12.
+Compilation failed in require at (eval 13) line 2.
+	...propagated at /usr/share/perl5/base.pm line 84.
+BEGIN failed--compilation aborted at /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/scripts/MemeSAX.pm line 3.
+Compilation failed in require at /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/scripts/meme_xml_to_html line 48.
+Warning: meme_xml_to_html exited abnormally and may have failed to create HTML output.
+-------------------------------------------------------------------------------
+meme exited with value 1 indicating failure.
+FAILED!
+*******************************************************************************
+Test meme4 ...
+meme -p 4 common/adh.s -oc results/meme4 -mod oops -protein -nmotifs 2 -objfun classic -minw 8 -nostatus &> log
+Option '-p' given but Parallel MEME not configured. Running Serial MEME.
+Can't locate XML/Parser/Expat.pm in @INC (@INC contains: /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/scripts /home/hgallu/meme/lib/meme-5.1.1/perl /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/scripts /usr/local/lib64/perl5 /usr/local/share/perl5 /usr/lib64/perl5/vendor_perl /usr/share/perl5/vendor_perl /usr/lib64/perl5 /usr/share/perl5 .) at /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/scripts/CheckingSAX.pm line 12.
+BEGIN failed--compilation aborted at /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/scripts/CheckingSAX.pm line 12.
+Compilation failed in require at (eval 13) line 2.
+	...propagated at /usr/share/perl5/base.pm line 84.
+BEGIN failed--compilation aborted at /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/scripts/MemeSAX.pm line 3.
+Compilation failed in require at /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/scripts/meme_xml_to_html line 48.
+Warning: meme_xml_to_html exited abnormally and may have failed to create HTML output.
+-------------------------------------------------------------------------------
+meme exited with value 1 indicating failure.
+FAILED!
+*******************************************************************************
+Test meme5 ...
+meme -p 4 -nsites 27 common/adh.s -oc results/meme5 -mod zoops -protein -nmotifs 2 -objfun classic -minw 8 -nostatus &> log
+Option '-p' given but Parallel MEME not configured. Running Serial MEME.
+Can't locate XML/Parser/Expat.pm in @INC (@INC contains: /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/scripts /home/hgallu/meme/lib/meme-5.1.1/perl /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/scripts /usr/local/lib64/perl5 /usr/local/share/perl5 /usr/lib64/perl5/vendor_perl /usr/share/perl5/vendor_perl /usr/lib64/perl5 /usr/share/perl5 .) at /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/scripts/CheckingSAX.pm line 12.
+BEGIN failed--compilation aborted at /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/scripts/CheckingSAX.pm line 12.
+Compilation failed in require at (eval 13) line 2.
+	...propagated at /usr/share/perl5/base.pm line 84.
+BEGIN failed--compilation aborted at /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/scripts/MemeSAX.pm line 3.
+Compilation failed in require at /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/scripts/meme_xml_to_html line 48.
+Warning: meme_xml_to_html exited abnormally and may have failed to create HTML output.
+-------------------------------------------------------------------------------
+meme exited with value 1 indicating failure.
+FAILED!
+*******************************************************************************
+Test meme6 ...
+meme -p 4 -nsites 27 common/adh.s -oc results/meme6 -mod anr -protein -nmotifs 2 -objfun classic -minw 8 -nostatus &> log
+Option '-p' given but Parallel MEME not configured. Running Serial MEME.
+Can't locate XML/Parser/Expat.pm in @INC (@INC contains: /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/scripts /home/hgallu/meme/lib/meme-5.1.1/perl /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/scripts /usr/local/lib64/perl5 /usr/local/share/perl5 /usr/lib64/perl5/vendor_perl /usr/share/perl5/vendor_perl /usr/lib64/perl5 /usr/share/perl5 .) at /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/scripts/CheckingSAX.pm line 12.
+BEGIN failed--compilation aborted at /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/scripts/CheckingSAX.pm line 12.
+Compilation failed in require at (eval 13) line 2.
+	...propagated at /usr/share/perl5/base.pm line 84.
+BEGIN failed--compilation aborted at /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/scripts/MemeSAX.pm line 3.
+Compilation failed in require at /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/scripts/meme_xml_to_html line 48.
+Warning: meme_xml_to_html exited abnormally and may have failed to create HTML output.
+-------------------------------------------------------------------------------
+meme exited with value 1 indicating failure.
+FAILED!
+*******************************************************************************
+Test meme7 ...
+meme -p 4 -csites 30 common/Klf1-200-100.fa -oc results/meme7 -mod oops -dna -revcomp -brief 0 -nmotifs 2 -objfun classic -minw 8 -nostatus &> log
+Option '-p' given but Parallel MEME not configured. Running Serial MEME.
+Can't locate XML/Parser/Expat.pm in @INC (@INC contains: /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/scripts /home/hgallu/meme/lib/meme-5.1.1/perl /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/scripts /usr/local/lib64/perl5 /usr/local/share/perl5 /usr/lib64/perl5/vendor_perl /usr/share/perl5/vendor_perl /usr/lib64/perl5 /usr/share/perl5 .) at /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/scripts/CheckingSAX.pm line 12.
+BEGIN failed--compilation aborted at /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/scripts/CheckingSAX.pm line 12.
+Compilation failed in require at (eval 13) line 2.
+	...propagated at /usr/share/perl5/base.pm line 84.
+BEGIN failed--compilation aborted at /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/scripts/MemeSAX.pm line 3.
+Compilation failed in require at /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/scripts/meme_xml_to_html line 48.
+Warning: meme_xml_to_html exited abnormally and may have failed to create HTML output.
+-------------------------------------------------------------------------------
+meme exited with value 1 indicating failure.
+FAILED!
+*******************************************************************************
+Test meme8 ...
+meme -p 4 -csites 30 common/Klf1-200-100.fa -oc results/meme8 -mod zoops -dna -revcomp -brief 0 -nmotifs 2 -objfun classic -minw 8 -nostatus &> log
+Option '-p' given but Parallel MEME not configured. Running Serial MEME.
+Can't locate XML/Parser/Expat.pm in @INC (@INC contains: /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/scripts /home/hgallu/meme/lib/meme-5.1.1/perl /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/scripts /usr/local/lib64/perl5 /usr/local/share/perl5 /usr/lib64/perl5/vendor_perl /usr/share/perl5/vendor_perl /usr/lib64/perl5 /usr/share/perl5 .) at /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/scripts/CheckingSAX.pm line 12.
+BEGIN failed--compilation aborted at /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/scripts/CheckingSAX.pm line 12.
+Compilation failed in require at (eval 13) line 2.
+	...propagated at /usr/share/perl5/base.pm line 84.
+BEGIN failed--compilation aborted at /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/scripts/MemeSAX.pm line 3.
+Compilation failed in require at /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/scripts/meme_xml_to_html line 48.
+Warning: meme_xml_to_html exited abnormally and may have failed to create HTML output.
+-------------------------------------------------------------------------------
+meme exited with value 1 indicating failure.
+FAILED!
+*******************************************************************************
+Test meme9 ...
+meme -p 4 -csites 30 common/Klf1-200-100.fa -oc results/meme9 -mod anr -dna -revcomp -brief 0 -nmotifs 2 -objfun classic -minw 8 -nostatus &> log
+Option '-p' given but Parallel MEME not configured. Running Serial MEME.
+Can't locate XML/Parser/Expat.pm in @INC (@INC contains: /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/scripts /home/hgallu/meme/lib/meme-5.1.1/perl /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/scripts /usr/local/lib64/perl5 /usr/local/share/perl5 /usr/lib64/perl5/vendor_perl /usr/share/perl5/vendor_perl /usr/lib64/perl5 /usr/share/perl5 .) at /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/scripts/CheckingSAX.pm line 12.
+BEGIN failed--compilation aborted at /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/scripts/CheckingSAX.pm line 12.
+Compilation failed in require at (eval 13) line 2.
+	...propagated at /usr/share/perl5/base.pm line 84.
+BEGIN failed--compilation aborted at /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/scripts/MemeSAX.pm line 3.
+Compilation failed in require at /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/scripts/meme_xml_to_html line 48.
+Warning: meme_xml_to_html exited abnormally and may have failed to create HTML output.
+-------------------------------------------------------------------------------
+meme exited with value 1 indicating failure.
+FAILED!
+*******************************************************************************
+Test meme10 ...
+meme -p 4 common/crp0.s -oc results/meme10 -mod oops -dna -revcomp -nmotifs 2 -objfun de -w 12 -hsfrac 0.6 -shuf 3 -nostatus &> log
+Option '-p' given but Parallel MEME not configured. Running Serial MEME.
+Can't locate XML/Parser/Expat.pm in @INC (@INC contains: /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/scripts /home/hgallu/meme/lib/meme-5.1.1/perl /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/scripts /usr/local/lib64/perl5 /usr/local/share/perl5 /usr/lib64/perl5/vendor_perl /usr/share/perl5/vendor_perl /usr/lib64/perl5 /usr/share/perl5 .) at /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/scripts/CheckingSAX.pm line 12.
+BEGIN failed--compilation aborted at /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/scripts/CheckingSAX.pm line 12.
+Compilation failed in require at (eval 13) line 2.
+	...propagated at /usr/share/perl5/base.pm line 84.
+BEGIN failed--compilation aborted at /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/scripts/MemeSAX.pm line 3.
+Compilation failed in require at /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/scripts/meme_xml_to_html line 48.
+Warning: meme_xml_to_html exited abnormally and may have failed to create HTML output.
+-------------------------------------------------------------------------------
+meme exited with value 1 indicating failure.
+FAILED!
+*******************************************************************************
+Test meme11 ...
+meme -p 4 -minsites 3 -maxsites 17 common/crp0.s -oc results/meme11 -mod zoops -dna -revcomp -nmotifs 2 -objfun de -w 12 -hsfrac 0.6 -shuf 3 -nostatus &> log
+Option '-p' given but Parallel MEME not configured. Running Serial MEME.
+Can't locate XML/Parser/Expat.pm in @INC (@INC contains: /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/scripts /home/hgallu/meme/lib/meme-5.1.1/perl /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/scripts /usr/local/lib64/perl5 /usr/local/share/perl5 /usr/lib64/perl5/vendor_perl /usr/share/perl5/vendor_perl /usr/lib64/perl5 /usr/share/perl5 .) at /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/scripts/CheckingSAX.pm line 12.
+BEGIN failed--compilation aborted at /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/scripts/CheckingSAX.pm line 12.
+Compilation failed in require at (eval 13) line 2.
+	...propagated at /usr/share/perl5/base.pm line 84.
+BEGIN failed--compilation aborted at /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/scripts/MemeSAX.pm line 3.
+Compilation failed in require at /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/scripts/meme_xml_to_html line 48.
+Warning: meme_xml_to_html exited abnormally and may have failed to create HTML output.
+-------------------------------------------------------------------------------
+meme exited with value 1 indicating failure.
+FAILED!
+*******************************************************************************
+Test meme12 ...
+meme -p 4 -minsites 3 -maxsites 17 common/crp0.s -oc results/meme12 -mod anr -dna -revcomp -nmotifs 2 -objfun de -w 12 -hsfrac 0.6 -shuf 3 -nostatus &> log
+Option '-p' given but Parallel MEME not configured. Running Serial MEME.
+Can't locate XML/Parser/Expat.pm in @INC (@INC contains: /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/scripts /home/hgallu/meme/lib/meme-5.1.1/perl /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/scripts /usr/local/lib64/perl5 /usr/local/share/perl5 /usr/lib64/perl5/vendor_perl /usr/share/perl5/vendor_perl /usr/lib64/perl5 /usr/share/perl5 .) at /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/scripts/CheckingSAX.pm line 12.
+BEGIN failed--compilation aborted at /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/scripts/CheckingSAX.pm line 12.
+Compilation failed in require at (eval 13) line 2.
+	...propagated at /usr/share/perl5/base.pm line 84.
+BEGIN failed--compilation aborted at /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/scripts/MemeSAX.pm line 3.
+Compilation failed in require at /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/scripts/meme_xml_to_html line 48.
+Warning: meme_xml_to_html exited abnormally and may have failed to create HTML output.
+-------------------------------------------------------------------------------
+meme exited with value 1 indicating failure.
+FAILED!
+*******************************************************************************
+Test meme13 ...
+meme -p 4 common/adh.s -oc results/meme13 -mod oops -protein -nmotifs 2 -objfun de -w 12 -hsfrac 0.6 -shuf 3 -nostatus &> log
+Option '-p' given but Parallel MEME not configured. Running Serial MEME.
+Can't locate XML/Parser/Expat.pm in @INC (@INC contains: /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/scripts /home/hgallu/meme/lib/meme-5.1.1/perl /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/scripts /usr/local/lib64/perl5 /usr/local/share/perl5 /usr/lib64/perl5/vendor_perl /usr/share/perl5/vendor_perl /usr/lib64/perl5 /usr/share/perl5 .) at /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/scripts/CheckingSAX.pm line 12.
+BEGIN failed--compilation aborted at /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/scripts/CheckingSAX.pm line 12.
+Compilation failed in require at (eval 13) line 2.
+	...propagated at /usr/share/perl5/base.pm line 84.
+BEGIN failed--compilation aborted at /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/scripts/MemeSAX.pm line 3.
+Compilation failed in require at /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/scripts/meme_xml_to_html line 48.
+Warning: meme_xml_to_html exited abnormally and may have failed to create HTML output.
+-------------------------------------------------------------------------------
+meme exited with value 1 indicating failure.
+FAILED!
+*******************************************************************************
+Test meme14 ...
+meme -p 4 -nsites 27 common/adh.s -oc results/meme14 -mod zoops -protein -nmotifs 2 -objfun de -w 12 -hsfrac 0.6 -shuf 3 -nostatus &> log
+Option '-p' given but Parallel MEME not configured. Running Serial MEME.
+Can't locate XML/Parser/Expat.pm in @INC (@INC contains: /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/scripts /home/hgallu/meme/lib/meme-5.1.1/perl /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/scripts /usr/local/lib64/perl5 /usr/local/share/perl5 /usr/lib64/perl5/vendor_perl /usr/share/perl5/vendor_perl /usr/lib64/perl5 /usr/share/perl5 .) at /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/scripts/CheckingSAX.pm line 12.
+BEGIN failed--compilation aborted at /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/scripts/CheckingSAX.pm line 12.
+Compilation failed in require at (eval 13) line 2.
+	...propagated at /usr/share/perl5/base.pm line 84.
+BEGIN failed--compilation aborted at /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/scripts/MemeSAX.pm line 3.
+Compilation failed in require at /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/scripts/meme_xml_to_html line 48.
+Warning: meme_xml_to_html exited abnormally and may have failed to create HTML output.
+-------------------------------------------------------------------------------
+meme exited with value 1 indicating failure.
+FAILED!
+*******************************************************************************
+Test meme15 ...
+meme -p 4 -nsites 27 common/adh.s -oc results/meme15 -mod anr -protein -nmotifs 2 -objfun de -w 12 -hsfrac 0.6 -shuf 3 -nostatus &> log
+Option '-p' given but Parallel MEME not configured. Running Serial MEME.
+Can't locate XML/Parser/Expat.pm in @INC (@INC contains: /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/scripts /home/hgallu/meme/lib/meme-5.1.1/perl /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/scripts /usr/local/lib64/perl5 /usr/local/share/perl5 /usr/lib64/perl5/vendor_perl /usr/share/perl5/vendor_perl /usr/lib64/perl5 /usr/share/perl5 .) at /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/scripts/CheckingSAX.pm line 12.
+BEGIN failed--compilation aborted at /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/scripts/CheckingSAX.pm line 12.
+Compilation failed in require at (eval 13) line 2.
+	...propagated at /usr/share/perl5/base.pm line 84.
+BEGIN failed--compilation aborted at /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/scripts/MemeSAX.pm line 3.
+Compilation failed in require at /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/scripts/meme_xml_to_html line 48.
+Warning: meme_xml_to_html exited abnormally and may have failed to create HTML output.
+-------------------------------------------------------------------------------
+meme exited with value 1 indicating failure.
+FAILED!
+*******************************************************************************
+Test meme16 ...
+meme -p 4 common/Klf1-200-100.fa -oc results/meme16 -mod oops -dna -revcomp -brief 0 -nmotifs 2 -objfun de -w 12 -hsfrac 0.6 -shuf 3 -nostatus &> log
+Option '-p' given but Parallel MEME not configured. Running Serial MEME.
+Can't locate XML/Parser/Expat.pm in @INC (@INC contains: /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/scripts /home/hgallu/meme/lib/meme-5.1.1/perl /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/scripts /usr/local/lib64/perl5 /usr/local/share/perl5 /usr/lib64/perl5/vendor_perl /usr/share/perl5/vendor_perl /usr/lib64/perl5 /usr/share/perl5 .) at /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/scripts/CheckingSAX.pm line 12.
+BEGIN failed--compilation aborted at /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/scripts/CheckingSAX.pm line 12.
+Compilation failed in require at (eval 13) line 2.
+	...propagated at /usr/share/perl5/base.pm line 84.
+BEGIN failed--compilation aborted at /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/scripts/MemeSAX.pm line 3.
+Compilation failed in require at /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/scripts/meme_xml_to_html line 48.
+Warning: meme_xml_to_html exited abnormally and may have failed to create HTML output.
+-------------------------------------------------------------------------------
+meme exited with value 1 indicating failure.
+FAILED!
+*******************************************************************************
+Test meme17 ...
+meme -p 4 common/Klf1-200-100.fa -oc results/meme17 -mod zoops -dna -revcomp -brief 0 -nmotifs 2 -objfun de -w 12 -hsfrac 0.6 -shuf 3 -nostatus &> log
+Option '-p' given but Parallel MEME not configured. Running Serial MEME.
+Can't locate XML/Parser/Expat.pm in @INC (@INC contains: /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/scripts /home/hgallu/meme/lib/meme-5.1.1/perl /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/scripts /usr/local/lib64/perl5 /usr/local/share/perl5 /usr/lib64/perl5/vendor_perl /usr/share/perl5/vendor_perl /usr/lib64/perl5 /usr/share/perl5 .) at /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/scripts/CheckingSAX.pm line 12.
+BEGIN failed--compilation aborted at /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/scripts/CheckingSAX.pm line 12.
+Compilation failed in require at (eval 13) line 2.
+	...propagated at /usr/share/perl5/base.pm line 84.
+BEGIN failed--compilation aborted at /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/scripts/MemeSAX.pm line 3.
+Compilation failed in require at /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/scripts/meme_xml_to_html line 48.
+Warning: meme_xml_to_html exited abnormally and may have failed to create HTML output.
+-------------------------------------------------------------------------------
+meme exited with value 1 indicating failure.
+FAILED!
+*******************************************************************************
+Test meme18 ...
+meme -p 4 common/Klf1-200-100.fa -oc results/meme18 -mod anr -dna -revcomp -brief 0 -nmotifs 2 -objfun de -w 12 -hsfrac 0.6 -shuf 3 -nostatus &> log
+Option '-p' given but Parallel MEME not configured. Running Serial MEME.
+Can't locate XML/Parser/Expat.pm in @INC (@INC contains: /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/scripts /home/hgallu/meme/lib/meme-5.1.1/perl /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/scripts /usr/local/lib64/perl5 /usr/local/share/perl5 /usr/lib64/perl5/vendor_perl /usr/share/perl5/vendor_perl /usr/lib64/perl5 /usr/share/perl5 .) at /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/scripts/CheckingSAX.pm line 12.
+BEGIN failed--compilation aborted at /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/scripts/CheckingSAX.pm line 12.
+Compilation failed in require at (eval 13) line 2.
+	...propagated at /usr/share/perl5/base.pm line 84.
+BEGIN failed--compilation aborted at /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/scripts/MemeSAX.pm line 3.
+Compilation failed in require at /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/scripts/meme_xml_to_html line 48.
+Warning: meme_xml_to_html exited abnormally and may have failed to create HTML output.
+-------------------------------------------------------------------------------
+meme exited with value 1 indicating failure.
+FAILED!
+*******************************************************************************
+Test meme_psp ...
+meme -p 4 common/psp_test.s -oc results/meme19 -psp common/psp_test.psp -minsites 5 -dna -revcomp -minw 7 -maxw 12 -nostatus -searchsize 0 &> log
+Option '-p' given but Parallel MEME not configured. Running Serial MEME.
+Can't locate XML/Parser/Expat.pm in @INC (@INC contains: /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/scripts /home/hgallu/meme/lib/meme-5.1.1/perl /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/scripts /usr/local/lib64/perl5 /usr/local/share/perl5 /usr/lib64/perl5/vendor_perl /usr/share/perl5/vendor_perl /usr/lib64/perl5 /usr/share/perl5 .) at /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/scripts/CheckingSAX.pm line 12.
+BEGIN failed--compilation aborted at /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/scripts/CheckingSAX.pm line 12.
+Compilation failed in require at (eval 13) line 2.
+	...propagated at /usr/share/perl5/base.pm line 84.
+BEGIN failed--compilation aborted at /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/scripts/MemeSAX.pm line 3.
+Compilation failed in require at /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/scripts/meme_xml_to_html line 48.
+Warning: meme_xml_to_html exited abnormally and may have failed to create HTML output.
+-------------------------------------------------------------------------------
+meme exited with value 1 indicating failure.
+FAILED!

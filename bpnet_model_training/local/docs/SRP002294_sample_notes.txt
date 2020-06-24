@@ -1,0 +1,10 @@
+https://www.ncbi.nlm.nih.gov/Traces/study/?acc=SRP002294&o=acc_s%3Aa
+SAMPLE  ALIGN_RATE  CELL_LINE   TREATMENT   SELECTION
+SAMN00011190    79.36%  LNCaP   unstimulated vehicle    anti-AR N20 antibody SC-816X from Santa Cruz Biotechnologies
+SAMN00011191    85.95%  LNCaP   AR stimulated   anti-AR N20 antibody SC-816X from Santa Cruz Biotechnologies
+SAMN00011192    88.13%  VCaP    unstimulated vehicle    anti-AR N20 antibody SC-816X from Santa Cruz Biotechnologies
+SAMN00011193    87.21%  VCaP    AR stimulated   anti-AR N20 antibody SC-816X from Santa Cruz Biotechnologies
+SAMN00011194    89.88%  LNCaP   unstimulated vehicle    anti-RNAP II antibody AB-5401 form Abcam
+SAMN00011195    86.72%  LNCaP   AR stimulated   anti-RNAP II antibody AB-5401 form Abcam
+SAMN00011196    90.21%  LNCaP   AR stimulated   un-immunoprecipitated for use as Input
+SAMN00011197    84.46%  VCaP    AR stimulated   un-immunoprecipitated for use as Input

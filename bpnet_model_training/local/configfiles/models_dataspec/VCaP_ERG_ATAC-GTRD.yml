@@ -1,0 +1,7 @@
+fasta_file: /lustre/bmt-data/genomics/reference/hg38.fa
+task_specs: 
+  ERG:
+    tracks:
+      - bam/in_house_atac/VCaP_pos.bw
+      - bam/in_house_atac/VCaP_neg.bw
+    peaks: bed/GTRD_TFBS/VCaP/ERG.bed

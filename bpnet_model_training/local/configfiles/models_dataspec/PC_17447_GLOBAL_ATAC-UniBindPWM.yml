@@ -1,0 +1,7 @@
+fasta_file: /lustre/bmt-data/genomics/reference/hg38.fa
+task_specs: 
+  GLOBAL:
+    tracks:
+      - bam/tampere_pc_atac/PC_17447_pos.bw
+      - bam/tampere_pc_atac/PC_17447_neg.bw
+    peaks: bed/tampere_pc_atac/PC_17447_summits_samp_specific.bed

@@ -1,0 +1,8 @@
+*******************************************************************************
+Test ama1 ...
+ama --verbosity 1 --scoring max-odds /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/tests/gomo/motif.meme.txt /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/tests/gomo/seqs.fasta /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/tests/gomo/seqs.bg 1> results/ama1/ama_1k2Zl_stdout 2> log
+PASSED!
+*******************************************************************************
+Test ama2 ...
+ama --pvalues --verbosity 1 --cs /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/tests/gomo/motif.meme.txt /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/tests/gomo/seqs_red.fasta /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/tests/gomo/seqs.norc.bg 1> results/ama2/ama_YbgG3_stdout 2> log
+PASSED!

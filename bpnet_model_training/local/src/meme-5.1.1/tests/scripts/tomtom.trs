@@ -1,0 +1,15 @@
+:test-result: FAIL tomtom1 -m, -mi, -xalph, -bfile, -evalue, -thresh, -dist allr
+:test-result: FAIL tomtom_allr 
+:test-result: FAIL tomtom_ed 
+:test-result: FAIL tomtom_kullback 
+:test-result: FAIL tomtom_pearson 
+:test-result: FAIL tomtom_sandelin 
+:test-result: FAIL tomtom_blic1 
+:test-result: FAIL tomtom_blic5 
+:test-result: FAIL tomtom_allr_cs 
+:test-result: FAIL tomtom_ed_cs 
+:test-result: FAIL tomtom_kullback_cs 
+:test-result: FAIL tomtom_pearson_cs 
+:test-result: FAIL tomtom_sandelin_cs 
+:test-result: FAIL tomtom_blic1_cs 
+:test-result: FAIL tomtom_blic5_cs 

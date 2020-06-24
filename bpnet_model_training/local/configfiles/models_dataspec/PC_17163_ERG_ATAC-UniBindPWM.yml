@@ -1,0 +1,14 @@
+fasta_file: /lustre/bmt-data/genomics/reference/hg38.fa
+task_specs: 
+  ERG:
+    tracks:
+      - bam/tampere_pc_atac/PC_17163_pos.bw
+      - bam/tampere_pc_atac/PC_17163_neg.bw
+    peaks: bed/tampere_pc_atac/PC_17163_UniBindPWM_ERG_peaks.bed
+  #task_name:
+    #tracks:
+      # List of bigwig files (1 or more) corresponding to the task
+      # The model will predict each track individually (here coverage of
+      # reads mapping to the positive and negative strand) and
+      # the contribution scores will be averaged across all of these tracks
+    #peaks: Peaks associated with the task(optional)

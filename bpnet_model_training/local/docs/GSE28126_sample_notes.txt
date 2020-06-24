@@ -1,0 +1,10 @@
+https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE28126
+
+GSM696839   SAMN02196704    LNCaP_AR_Vehicle
+GSM696840   SAMN02196705    LNCaP_AR_AR-stimulated
+GSM696841   SAMN02196706    VCaP_AR_Vehicle
+GSM696842   SAMN02196707    VCaP_AR_AR-stimulated
+GSM696843   SAMN02198640    LNCaP_PolII_Vehicle
+GSM696844   SAMN02198641    LNCaP_PolII_AR-stimulated
+GSM696845   SAMN02198642    LNCaP_Input_AR-stimulated
+GSM696846   SAMN02198643    VCaP_Input_AR-stimulated

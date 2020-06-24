@@ -1,0 +1,14 @@
+exclude_chr=["chrX","chrY","chr5","chr6","chr7","chr10","chr14","chr11","chr13","chr12","chr15"]
+valid_chr = ['chr2']
+test_chr = ['chr1', 'chr8', 'chr9', 'chr3', 'chr4']
+seq_width = XXX_DYNAMIC_WIDTH_XXX 
+n_dil_layers = 3
+bpnet_data.interval_augmentation_shift = 100
+train.seed = 42
+train.epochs = 30
+tconv_kernel_size = XXX_DYNAMIC_TCONV_XXX
+PeakPredictionProfileMetric.binsizes = [1, 2, 5, 10, 50]
+lambda = XXX_DYNAMIC_LAMBDA_XXX
+lr = XXX_DYNAMIC_LR_XXX
+train.batch_size = XXX_DYNAMIC_BATCH_XXX
+batchnorm = False

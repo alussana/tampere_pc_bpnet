@@ -1,0 +1,741 @@
+configfile: "../local/configfiles/config.yml"
+configfile: "../local/configfiles/config_tampere_pc.yml"
+
+#############################
+### Prepare Training Data ###
+#############################
+
+## Dowload fastq Chip-Seq data from SRA012454
+## https://www.ncbi.nlm.nih.gov/sra/?term=SRA012454.1
+## https://www.ncbi.nlm.nih.gov/Traces/study/?acc=SRP002294&o=acc_s%3Aa
+rule download_fastq_SRA012454:
+    output:
+        "fastq/SRA012454/.done"
+    shell:
+        "module load compbio/sratoolkit; \
+         cd fastq/SRA012454; \
+         for f in SRR039766 SRR039769 SRR039771 SRR039774 SRR039777 SRR039767 SRR039768 SRR039770 SRR039772 SRR039773 SRR039775 SRR039776; \
+         do \
+             fastq-dump -W -v --gzip --split-files $f; \
+         done; \
+         touch {output}"
+
+## Utility rule to generate the alignment of each biosample from SRA012454
+## e.g. snakemake bam_samples_from_SRA012454
+rule bam_samples_from_SRA012454:
+    input:
+        "bam/SRA012454/SAMN00011190_counts.bam", "bam/SRA012454/SAMN00011191_counts.bam",
+        "bam/SRA012454/SAMN00011192_counts.bam", "bam/SRA012454/SAMN00011193_counts.bam",
+        "bam/SRA012454/SAMN00011194_counts.bam", "bam/SRA012454/SAMN00011195_counts.bam",
+        "bam/SRA012454/SAMN00011196_counts.bam", "bam/SRA012454/SAMN00011197_counts.bam"
+
+## Align fastq reads from a SRA012454 sample against hg38 with bowtie2
+## and generate a sorted bam file with aligned reads only
+## e.g. snakemake bam/SRA012454/SAMN00011191_counts.bam
+rule align_SRA012454:
+    input:
+        "fastq/SRA012454/.done"
+    output:
+        "bam/SRA012454/{sample}_counts.bam"
+    params:
+        sample=lambda wildcards: wildcards.sample,
+        run_names=lambda wildcards: config["SRA012454"][wildcards.sample],
+        out_dir=lambda wildcards: "bam/SRA012454",
+        in_dir=lambda wildcards: "fastq/SRA012454",
+        ref=lambda wildcards: config['bowtie_ref_basename']
+    shell:
+        "mkdir -p {params.out_dir}/slurm_logs; "
+        "mkdir -p {params.out_dir}/slurm_errors; "
+        "mkdir -p {params.out_dir}/bowtie_logs; "
+        "RUN_NAMES=$(echo {params.run_names} | sed -r "
+            "'s#^([^,]+)#{params.in_dir}/\\1_1.fastq.gz,#g; "
+            " s#,([^,]+)#,{params.in_dir}/\\1_1.fastq.gz#g'); "
+        "sed -i " 
+            "\"s#XXX_DYNAMIC_SAMPLE_XXX#{params.sample}#g;" 
+            "  s#XXX_DYNAMIC_REF_XXX#{params.ref}#g;"
+            "  s#XXX_DYNAMIC_OUTPUT_DIR_XXX#{params.out_dir}#g;"
+            "  s#XXX_DYNAMIC_RUN_NAMES_XXX#${{RUN_NAMES}}#g\""
+            " ../local/bin/slurm_fastq_to_sorted_bam.sh; "
+        "sbatch ../local/src/slurm_fastq_to_sorted_bam.sh; "
+        "sed -i "
+            "\"s#{params.sample}#XXX_DYNAMIC_SAMPLE_XXX#g;"
+            "  s#{params.ref}#XXX_DYNAMIC_REF_XXX#g;"
+            "  s#{params.out_dir}#XXX_DYNAMIC_OUTPUT_DIR_XXX#g;"
+            "  s#${{RUN_NAMES}}#XXX_DYNAMIC_RUN_NAMES_XXX#g\""
+            " ../local/bin/slurm_fastq_to_sorted_bam.sh; "
+        "touch {output}"
+
+## Download ATAC-Seq data from VCaP cell line
+## e.g. snakemake bam/in_house_atac/VCaP_counts.bam 
+rule download_atac_bam:
+    output:
+        bam="bam/in_house_atac/VCaP_counts.bam",
+        bai="bam/in_house_atac/VCaP_counts.bai"
+    shell:
+        "wget --user tampere --password prostate "
+            "-O {output.bam} https://binf.rd.tuni.fi/projects/pc_celllines/atac-seq/VCaP.bam; "
+        "wget --user tampere --password prostate " 
+            "-O {output.bai} https://binf.rd.tuni.fi/projects/pc_celllines/atac-seq/VCaP.bam.bai"
+
+ruleorder: split_bam_strands > export_bigwig > download_tampere_pc_atac_bam
+
+## Download ATAC-Seq data from clinical prostate cancer samples
+## e.g. snakemake bam/tampere_pc_atac/BPH_701.bam
+## e.g. snakemake bam/tampere_pc_atac/PC_17163.bam
+## e.g. snakemake bam/tampere_pc_atac/CRPC_541.bam
+## e.g. snakemake bam/tampere_pc_atac/CRPC_541_2.bam
+rule download_tampere_pc_atac_bam:
+    output:
+        bam="bam/tampere_pc_atac/{sample_name}_counts.bam",
+        bai="bam/tampere_pc_atac/{sample_name}_counts.bai"
+    params:
+        sample_name=lambda wildcards: wildcards.sample_name
+    shell:
+        "wget --user tampere --password prostate "
+            "-O {output.bam} https://binf.rd.tuni.fi/projects/tampere_pc/atac-seq/alignments/{params.sample_name}.bam; "
+        "wget --user tampere --password prostate "
+            "-O {output.bai} https://binf.rd.tuni.fi/projects/tampere_pc/atac-seq/alignments/{params.sample_name}.bam.bai"
+
+## split a bam file in two strand-specific bam files
+## e.g. snakemake bam/SRA012454/SAMN00011191_pos.bam
+## e.g. snakemake bam/in_house_atac/VCaP_pos.bam
+rule split_bam_strands:
+    input:
+        "bam/{study_source}/{sample}_counts.bam"
+    output:
+        pos="bam/{study_source}/{sample}_pos.bam",
+        neg="bam/{study_source}/{sample}_neg.bam"
+    shell:
+        "samtools view -F 0x10 {input} -b -o {output.pos}; "
+        "samtools view -f 0x10 {input} -b -o {output.neg}"
+
+ruleorder: process_tampere_pc_atac_peaks > call_peaks_with_bias > call_peaks_without_bias
+
+## Prepare atac summits from tampere pc clinical samples
+## e.g. snakemake bed/tampere_pc_atac/BPH_701_summits.bed
+## e.g. snakemake bed/tampere_pc_atac/PC_17163_summits.bed
+## e.g. snakemake bed/tampere_pc_atac/CRPC_541_summits.bed
+## e.g. snakemake bed/tampere_pc_atac/CRPC_541_2_summits.bed
+rule process_tampere_pc_atac_peaks:
+    input:
+        # (SAMPLE-SPECIFIC PEAKS:)
+        "/lustre/bmt-data/genomics/projects/atac_workdir/peaks/{sample_name}.bam_summits.bed"
+        # (UNIFIED PEAKS:)
+        #"bed/tampere_pc_atac/unified_peaks_annotated.csv"
+    output:
+        "bed/tampere_pc_atac/{sample_name}_summits.bed"
+    shell:
+        # (SAMPLE-SPECIFIC PEAKS:)
+        #     (or, cut the fields:)
+        # "cat {input} | cut -f1-3 > {output}"
+        #     (or, filter low intensity peaks:) 
+        # "cat {input} | awk '{{$5>5{print $1,$2,$3}}}' > {output}"
+        #     (or, filter low intensity peaks and exclude non-canonical chr:)
+        # "cat {input} | awk '{{if($5>5 && $1!~/chr.+_/){{print $0}}}}' > {output}"
+        #     (or, exclude non-canonical chr:)
+        # "cat {input} | awk '{{if($1!~/chr.+_/){{print $0}}}}' > {output}"
+        # (UNIFIED PEAKS:)
+        "cat {input} | cut -f1-3 | sed '1d' > {output}"
+
+## Call peaks with emacs2 from BAM files (exp + input)
+## e.g. snakemake bed/SRA012454/SAMN00011191_summits.bed
+rule call_peaks_with_bias:
+    input:
+        exp="bam/{bam_dir}/{bam_name}_counts.bam",
+        bias=lambda wildcards: "bam/" + wildcards.bam_dir + "/" + config["chip_input"][wildcards.bam_name] + "_counts.bam",
+        ref=lambda wildcards: config["ref"]
+    output:
+        summits="bed/{bam_dir}/{bam_name}_summits.bed",
+        narrow="bed/{bam_dir}/{bam_name}_peaks.narrowPeak",
+        model="bed/{bam_dir}/{bam_name}_model.r",
+        peaks="bed/{bam_dir}/{bam_name}_peaks.xls"
+    params:
+        sample=lambda wildcards: wildcards.bam_name,
+        out_dir=lambda wildcards: wildcards.bam_dir
+    shell:
+        "macs2 callpeak "
+            "--treatment {input.exp} "
+            "--control {input.bias} "
+            "--name {params.sample} "
+            "--outdir bed/{params.out_dir} "
+            "--gsize hs"
+
+## Call peaks with emacs2 from BAM files (bias control is not used)
+## e.g. snakemake bed/in_house_atac/VCaP_summits.bed
+rule call_peaks_without_bias:
+    input:
+        exp="bam/{bam_dir}/{bam_name}_counts.bam",
+        ref=lambda wildcards: config["ref"]
+    output:
+        summits="bed/{bam_dir}/{bam_name}_summits.bed",
+        narrow="bed/{bam_dir}/{bam_name}_peaks.narrowPeak",
+        model="bed/{bam_dir}/{bam_name}_model.r",
+        peaks="bed/{bam_dir}/{bam_name}_peaks.xls"
+    params:
+        sample=lambda wildcards: wildcards.bam_name,
+        out_dir=lambda wildcards: wildcards.bam_dir
+    shell:
+        "macs2 callpeak "
+            "--treatment {input.exp} "
+            "--name {params.sample} "
+            "--outdir bed/{params.out_dir} "
+            "--gsize hs"
+
+## Filter the summits excluding non canonical CHRs
+## e.g. snakemake bed/SRA012454/SAMN00011191_summits_canonCHR.bed
+## e.g. snakemake bed/in_house_atac/VCaP_summits_canonCHR.bed
+rule exclude_noncanonical_chr:
+    input:
+        "bed/{study_source}/{bed_name}_summits.bed"
+    output:
+        "bed/{study_source}/{bed_name}_summits_canonCHR.bed"
+    shell:
+        # Exclude non canonical chrs
+        #"cat {input} | awk '$1!~/chr.+_/' > {output}"
+        # or, also filter out weak intensity peaks
+        "cat {input} | awk '{{if($5>5 && $1!~/chr.+_/){{print $0}}}}' > {output}"
+
+## Download and unzip UniBind TFBSs
+## e.g. snakemake bed/UniBind_TFBS/PWM/.done
+rule download_UniBind_tfbs:
+    output:
+        "bed/UniBind_TFBS/{predictor}/.done"
+    params:
+        url=lambda wildcards: config["UniBind"][wildcards.predictor],
+        predictor=lambda wildcards: wildcards.predictor 
+    shell:
+       "wget -O bed/UniBind_TFBS/{params.predictor}/tfbs.tar.gz {params.url}; "
+       "tar xvzf bed/UniBind_TFBS/{params.predictor}/tfbs.tar.gz -C bed/UniBind_TFBS/{params.predictor}; "
+       "rm bed/UniBind_TFBS/{params.predictor}/tfbs.tar.gz; "
+       "touch {output};"
+
+## Make the union of all bed files from a TF binding sites 
+## NOTE Some coordinates are in non-canonical chromosomes
+## e.g. snakemake bed/UniBind_TFBS/merged/PWM/AR.bed
+rule tfbs_bed_union:
+    input:
+        "bed/UniBind_TFBS/{predictor}/.done"
+    output:
+        "bed/UniBind_TFBS/merged/{predictor}/{TF}.bed"
+    params:
+        predictor=lambda wildcards: wildcards.predictor,
+        TF=lambda wildcards: wildcards.TF
+    shell:
+        "cat bed/UniBind_TFBS/{params.predictor}/{params.TF}/* | sort -k 1,1 -k2,2n > {output}"
+
+ruleorder: intersect_UniBind_tfbs > call_peaks_without_bias
+
+## Select input regions intersecting ATAC-Seq summits, extended by 200 bp in both
+## directions, with GTRD tfbs 
+## e.g. snakemake bed/in_house_atac/VCaP_GTRD_AR_summits.bed
+## e.g. snakemake bed/in_house_atac/VCaP_GTRD_ERG_summits.bed
+## e.g. snakemake bed/in_house_atac/VCaP_GTRD_GATA1_summits.bed
+## e.g. snakemake bed/in_house_atac/VCaP_GTRD_FOXA1_summits.bed
+rule intersect_GTRD_tfbs:
+    input:
+        summits="bed/{study_source}/{cell_line}_summits.bed",
+        tfbs="bed/GTRD_TFBS/{cell_line}/{TF}.bed"
+    output:
+        "bed/{study_source}/{cell_line}_GTRD_{TF}_summits.bed"
+    params:
+        chr_sizes=lambda wildcards: config["chr_sizes"]
+    shell:
+        "bedtools slop -i {input.summits} -g {params.chr_sizes} -b 200 > {output}.tmp; "
+        "bedtools intersect -wa -a {output}.tmp -b {input.tfbs} | uniq > {output}; "
+        "rm {output}.tmp"
+
+## Select input regions intersecting ATAC-Seq summits, extended by 50 bp in both
+## directions, with UniBind tfbs 
+## e.g. snakemake bed/in_house_atac/VCaP_UniBindPWM_AR_peaks.bed
+## e.g. snakemake bed/tampere_pc_atac/PC_17163_UniBindPWM_AR_peaks.bed
+rule intersect_UniBind_tfbs:
+    input:
+        summits="bed/{study_source}/{bed_name}_summits.bed",
+        tfbs="bed/UniBind_TFBS/merged/{predictor}/{TF}.bed"
+    output:
+        "bed/{study_source}/{bed_name}_UniBind{predictor}_{TF}_peaks.bed"
+    params:
+        chr_sizes=lambda wildcards: config["chr_sizes"]
+    shell:
+        "bedtools slop -i {input.summits} -g {params.chr_sizes} -b 50 > {output}.tmp; "
+        "bedtools intersect -wa -a {output}.tmp -b {input.tfbs} | uniq > {output}; "
+        "rm {output}.tmp"
+
+## Merge two peak summits bed files with canonical CHRs only
+## NOTE this only makes the union of the summits, meaning that regions in
+##      which in both BEDs there is a summit will be overepresented
+## e.g. snakemake bed/SRA012454/SAMN00011191,SAMN00011193_summits_canonCHR.bed
+rule summits_union:
+    input:
+        bed1="bed/{study_source}/{bed_name1}_summits_canonCHR.bed",
+        bed2="bed/{study_source}/{bed_name2}_summits_canonCHR.bed"
+    output:
+        "bed/{study_source}/{bed_name1},{bed_name2}_summits_canonCHR_joined.bed"
+    shell:
+        "cat {input.bed1} {input.bed2} | sort -k 1,1 -k2,2n > {output}"
+
+## Export GTRD transcription factor binding sites, filtering the database for
+## cell line and TF
+## e.g. snakemake bed/GTRD_TFBS/VCaP/AR.bed
+## e.g. snakemake bed/GTRD_TFBS/VCaP/FOXA1.bed
+## e.g. snakemake bed/GTRD_TFBS/VCaP/ERG.bed
+## e.g. snakemake bed/GTRD_TFBS/VCaP/HOXB13.bed (likely not expressed in cell lines)
+rule export_GTRD_tfbs:
+    input:
+        gtrd=lambda wildcards: config["gtrd"]
+    output:
+        "bed/GTRD_TFBS/{cell_line}/{TF}.bed"
+    params:
+        tf=lambda wildcards: wildcards.TF,
+        line=lambda wildcards: wildcards.cell_line
+    shell:
+        "zcat {input} | sed '1d' | awk '$7~/{params.line}/ && $6==\"{params.tf}\"' > {output}"
+
+## Extend the selected regions by the desired amount of bp
+## NOTE bpnet seems not consistent with BED semi-inlcusive range
+##      -l 500 -r 500 would produce inputs of 1001 bp
+## e.g. snakemake bed/SRA012454/SAMN00011191_1000bp_regions.bed
+rule extend_summits:
+    input:
+        "bed/{bam_dir}/{bam_name}_summits.bed"
+    output:
+        "bed/{bam_dir}/{bam_name}_{length}bp_regions.bed"
+    params:
+        chr_sizes=lambda wildcards: config["chr_sizes"],
+        l=lambda wildcards: int(int(wildcards.length) / 2),
+        r=lambda wildcards: int((int(wildcards.length) - 1) / 2)
+    shell:
+        "bedtools slop "
+            "-i {input} "
+            "-g {params.chr_sizes} "
+            "-l {params.l} "
+            "-r {params.r} "
+        " > {output}"
+
+## Create index for a bam file and generate the corresponding
+## bigwig file
+## e.g. snakemake bam/SRA012454/SAMN00011191_pos.bw
+## e.g. snakemake bam/in_house_atac/VCaP_pos.bw
+## e.g. snakemake bam/tampere_pc_atac/BPH_701_pos.bw
+rule export_bigwig:
+    input:
+        "bam/{study_source}/{bam_name}.bam"
+    output:
+        bai="bam/{study_source}/{bam_name}.bai",
+        bw="bam/{study_source}/{bam_name}.bw"
+    shell:
+        " samtools index -b {input} {output.bai};"
+        " bamCoverage "
+        " --bam {input}"
+        " --outFileName {output.bw}"
+        " --outFileFormat bigwig"
+
+########################
+### Train the models ###
+########################
+
+## Functions to define input requirments for bpnet_train
+def bpnet_train_bw_requirement(wildcards):
+    bw = expand("bam/{study_source}/{samples}_{strand}.bw",
+                study_source=wildcards.study_source,
+                samples=config[wildcards.cell_lines + "_" + wildcards.tasks + "_" + wildcards.freetext]["bw"],
+                strand=["pos","neg"])
+    return(bw)
+def bpnet_train_bias_bw_requirement(wildcards):
+    bw = expand("bam/{study_source}/{samples}_{strand}.bw",
+                study_source=wildcards.study_source,
+                samples=config[wildcards.cell_lines + "_" + wildcards.tasks + "_" + wildcards.freetext]["bias_bw"],
+                strand=["pos","neg"])
+    return(bw)
+
+## Train SeqModel using gin files to control hyper-parameters
+## Runs are displayed at https://app.wandb.ai/alussana/bpnet_on_chip_seq
+## e.g. snakemake models/SRA012454/VCaP_AR_toy_10lambda_0.004lr_128batch_200width_25tconv/seq_model.pkl
+## e.g. snakemake models/SRA012454/VCaP_AR_bpnet9_10lambda_0.004lr_128batch_1000width_25tconv/seq_model.pkl
+## e.g. sankemake models/in_house_atac/VCaP_AR_toy-ATAC-SAMN00011193-peaks_10lambda_0.004lr_128batch_200width_25tconv/seq_model.pkl
+## e.g. sankemake models/in_house_atac/VCaP_AR_ATAC-SAMN00011193-peaks_10lambda_0.004lr_128batch_1000width_25tconv/seq_model.pkl
+## e.g. sankemake models/in_house_atac/VCaP_AR_toy-ATAC-SAMN00011193-peaks_10lambda_0.004lr_128batch_1000width_25tconv/seq_model.pkl
+## e.g. sankemake models/in_house_atac/VCaP_AR_ATAC-UniBindPWM_10lambda_0.004lr_128batch_1000width_25tconv/seq_model.pkl
+## e.g. sankemake models/in_house_atac/VCaP_AR_toy-ATAC-GTRD_10lambda_0.004lr_128batch_1000width_25tconv/seq_model.pkl
+## e.g. sankemake models/in_house_atac/VCaP_AR_ATAC-GTRD_10lambda_0.004lr_128batch_1000width_25tconv/seq_model.pkl
+## e.g. sankemake models/in_house_atac/VCaP_AR-ERG-FOXA1_toy-ATAC-GTRD_10lambda_0.004lr_128batch_1000width_25tconv/seq_model.pkl
+## e.g. sankemake models/tampere_pc_atac/CRPC_541_AR_ATAC-UniBindPWM_1000lambda_0.004lr_128batch_1000width_25tconv/seq_model.pkl
+## e.g. sankemake models/tampere_pc_atac/PC_17163_AR_ATAC-UniBindPWM_1000lambda_0.004lr_128batch_1000width_25tconv/seq_model.pkl
+## e.g. sankemake models/tampere_pc_atac/BPH_701_AR_ATAC-UniBindPWM_1000lambda_0.004lr_128batch_1000width_25tconv/seq_model.pkl
+## e.g. sankemake models/tampere_pc_atac/BPH_701_AR_toy-ATAC-UniBindPWM_10lambda_0.004lr_128batch_200width_25tconv/seq_model.pkl
+rule bpnet_train_params_search:
+    input:
+        summits=lambda wildcards: config[wildcards.cell_lines + "_" + wildcards.tasks + "_" + wildcards.freetext]["summits"],
+        bw=bpnet_train_bw_requirement
+        #bw_bias=bpnet_train_bias_bw_requirement
+    output:
+        "models/{study_source}/{cell_lines}_{tasks}_{freetext}_{Lambda}lambda_{lr}lr_{batch}batch_{width}width_{k}tconv/seq_model.pkl"
+    params:
+        dataspec=lambda wildcards: config[wildcards.cell_lines + "_" + wildcards.tasks + "_" + wildcards.freetext]["dataspec"],
+        config=lambda wildcards: config[wildcards.cell_lines + "_" + wildcards.tasks + "_" + wildcards.freetext]["config"],
+        exp_dir=lambda wildcards: 'models/' + wildcards.study_source + '/' + wildcards.cell_lines + '_' + wildcards.tasks + '_' + wildcards.freetext + 
+                "_" + wildcards.Lambda + "lambda_" + wildcards.lr + "lr_" + wildcards.batch + "batch_" + wildcards.width + "width_" + wildcards.k + "tconv",
+        jobfile=lambda wildcards: config[wildcards.cell_lines + "_" + wildcards.tasks + "_" + wildcards.freetext]["jobfile"],
+        Lambda=lambda wildcards: wildcards.Lambda,
+        lr=lambda wildcards: wildcards.lr,
+        batch=lambda wildcards: wildcards.batch,
+        width=lambda wildcards: wildcards.width,
+        k_size=lambda wildcards: wildcards.k,
+        tasks=lambda wildcards: wildcards.tasks,
+        sample=lambda wildcards: wildcards.cell_lines
+    shell:
+        "mkdir -p {params.exp_dir}/slurm_logs; "
+        "mkdir -p {params.exp_dir}/slurm_errors; "
+        "find models -type d -exec chmod 777 {{}} + ; "
+        "rm -f {output}; "
+        "sed "
+            "\"s#lambda = XXX_DYNAMIC_LAMBDA_XXX#lambda = {params.Lambda}#g;"
+            "  s#train.batch_size = XXX_DYNAMIC_BATCH_XXX#train.batch_size = {params.batch}#g;"
+            "  s#seq_width = XXX_DYNAMIC_WIDTH_XXX#seq_width = {params.width}#g;"
+            "  s#tconv_kernel_size = XXX_DYNAMIC_TCONV_XXX#tconv_kernel_size = {params.k_size}#g;"
+            "  s#lr = XXX_DYNAMIC_LR_XXX#lr = {params.lr}#g\" "
+            " {params.config} > {params.config}_{params.sample}_{params.tasks}_{params.Lambda}lambda_{params.lr}lr_{params.batch}batch_{params.width}width_{params.k_size}tconv.tmp; "
+        "sed "
+            "\"s#XXX_DYNAMIC_EXP_DIR_XXX#{params.exp_dir}#g;"
+            "  s#XXX_DYNAMIC_DATASPEC_XXX#{params.dataspec}#g;"
+            "  s#XXX_DYNAMIC_TASKS_XXX#{params.tasks}#g;"
+            "  s#XXX_DYNAMIC_SAMPLE_XXX#{params.sample}#g;"
+            "  s#XXX_DYNAMIC_CONFIGGIN_XXX#{params.config}_{params.sample}_{params.tasks}_{params.Lambda}lambda_{params.lr}lr_{params.batch}batch_{params.width}width_{params.k_size}tconv.tmp#g\" "
+            " {params.jobfile} > {params.jobfile}_{params.sample}_{params.tasks}_{params.Lambda}lambda_{params.lr}lr_{params.batch}batch_{params.width}width_{params.k_size}tconv.tmp; "
+        "sbatch {params.jobfile}_{params.sample}_{params.tasks}_{params.Lambda}lambda_{params.lr}lr_{params.batch}batch_{params.width}width_{params.k_size}tconv.tmp; "
+        "touch {output}"
+
+###################################
+### Compute Contribution Scores ###
+###################################
+
+## Compute contribution scores from a trained model
+## and null contribution scores after sequence shuffling
+## e.g. snakemake models/SRA012454/VCaP_AR_toy_10lambda_0.004lr_128batch_200width_25tconv/contrib.deeplift.h5
+## e.g. snakemake models/SRA012454/VCaP_AR_bpnet9_11lambda_0.004lr_128batch_1000width_25tconv/contrib.deeplift.h5
+## e.g. snakemake models/in_house_atac/VCaP_AR_toy-ATAC-SAMN00011193-peaks_10lambda_0.004lr_128batch_200width_25tconv/contrib.deeplift.h5
+## e.g. snakemake models/in_house_atac/VCaP_AR_ATAC-SAMN00011193-peaks_10lambda_0.004lr_128batch_1000width_25tconv/contrib.deeplift.h5
+## e.g. sankemake models/in_house_atac/VCaP_AR_ATAC-UniBindPWM_10lambda_0.004lr_128batch_1000width_25tconv/contrib.deeplift.h5
+rule compute_contrib_scores:
+    input:
+        "models/{study_source}/{cell_lines}_{tasks}_{freetext}_{Lambda}lambda_{lr}lr_{batch}batch_{width}width_{k}tconv/seq_model.pkl"
+    output:
+        contrib="models/{study_source}/{cell_lines}_{tasks}_{freetext}_{Lambda}lambda_{lr}lr_{batch}batch_{width}width_{k}tconv/contrib.deeplift.h5",
+        nll_contrib="models/{study_source}/{cell_lines}_{tasks}_{freetext}_{Lambda}lambda_{lr}lr_{batch}batch_{width}width_{k}tconv/contrib.deeplift.null.h5"
+    params:
+        model_dir=lambda wildcards: 'models/' + wildcards.study_source + '/' + wildcards.cell_lines + '_' + wildcards.tasks + '_' + wildcards.freetext + 
+                  "_" + wildcards.Lambda + "lambda_" + wildcards.lr + "lr_" + wildcards.batch + "batch_" + wildcards.width + "width_" + wildcards.k + "tconv",
+        Lambda=lambda wildcards: wildcards.Lambda,
+        lr=lambda wildcards: wildcards.lr,
+        batch=lambda wildcards: wildcards.batch,
+        width=lambda wildcards: wildcards.width,
+        k_size=lambda wildcards: wildcards.k,
+        tasks=lambda wildcards: wildcards.tasks,
+        sample=lambda wildcards: wildcards.cell_lines
+    shell:
+        "mkdir -p {params.model_dir}/slurm_logs; "
+        "mkdir -p {params.model_dir}/slurm_errors; "
+        "sed "
+            "\"s#XXX_DYNAMIC_MODEL_DIR_XXX#{params.model_dir}#g\" ../local/src/slurm_contrib_scores.sh"
+            "  > ../local/src/slurm_contrib_scores_{params.sample}_{params.tasks}_{params.Lambda}lambda_{params.lr}lr_{params.batch}batch_{params.width}width_{params.k_size}tconv.sh.tmp; "
+        "CURRENT_MODEL_DIR=$(readlink -f {params.model_dir}/seq_model.pkl | rev | cut -d '/' -f2 | rev); "
+        "rm {params.model_dir}/seq_model.pkl; "
+        "cp -fr {params.model_dir}/${{CURRENT_MODEL_DIR}}/* {params.model_dir}; "
+        "sbatch ../local/src/slurm_contrib_scores_{params.sample}_{params.tasks}_{params.Lambda}lambda_{params.lr}lr_{params.batch}batch_{params.width}width_{params.k_size}tconv.sh.tmp; "
+        "touch {output}"
+
+## Plot contribution scores for given regions
+## First 5 regions with highest read counts for each TF are plotted
+## e.g. snakemake models/SRA012454/VCaP_AR_toy_10lambda_0.004lr_128batch_200width_25tconv/contrib_plots/.done
+## e.g. snakemake models/SRA012454/VCaP_AR_bpnet9_11lambda_0.004lr_128batch_1000width_25tconv/contrib_plots/.done
+## e.g. snakemake models/in_house_atac/VCaP_AR_ATAC-SAMN00011193-peaks_10lambda_0.004lr_128batch_1000width_25tconv/contrib_plots/.done
+## e.g. sankemake models/in_house_atac/VCaP_AR_ATAC-UniBindPWM_10lambda_0.004lr_128batch_1000width_25tconv/contrib_plots/.done
+rule plot_contrib_scores:
+    input:
+        "models/{study_source}/{cell_lines}_{tasks}_{freetext}_{Lambda}lambda_{lr}lr_{batch}batch_{width}width_{k}tconv/contrib.deeplift.h5"
+    output:
+        "models/{study_source}/{cell_lines}_{tasks}_{freetext}_{Lambda}lambda_{lr}lr_{batch}batch_{width}width_{k}tconv/contrib_plots/.done"
+    params:
+        tasks=lambda wildcards: wildcards.tasks,
+        model_dir=lambda wildcards: 'models/' + wildcards.study_source + '/' + wildcards.cell_lines + '_' + wildcards.tasks + '_' + wildcards.freetext +
+                  "_" + wildcards.Lambda + "lambda_" + wildcards.lr + "lr_" + wildcards.batch + "batch_" + wildcards.width + "width_" + wildcards.k + "tconv",
+        Lambda=lambda wildcards: wildcards.Lambda,
+        lr=lambda wildcards: wildcards.lr,
+        batch=lambda wildcards: wildcards.batch,
+        width=lambda wildcards: wildcards.width,
+        k_size=lambda wildcards: wildcards.k,
+        sample=lambda wildcards: wildcards.cell_lines
+    shell:
+        "mkdir -p {params.model_dir}/slurm_logs; "
+        "mkdir -p {params.model_dir}/slurm_errors; "
+        "sed "
+            "\"s#XXX_DYNAMIC_MODEL_DIR_XXX#{params.model_dir}#g;"
+            "  s#XXX_DYNAMIC_SEQ_LENGTH_XXX#{params.width}#g\" ../local/src/slurm_plot_contrib_scores.sh"
+            "  > ../local/src/slurm_plot_contrib_scores_{params.sample}_{params.tasks}_{params.Lambda}lambda_{params.lr}lr_{params.batch}batch_{params.width}width_{params.k_size}tconv.sh.tmp; "
+        "sbatch ../local/src/slurm_plot_contrib_scores_{params.sample}_{params.tasks}_{params.Lambda}lambda_{params.lr}lr_{params.batch}batch_{params.width}width_{params.k_size}tconv.sh.tmp; "
+        "touch {output}"
+
+#########################
+### Identify Patterns ###
+#########################
+
+## Run the complete modisco workflow on a specified model
+## e.g. snakemake models/SRA012454/VCaP_AR_toy_10lambda_0.004lr_128batch_200width_25tconv/modisco/.done
+## e.g. snakemake models/SRA012454/VCaP_AR_bpnet9_10lambda_0.004lr_128batch_1000width_25tconv/modisco/.done
+## e.g. snakemake models/in_house_atac/VCaP_AR_ATAC-SAMN00011193-peaks_10lambda_0.004lr_128batch_1000width_25tconv/modisco/.done
+## e.g. sankemake models/in_house_atac/VCaP_AR_ATAC-UniBindPWM_10lambda_0.004lr_128batch_1000width_25tconv/modisco/.done
+rule run_modisco:
+    input:
+        contrib="models/{study_source}/{cell_lines}_{tasks}_{freetext}_{Lambda}lambda_{lr}lr_{batch}batch_{width}width_{k}tconv/contrib.deeplift.h5",
+        nll_contrib="models/{study_source}/{cell_lines}_{tasks}_{freetext}_{Lambda}lambda_{lr}lr_{batch}batch_{width}width_{k}tconv/contrib.deeplift.null.h5"
+    output:
+        "models/{study_source}/{cell_lines}_{tasks}_{freetext}_{Lambda}lambda_{lr}lr_{batch}batch_{width}width_{k}tconv/modisco/.done"
+    params:
+        tasks=lambda wildcards: wildcards.tasks,
+        model_dir=lambda wildcards: 'models/' + wildcards.study_source + '/' + wildcards.cell_lines + '_' + wildcards.tasks + '_' + wildcards.freetext + 
+                  "_" + wildcards.Lambda + "lambda_" + wildcards.lr + "lr_" + wildcards.batch + "batch_" + wildcards.width + "width_" + wildcards.k + "tconv",
+        Lambda=lambda wildcards: wildcards.Lambda,
+        lr=lambda wildcards: wildcards.lr,
+        batch=lambda wildcards: wildcards.batch,
+        width=lambda wildcards: wildcards.width,
+        k_size=lambda wildcards: wildcards.k,
+        sample=lambda wildcards: wildcards.cell_lines
+    shell:
+        "mkdir -p {params.model_dir}/slurm_logs; "
+        "mkdir -p {params.model_dir}/slurm_errors; "
+        "sed "
+            "\"s#XXX_DYNAMIC_MODEL_DIR_XXX#{params.model_dir}#g;"
+            "  s#XXX_DYNAMIC_TASKS_XXX#{params.tasks}#g\" ../local/src/slurm_modisco_run.sh"
+            "  > ../local/src/slurm_modisco_run_{params.sample}_{params.tasks}_{params.Lambda}lambda_{params.lr}lr_{params.batch}batch_{params.width}width_{params.k_size}tconv.sh.tmp; "
+        "sbatch ../local/src/slurm_modisco_run_{params.sample}_{params.tasks}_{params.Lambda}lambda_{params.lr}lr_{params.batch}batch_{params.width}width_{params.k_size}tconv.sh.tmp; "
+        "touch {output}"
+
+## Plot the sequence logos of the patterns from modisco results
+## e.g. snakemake models/SRA012454/VCaP_AR_bpnet9_10lambda_0.004lr_128batch_1000width_25tconv/modisco/.plot_done
+## e.g. snakemake models/in_house_atac/VCaP_AR_ATAC-UniBindPWM_1000lambda_0.004lr_128batch_1000width_25tconv/modisco/.plot_done
+## e.g. snakemake models/tampere_pc_atac/BPH_701_AR_ATAC-UniBindPWM_1000lambda_0.004lr_128batch_1000width_25tconv/modisco/.plot_done
+rule plot_modisco_patterns:
+    input:
+        "models/{study_source}/{cell_lines}_{tasks}_{freetext}_{Lambda}lambda_{lr}lr_{batch}batch_{width}width_{k}tconv/modisco/.done"
+    output:
+        "models/{study_source}/{cell_lines}_{tasks}_{freetext}_{Lambda}lambda_{lr}lr_{batch}batch_{width}width_{k}tconv/modisco/.plot_done"
+    params:
+        tasks=lambda wildcards: wildcards.tasks,
+        model_dir=lambda wildcards: 'models/' + wildcards.study_source + '/' + wildcards.cell_lines + '_' + wildcards.tasks + '_' + wildcards.freetext + 
+                  "_" + wildcards.Lambda + "lambda_" + wildcards.lr + "lr_" + wildcards.batch + "batch_" + wildcards.width + "width_" + wildcards.k + "tconv",
+        Lambda=lambda wildcards: wildcards.Lambda,
+        lr=lambda wildcards: wildcards.lr,
+        batch=lambda wildcards: wildcards.batch,
+        width=lambda wildcards: wildcards.width,
+        k_size=lambda wildcards: wildcards.k,
+        sample=lambda wildcards: wildcards.cell_lines
+    shell:
+        "mkdir -p {params.model_dir}/slurm_logs; "
+        "mkdir -p {params.model_dir}/slurm_errors; "
+        "sed "
+            "\"s#XXX_DYNAMIC_MODEL_DIR_XXX#{params.model_dir}#g;"
+            "  s#XXX_DYNAMIC_TASKS_XXX#{params.tasks}#g\" ../local/src/slurm_modisco_visualize.sh"
+            "  > ../local/src/slurm_modisco_visualize_{params.sample}_{params.tasks}_{params.Lambda}lambda_{params.lr}lr_{params.batch}batch_{params.width}width_{params.k_size}tconv.sh.tmp; "
+        "sbatch ../local/src/slurm_modisco_visualize_{params.sample}_{params.tasks}_{params.Lambda}lambda_{params.lr}lr_{params.batch}batch_{params.width}width_{params.k_size}tconv.sh.tmp; "
+        "touch {output}"
+
+## Run tomtom to identify similarity between modisco patterns and
+## hocomoco motifs
+## e.g. snakemake models/SRA012454/VCaP_AR_bpnet9_10lambda_0.004lr_128batch_1000width_25tconv/modisco/.tomtom_done
+## e.g. snakemake models/in_house_atac/VCaP_AR_ATAC-SAMN00011193-peaks_10lambda_0.004lr_128batch_1000width_25tconv/modisco/.tomtom_done
+## e.g. sankemake models/in_house_atac/VCaP_AR_ATAC-UniBindPWM_10lambda_0.004lr_128batch_1000width_25tconv/modisco/.tomtom_done
+rule run_tomtom:
+    input:
+        "models/{study_source}/{cell_lines}_{tasks}_{freetext}_{Lambda}lambda_{lr}lr_{batch}batch_{width}width_{k}tconv/modisco/.done"
+    output:
+        "models/{study_source}/{cell_lines}_{tasks}_{freetext}_{Lambda}lambda_{lr}lr_{batch}batch_{width}width_{k}tconv/modisco/.tomtom_done"
+    params:
+        tasks=lambda wildcards: wildcards.tasks,
+        model_dir=lambda wildcards: 'models/' + wildcards.study_source + '/' + wildcards.cell_lines + '_' + wildcards.tasks + '_' + wildcards.freetext +
+                  "_" + wildcards.Lambda + "lambda_" + wildcards.lr + "lr_" + wildcards.batch + "batch_" + wildcards.width + "width_" + wildcards.k + "tconv",
+        Lambda=lambda wildcards: wildcards.Lambda,
+        lr=lambda wildcards: wildcards.lr,
+        batch=lambda wildcards: wildcards.batch,
+        width=lambda wildcards: wildcards.width 
+    shell:
+        "mkdir -p {params.model_dir}/slurm_logs; "
+        "mkdir -p {params.model_dir}/slurm_errors; "
+        "RAW_TASKS={params.tasks}; TASKS=$(echo $RAW_TASKS | tr '-' ' '); "
+        "python ../local/src/run_tomtom.py {params.model_dir} $TASKS; "
+        "touch {output}"
+
+## process the tomtom output joining together the different
+## metaclusters results of the same task together
+## e.g. snakemake models/tampere_pc_atac/BPH_701_AR_ATAC-UniBindPWM_1000lambda_0.004lr_128batch_1000width_25tconv/modisco/AR/tomtom_results.txt
+rule join_tomtom_results:
+    input:
+        "models/{study_source}/{cell_lines}_{tasks}_{freetext}_{Lambda}lambda_{lr}lr_{batch}batch_{width}width_{k}tconv/modisco/.tomtom_done"
+    output:
+        "models/{study_source}/{cell_lines}_{tasks}_{freetext}_{Lambda}lambda_{lr}lr_{batch}batch_{width}width_{k}tconv/modisco/{task}/tomtom_results.txt"
+    params:
+        tasks=lambda wildcards: wildcards.tasks,
+        model_dir=lambda wildcards: 'models/' + wildcards.study_source + '/' + wildcards.cell_lines + '_' + wildcards.tasks + '_' + wildcards.freetext +
+                  "_" + wildcards.Lambda + "lambda_" + wildcards.lr + "lr_" + wildcards.batch + "batch_" + wildcards.width + "width_" + wildcards.k + "tconv",
+        Lambda=lambda wildcards: wildcards.Lambda,
+        lr=lambda wildcards: wildcards.lr,
+        batch=lambda wildcards: wildcards.batch,
+        width=lambda wildcards: wildcards.width,
+        task=lambda wildcards: wildcards.task
+    shell:
+        "for clust in $(ls {params.model_dir}/modisco/{params.task}/tomtom); do "
+            "echo -e \"===========================\n$clust\"; echo; "
+            "cat {params.model_dir}/modisco/{params.task}/tomtom/$clust | sed '1d' "
+            "| awk '{{split($2,a,\"_\"); printf(a[1]\" (q=\"$5\"), \")}}'; "
+            "echo; echo; "
+        "done > {output}"
+
+##########################
+### Scan For Instances ###
+##¤#######################
+
+## Get motif instances in the genome for a given model using
+## CWM scanning
+## e.g. sankemake models/tampere_pc_atac/CRPC_541_FOXA1_ATAC-UniBindPWM_1000lambda_0.004lr_128batch_1000width_25tconv/modisco/.cwm_scan_done
+rule cwm_scan:
+    input:
+        "models/{study_source}/{cell_lines}_{tasks}_{freetext}_{Lambda}lambda_{lr}lr_{batch}batch_{width}width_{k}tconv/contrib.deeplift.h5"
+    output:
+        "models/{study_source}/{cell_lines}_{tasks}_{freetext}_{Lambda}lambda_{lr}lr_{batch}batch_{width}width_{k}tconv/modisco/.cwm_scan_done"
+    params:
+        tasks=lambda wildcards: wildcards.tasks,
+        model_dir=lambda wildcards: 'models/' + wildcards.study_source + '/' + wildcards.cell_lines + '_' + wildcards.tasks + '_' + wildcards.freetext + 
+                  "_" + wildcards.Lambda + "lambda_" + wildcards.lr + "lr_" + wildcards.batch + "batch_" + wildcards.width + "width_" + wildcards.k + "tconv",
+        Lambda=lambda wildcards: wildcards.Lambda,
+        lr=lambda wildcards: wildcards.lr,
+        batch=lambda wildcards: wildcards.batch,
+        width=lambda wildcards: wildcards.width,
+        k_size=lambda wildcards: wildcards.k,
+        sample=lambda wildcards: wildcards.cell_lines
+    shell:
+        "mkdir -p {params.model_dir}/slurm_logs; "
+        "mkdir -p {params.model_dir}/slurm_errors; "
+        "sed "
+            "\"s#XXX_DYNAMIC_MODEL_DIR_XXX#{params.model_dir}#g;"
+            "  s#XXX_DYNAMIC_TASKS_XXX#{params.tasks}#g\" ../local/src/slurm_cwm_scan.sh"
+            "  > ../local/src/slurm_cwm_scan_{params.sample}_{params.tasks}_{params.Lambda}lambda_{params.lr}lr_{params.batch}batch_{params.width}width_{params.k_size}tconv.sh.tmp; "
+        "sbatch ../local/src/slurm_cwm_scan_{params.sample}_{params.tasks}_{params.Lambda}lambda_{params.lr}lr_{params.batch}batch_{params.width}width_{params.k_size}tconv.sh.tmp; "
+        "touch {output}"
+
+## Plot an instance corresponding to a given idx from a 
+## dfi (dataframe of instances); the best matching pattern is highlighted
+## and the predicted profile is plotted
+## e.g. snakemake  models/tampere_pc_atac/CRPC_541_FOXA1_ATAC-UniBindPWM_1000lambda_0.004lr_128batch_1000width_25tconv/modisco/motif_instance_plots/instance_1.svg
+rule visualize_instances:
+    input:
+        "models/{study_source}/{cell_lines}_{tasks}_{freetext}_{Lambda}lambda_{lr}lr_{batch}batch_{width}width_{k}tconv/modisco/.cwm_scan_done"
+    output:
+        "models/{study_source}/{cell_lines}_{tasks}_{freetext}_{Lambda}lambda_{lr}lr_{batch}batch_{width}width_{k}tconv/modisco/motif_instance_plots/instance_{idx}.svg"
+    params:
+        tasks=lambda wildcards: wildcards.tasks,
+        model_dir=lambda wildcards: 'models/' + wildcards.study_source + '/' + wildcards.cell_lines + '_' + wildcards.tasks + '_' + wildcards.freetext + 
+                  "_" + wildcards.Lambda + "lambda_" + wildcards.lr + "lr_" + wildcards.batch + "batch_" + wildcards.width + "width_" + wildcards.k + "tconv",
+        idx=lambda wildcards: wildcards.idx
+    shell:
+        "mkdir -p {params.model_dir}/modisco/motif_instance_plots; "
+        "RAW_TASKS={params.tasks}; TASKS=$(echo $RAW_TASKS | tr '-' ' '); "
+        "python ../local/src/dfi_visualize.py {params.model_dir} {output} {params.idx} $TASKS"
+
+#########################
+### Analyze Instances ###
+#########################
+
+ruleorder: filter_jaccard_distance > subset_motif_instances
+
+## 1)
+## e.g. snakemake models/tampere_pc_atac/CRPC_541_FOXA1_ATAC-UniBindPWM_1000lambda_0.004lr_128batch_1000width_25tconv/modisco/FOXA1/motif-instances_m1_p0.tsv
+rule subset_motif_instances:
+    input:
+        "models/{study_source}/{cell_lines}_{tasks}_{freetext}_{Lambda}lambda_{lr}lr_{batch}batch_{width}width_{k}tconv/modisco/.cwm_scan_done"
+    output:
+        "models/{study_source}/{cell_lines}_{tasks}_{freetext}_{Lambda}lambda_{lr}lr_{batch}batch_{width}width_{k}tconv/modisco/{task}/motif-instances_{pattern_short}.tsv"
+    params:
+        model_dir=lambda wildcards: 'models/' + wildcards.study_source + '/' + wildcards.cell_lines + '_' + wildcards.tasks + '_' + wildcards.freetext + 
+                  "_" + wildcards.Lambda + "lambda_" + wildcards.lr + "lr_" + wildcards.batch + "batch_" + wildcards.width + "width_" + wildcards.k + "tconv",
+        task=lambda wildcards: wildcards.task,
+        pattern_short=lambda wildcards: wildcards.pattern_short
+    shell:
+        "zcat {params.model_dir}/modisco/{params.task}/motif-instances.tsv.gz | awk '$35==\"{params.pattern_short}\"' > {output}"
+
+## 2)
+## e.g. snakemake models/tampere_pc_atac/CRPC_541_FOXA1_ATAC-UniBindPWM_1000lambda_0.004lr_128batch_1000width_25tconv/modisco/FOXA1/motif-instances_m1_p0_jaccard0.5.tsv
+rule filter_jaccard_distance:
+    input:
+        "models/{study_source}/{cell_lines}_{tasks}_{freetext}_{Lambda}lambda_{lr}lr_{batch}batch_{width}width_{k}tconv/modisco/{task}/motif-instances_{pattern_short}.tsv"
+    output:
+        "models/{study_source}/{cell_lines}_{tasks}_{freetext}_{Lambda}lambda_{lr}lr_{batch}batch_{width}width_{k}tconv/modisco/{task}/motif-instances_{pattern_short}_jaccard{jac_dist}.tsv"
+    params:
+        model_dir=lambda wildcards: 'models/' + wildcards.study_source + '/' + wildcards.cell_lines + '_' + wildcards.tasks + '_' + wildcards.freetext + 
+                  "_" + wildcards.Lambda + "lambda_" + wildcards.lr + "lr_" + wildcards.batch + "batch_" + wildcards.width + "width_" + wildcards.k + "tconv",
+        jac_dist=lambda wildcards: wildcards.jac_dist
+    shell:
+        "cat {input} | awk '$7>{params.jac_dist}' > {output}"
+
+## 3)
+## e.g. snakemake models/tampere_pc_atac/CRPC_541_FOXA1_ATAC-UniBindPWM_1000lambda_0.004lr_128batch_1000width_25tconv/modisco/FOXA1/motif-instances_m1_p0_jaccard0.5_homer_out
+rule run_homer:
+    input:
+        "models/{study_source}/{cell_lines}_{tasks}_{freetext}_{Lambda}lambda_{lr}lr_{batch}batch_{width}width_{k}tconv/modisco/{task}/motif-instances_{pattern_short}_jaccard{jac_dist}.tsv"
+    output:
+        "models/{study_source}/{cell_lines}_{tasks}_{freetext}_{Lambda}lambda_{lr}lr_{batch}batch_{width}width_{k}tconv/modisco/{task}/motif-instances_{pattern_short}_jaccard{jac_dist}_homer_out"
+    shell:
+        "annotatePeaks.pl {input} hg38 > {output}"
+
+## 4)
+## e.g. snakemake models/tampere_pc_atac/CRPC_541_FOXA1_ATAC-UniBindPWM_1000lambda_0.004lr_128batch_1000width_25tconv/modisco/FOXA1/motif-instances_m1_p0_jaccard0.5_ensg_list
+## e.g. snakemake models/tampere_pc_atac/CRPC_541_FOXA1_ATAC-UniBindPWM_1000lambda_0.004lr_128batch_1000width_25tconv/modisco/FOXA1/motif-instances_m0_p6_jaccard0.5_ensg_list
+## e.g. snakemake models/tampere_pc_atac/PC_17163_FOXA1_ATAC-UniBindPWM_1000lambda_0.004lr_128batch_1000width_25tconv/modisco/FOXA1/motif-instances_m0_p1_jaccard0.5_ensg_list
+rule list_ensg:
+    input:
+        "models/{study_source}/{cell_lines}_{tasks}_{freetext}_{Lambda}lambda_{lr}lr_{batch}batch_{width}width_{k}tconv/modisco/{task}/motif-instances_{pattern_short}_jaccard{jac_dist}_homer_out"
+    output:
+        "models/{study_source}/{cell_lines}_{tasks}_{freetext}_{Lambda}lambda_{lr}lr_{batch}batch_{width}width_{k}tconv/modisco/{task}/motif-instances_{pattern_short}_jaccard{jac_dist}_ensg_list"
+    shell:
+        "cat {input} | sed '1d' | cut -f15 > {output}"
+
+#############################
+### Analyze motif spacing ###
+#############################
+
+## plot hist of motif distance
+## e.g. snakemake models/tampere_pc_atac/CRPC_348_AR_ATAC-UniBindPWM_1000lambda_0.004lr_128batch_1000width_25tconv/modisco/AR/motif_spacing/m1_p4_vs_m1_p4_dist40_hist.svg 
+## e.g. snakemake models/tampere_pc_atac/CRPC_348_AR_ATAC-UniBindPWM_1000lambda_0.004lr_128batch_1000width_25tconv/modisco/AR/motif_spacing/m0_p1_vs_m0_p2_dist400_hist.svg
+## e.g. snakemake models/SRA012454/VCaP_AR_bpnet9_10lambda_0.004lr_128batch_1000width_50tconv/modisco/AR/motif_spacing/m0_p2_vs_m0_p2_dist40_hist.svg
+rule motif_distance_hist:
+    input:
+        "models/{study_source}/{cell_lines}_{tasks}_{freetext}_{Lambda}lambda_{lr}lr_{batch}batch_{width}width_{k}tconv/modisco/.cwm_scan_done"
+    output:
+        "models/{study_source}/{cell_lines}_{tasks}_{freetext}_{Lambda}lambda_{lr}lr_{batch}batch_{width}width_{k}tconv/modisco/{task}/motif_spacing/m{m1}_p{p1}_vs_m{m2}_p{p2}_dist{dist}_hist.svg"
+    params:
+        model_dir=lambda wildcards: 'models/' + wildcards.study_source + '/' + wildcards.cell_lines + '_' + wildcards.tasks + '_' + wildcards.freetext +
+                  "_" + wildcards.Lambda + "lambda_" + wildcards.lr + "lr_" + wildcards.batch + "batch_" + wildcards.width + "width_" + wildcards.k + "tconv",
+        m1=lambda wildcards: wildcards.m1,
+        p1=lambda wildcards: wildcards.p1,
+        m2=lambda wildcards: wildcards.m2,
+        p2=lambda wildcards: wildcards.p2,
+        task=lambda wildcards: wildcards.task,
+        dist=lambda wildcards: wildcards.dist
+    shell:
+        "python ../local/src/hist_motif_spacing.py "
+            "{params.model_dir} "
+            "{params.task} "
+            "metacluster_{params.m1}/pattern_{params.p1} "
+            "m{params.m1}_p{params.p1} "
+            "metacluster_{params.m2}/pattern_{params.p2} "
+            "m{params.m2}_p{params.p2} "
+            "{params.dist}"
+
+############
+### test ###
+############
+
+rule run_test:
+    output:
+        "models/tampere_pc_atac/test"
+    shell:
+        "touch {output}"
+

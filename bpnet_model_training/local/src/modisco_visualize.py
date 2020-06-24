@@ -1,0 +1,37 @@
+#!/usr/bin/env python3
+
+from pathlib import Path
+import seaborn as sns
+import matplotlib.pyplot as plt
+from bpnet.modisco.files import ModiscoFile, ModiscoFileGroup
+import os
+import sys
+
+## model directory
+model_dir = sys.argv[1]
+
+## tasks
+task = sys.argv[2:]
+
+model_dir_path = Path(model_dir)
+modisco_dir = model_dir_path/'modisco'
+
+## MultipleModiscoResult is a convenience wrapper around ModiscoResult
+mf = ModiscoFileGroup({t: ModiscoFile(modisco_dir / t / 'modisco.h5') for t in task})
+
+## create directories for plots: each dir corresponds to a different task/metacluster/
+task_metacluster_dirs = []
+for i in mf.pattern_names():
+    dir_name_items = i.split('/')
+    dir_name = '/'.join(dir_name_items[:len(dir_name_items) - 1])
+    task_metacluster_dirs.append(dir_name)
+task_metacluster_dirs = list(set(task_metacluster_dirs))
+for t in task_metacluster_dirs:
+    Path(f"{modisco_dir}/modisco_plots/{t}").mkdir(parents=True, exist_ok=True)
+
+## Plot all the patterns
+for p in mf.patterns():
+    fig = p.plot("seq_ic", title=f"{p.name} ({mf.n_seqlets(p.name)})")
+    plt.ylim([0, 2])
+    sns.despine(top=True, bottom=True, right=True)
+    fig.savefig(f"{modisco_dir}/modisco_plots/{p.name}.svg", bbox_inches = "tight")

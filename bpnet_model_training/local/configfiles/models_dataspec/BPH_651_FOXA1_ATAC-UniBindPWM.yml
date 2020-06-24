@@ -1,0 +1,7 @@
+fasta_file: /lustre/bmt-data/genomics/reference/hg38.fa
+task_specs: 
+  FOXA1:
+    tracks:
+      - bam/tampere_pc_atac/BPH_651_pos.bw
+      - bam/tampere_pc_atac/BPH_651_neg.bw
+    peaks: bed/tampere_pc_atac/BPH_651_UniBindPWM_FOXA1_peaks.bed

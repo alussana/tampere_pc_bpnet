@@ -1,0 +1,31 @@
+fasta_file: /lustre/bmt-data/genomics/reference/hg38.fa
+task_specs: 
+  AR:
+    tracks:
+      - bam/SRA012454/SAMN00011193_pos.bw
+      - bam/SRA012454/SAMN00011193_neg.bw
+      - bam/SRA012454/SAMN00011191_pos.bw
+      - bam/SRA012454/SAMN00011191_neg.bw
+    peaks: bed/SRA012454/SAMN00011193,SAMN00011191_summits_canonCHR_joined.bed
+  #task_name:
+    #tracks:
+      # List of bigwig files (1 or more) corresponding to the task
+      # The model will predict each track individually (here coverage of
+      # reads mapping to the positive and negative strand) and
+      # the contribution scores will be averaged across all of these tracks
+    #peaks: Peaks associated with the task(optional)
+bias_specs:
+  input:
+    tracks: 
+      - bam/SRA012454/SAMN00011197_pos.bw
+      - bam/SRA012454/SAMN00011197_neg.bw
+      - bam/SRA012454/SAMN00011196_pos.bw
+      - bam/SRA012454/SAMN00011196_neg.bw
+    tasks: 
+      - AR
+  #input: 
+    #tracks:
+      # List of bias tracks in bigwig format
+    #tasks:
+      # To which tasks it applies
+

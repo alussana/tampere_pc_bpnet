@@ -1,0 +1,15 @@
+fasta_file: /lustre/bmt-data/genomics/reference/hg38.fa
+
+task_specs: 
+
+    ERG:
+        tracks:
+            - bam/in_house_atac/VCaP_pos.bw
+            - bam/in_house_atac/VCaP_neg.bw
+        peaks: bed/in_house_atac/VCaP_UniBindPWM_ERG_peaks.bed
+  
+    FOXA1:
+        tracks:
+            - bam/in_house_atac/VCaP_pos.bw
+            - bam/in_house_atac/VCaP_neg.bw
+        peaks: bed/in_house_atac/VCaP_UniBindPWM_FOXA1_peaks.bed

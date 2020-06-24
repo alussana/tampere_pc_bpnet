@@ -1,0 +1,216 @@
+*******************************************************************************
+Test mast1 ...
+mast /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/tests/meme/meme.crp0.classic.oops.txt common/crp0.s -oc results/mast1 -nostatus &> log
+Can't locate XML/Parser/Expat.pm in @INC (@INC contains: /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/scripts /usr/local/lib64/perl5 /usr/local/share/perl5 /usr/lib64/perl5/vendor_perl /usr/share/perl5/vendor_perl /usr/lib64/perl5 /usr/share/perl5 .) at /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/scripts/mast_xml_to_html line 22.
+BEGIN failed--compilation aborted at /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/scripts/mast_xml_to_html line 22.
+Warning: mast_xml_to_html exited abnormally and may have failed to create HTML output.
+Can't locate XML/Parser/Expat.pm in @INC (@INC contains: /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/scripts /usr/local/lib64/perl5 /usr/local/share/perl5 /usr/lib64/perl5/vendor_perl /usr/share/perl5/vendor_perl /usr/lib64/perl5 /usr/share/perl5 .) at /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/scripts/mast_xml_to_txt line 26.
+BEGIN failed--compilation aborted at /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/scripts/mast_xml_to_txt line 26.
+Warning: mast_xml_to_txt exited abnormally and may have failed to create text output.
+PASSED!
+*******************************************************************************
+Test mast2 ...
+mast /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/tests/meme/meme.crp0.classic.zoops.xml common/crp0.s -oc results/mast2 -nostatus &> log
+Can't locate XML/Parser/Expat.pm in @INC (@INC contains: /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/scripts /usr/local/lib64/perl5 /usr/local/share/perl5 /usr/lib64/perl5/vendor_perl /usr/share/perl5/vendor_perl /usr/lib64/perl5 /usr/share/perl5 .) at /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/scripts/mast_xml_to_html line 22.
+BEGIN failed--compilation aborted at /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/scripts/mast_xml_to_html line 22.
+Warning: mast_xml_to_html exited abnormally and may have failed to create HTML output.
+Can't locate XML/Parser/Expat.pm in @INC (@INC contains: /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/scripts /usr/local/lib64/perl5 /usr/local/share/perl5 /usr/lib64/perl5/vendor_perl /usr/share/perl5/vendor_perl /usr/lib64/perl5 /usr/share/perl5 .) at /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/scripts/mast_xml_to_txt line 26.
+BEGIN failed--compilation aborted at /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/scripts/mast_xml_to_txt line 26.
+Warning: mast_xml_to_txt exited abnormally and may have failed to create text output.
+PASSED!
+*******************************************************************************
+Test mast3 ...
+mast /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/tests/meme/meme.crp0.classic.anr.html common/crp0.s -oc results/mast3 -nostatus &> log
+Can't locate XML/Parser/Expat.pm in @INC (@INC contains: /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/scripts /usr/local/lib64/perl5 /usr/local/share/perl5 /usr/lib64/perl5/vendor_perl /usr/share/perl5/vendor_perl /usr/lib64/perl5 /usr/share/perl5 .) at /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/scripts/mast_xml_to_html line 22.
+BEGIN failed--compilation aborted at /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/scripts/mast_xml_to_html line 22.
+Warning: mast_xml_to_html exited abnormally and may have failed to create HTML output.
+Can't locate XML/Parser/Expat.pm in @INC (@INC contains: /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/scripts /usr/local/lib64/perl5 /usr/local/share/perl5 /usr/lib64/perl5/vendor_perl /usr/share/perl5/vendor_perl /usr/lib64/perl5 /usr/share/perl5 .) at /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/scripts/mast_xml_to_txt line 26.
+BEGIN failed--compilation aborted at /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/scripts/mast_xml_to_txt line 26.
+Warning: mast_xml_to_txt exited abnormally and may have failed to create text output.
+PASSED!
+*******************************************************************************
+Test mast4 ...
+mast /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/tests/meme/meme.INO_up800.classic.oops.txt common/INO_up800.s -oc results/mast4 -nostatus &> log
+Can't locate XML/Parser/Expat.pm in @INC (@INC contains: /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/scripts /usr/local/lib64/perl5 /usr/local/share/perl5 /usr/lib64/perl5/vendor_perl /usr/share/perl5/vendor_perl /usr/lib64/perl5 /usr/share/perl5 .) at /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/scripts/mast_xml_to_html line 22.
+BEGIN failed--compilation aborted at /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/scripts/mast_xml_to_html line 22.
+Warning: mast_xml_to_html exited abnormally and may have failed to create HTML output.
+Can't locate XML/Parser/Expat.pm in @INC (@INC contains: /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/scripts /usr/local/lib64/perl5 /usr/local/share/perl5 /usr/lib64/perl5/vendor_perl /usr/share/perl5/vendor_perl /usr/lib64/perl5 /usr/share/perl5 .) at /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/scripts/mast_xml_to_txt line 26.
+BEGIN failed--compilation aborted at /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/scripts/mast_xml_to_txt line 26.
+Warning: mast_xml_to_txt exited abnormally and may have failed to create text output.
+PASSED!
+*******************************************************************************
+Test mast5 ...
+mast /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/tests/meme/meme.INO_up800.classic.zoops.xml common/INO_up800.s -oc results/mast5 -nostatus &> log
+Can't locate XML/Parser/Expat.pm in @INC (@INC contains: /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/scripts /usr/local/lib64/perl5 /usr/local/share/perl5 /usr/lib64/perl5/vendor_perl /usr/share/perl5/vendor_perl /usr/lib64/perl5 /usr/share/perl5 .) at /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/scripts/mast_xml_to_html line 22.
+BEGIN failed--compilation aborted at /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/scripts/mast_xml_to_html line 22.
+Warning: mast_xml_to_html exited abnormally and may have failed to create HTML output.
+Can't locate XML/Parser/Expat.pm in @INC (@INC contains: /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/scripts /usr/local/lib64/perl5 /usr/local/share/perl5 /usr/lib64/perl5/vendor_perl /usr/share/perl5/vendor_perl /usr/lib64/perl5 /usr/share/perl5 .) at /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/scripts/mast_xml_to_txt line 26.
+BEGIN failed--compilation aborted at /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/scripts/mast_xml_to_txt line 26.
+Warning: mast_xml_to_txt exited abnormally and may have failed to create text output.
+PASSED!
+*******************************************************************************
+Test mast6 ...
+mast /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/tests/meme/meme.INO_up800.classic.anr.html common/INO_up800.s -oc results/mast6 -nostatus &> log
+Can't locate XML/Parser/Expat.pm in @INC (@INC contains: /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/scripts /usr/local/lib64/perl5 /usr/local/share/perl5 /usr/lib64/perl5/vendor_perl /usr/share/perl5/vendor_perl /usr/lib64/perl5 /usr/share/perl5 .) at /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/scripts/mast_xml_to_html line 22.
+BEGIN failed--compilation aborted at /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/scripts/mast_xml_to_html line 22.
+Warning: mast_xml_to_html exited abnormally and may have failed to create HTML output.
+Can't locate XML/Parser/Expat.pm in @INC (@INC contains: /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/scripts /usr/local/lib64/perl5 /usr/local/share/perl5 /usr/lib64/perl5/vendor_perl /usr/share/perl5/vendor_perl /usr/lib64/perl5 /usr/share/perl5 .) at /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/scripts/mast_xml_to_txt line 26.
+BEGIN failed--compilation aborted at /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/scripts/mast_xml_to_txt line 26.
+Warning: mast_xml_to_txt exited abnormally and may have failed to create text output.
+PASSED!
+*******************************************************************************
+Test mast7 ...
+mast /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/tests/meme/meme.farntrans5.classic.oops.txt common/farntrans5.s -oc results/mast7 -nostatus &> log
+Can't locate XML/Parser/Expat.pm in @INC (@INC contains: /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/scripts /usr/local/lib64/perl5 /usr/local/share/perl5 /usr/lib64/perl5/vendor_perl /usr/share/perl5/vendor_perl /usr/lib64/perl5 /usr/share/perl5 .) at /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/scripts/mast_xml_to_html line 22.
+BEGIN failed--compilation aborted at /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/scripts/mast_xml_to_html line 22.
+Warning: mast_xml_to_html exited abnormally and may have failed to create HTML output.
+Can't locate XML/Parser/Expat.pm in @INC (@INC contains: /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/scripts /usr/local/lib64/perl5 /usr/local/share/perl5 /usr/lib64/perl5/vendor_perl /usr/share/perl5/vendor_perl /usr/lib64/perl5 /usr/share/perl5 .) at /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/scripts/mast_xml_to_txt line 26.
+BEGIN failed--compilation aborted at /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/scripts/mast_xml_to_txt line 26.
+Warning: mast_xml_to_txt exited abnormally and may have failed to create text output.
+PASSED!
+*******************************************************************************
+Test mast8 ...
+mast /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/tests/meme/meme.farntrans5.classic.zoops.xml common/farntrans5.s -oc results/mast8 -nostatus &> log
+Can't locate XML/Parser/Expat.pm in @INC (@INC contains: /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/scripts /usr/local/lib64/perl5 /usr/local/share/perl5 /usr/lib64/perl5/vendor_perl /usr/share/perl5/vendor_perl /usr/lib64/perl5 /usr/share/perl5 .) at /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/scripts/mast_xml_to_html line 22.
+BEGIN failed--compilation aborted at /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/scripts/mast_xml_to_html line 22.
+Warning: mast_xml_to_html exited abnormally and may have failed to create HTML output.
+Can't locate XML/Parser/Expat.pm in @INC (@INC contains: /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/scripts /usr/local/lib64/perl5 /usr/local/share/perl5 /usr/lib64/perl5/vendor_perl /usr/share/perl5/vendor_perl /usr/lib64/perl5 /usr/share/perl5 .) at /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/scripts/mast_xml_to_txt line 26.
+BEGIN failed--compilation aborted at /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/scripts/mast_xml_to_txt line 26.
+Warning: mast_xml_to_txt exited abnormally and may have failed to create text output.
+PASSED!
+*******************************************************************************
+Test mast9 ...
+mast /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/tests/meme/meme.farntrans5.classic.anr.html common/farntrans5.s -oc results/mast9 -nostatus &> log
+Can't locate XML/Parser/Expat.pm in @INC (@INC contains: /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/scripts /usr/local/lib64/perl5 /usr/local/share/perl5 /usr/lib64/perl5/vendor_perl /usr/share/perl5/vendor_perl /usr/lib64/perl5 /usr/share/perl5 .) at /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/scripts/mast_xml_to_html line 22.
+BEGIN failed--compilation aborted at /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/scripts/mast_xml_to_html line 22.
+Warning: mast_xml_to_html exited abnormally and may have failed to create HTML output.
+Can't locate XML/Parser/Expat.pm in @INC (@INC contains: /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/scripts /usr/local/lib64/perl5 /usr/local/share/perl5 /usr/lib64/perl5/vendor_perl /usr/share/perl5/vendor_perl /usr/lib64/perl5 /usr/share/perl5 .) at /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/scripts/mast_xml_to_txt line 26.
+BEGIN failed--compilation aborted at /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/scripts/mast_xml_to_txt line 26.
+Warning: mast_xml_to_txt exited abnormally and may have failed to create text output.
+PASSED!
+*******************************************************************************
+Test mast10 ...
+mast /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/tests/meme/meme.lipocalin.classic.oops.txt common/lipocalin.s -oc results/mast10 -nostatus &> log
+Can't locate XML/Parser/Expat.pm in @INC (@INC contains: /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/scripts /usr/local/lib64/perl5 /usr/local/share/perl5 /usr/lib64/perl5/vendor_perl /usr/share/perl5/vendor_perl /usr/lib64/perl5 /usr/share/perl5 .) at /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/scripts/mast_xml_to_html line 22.
+BEGIN failed--compilation aborted at /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/scripts/mast_xml_to_html line 22.
+Warning: mast_xml_to_html exited abnormally and may have failed to create HTML output.
+Can't locate XML/Parser/Expat.pm in @INC (@INC contains: /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/scripts /usr/local/lib64/perl5 /usr/local/share/perl5 /usr/lib64/perl5/vendor_perl /usr/share/perl5/vendor_perl /usr/lib64/perl5 /usr/share/perl5 .) at /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/scripts/mast_xml_to_txt line 26.
+BEGIN failed--compilation aborted at /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/scripts/mast_xml_to_txt line 26.
+Warning: mast_xml_to_txt exited abnormally and may have failed to create text output.
+PASSED!
+*******************************************************************************
+Test mast11 ...
+mast /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/tests/meme/meme.lipocalin.classic.zoops.xml common/lipocalin.s -oc results/mast11 -nostatus &> log
+Can't locate XML/Parser/Expat.pm in @INC (@INC contains: /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/scripts /usr/local/lib64/perl5 /usr/local/share/perl5 /usr/lib64/perl5/vendor_perl /usr/share/perl5/vendor_perl /usr/lib64/perl5 /usr/share/perl5 .) at /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/scripts/mast_xml_to_html line 22.
+BEGIN failed--compilation aborted at /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/scripts/mast_xml_to_html line 22.
+Warning: mast_xml_to_html exited abnormally and may have failed to create HTML output.
+Can't locate XML/Parser/Expat.pm in @INC (@INC contains: /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/scripts /usr/local/lib64/perl5 /usr/local/share/perl5 /usr/lib64/perl5/vendor_perl /usr/share/perl5/vendor_perl /usr/lib64/perl5 /usr/share/perl5 .) at /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/scripts/mast_xml_to_txt line 26.
+BEGIN failed--compilation aborted at /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/scripts/mast_xml_to_txt line 26.
+Warning: mast_xml_to_txt exited abnormally and may have failed to create text output.
+PASSED!
+*******************************************************************************
+Test mast12 ...
+mast /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/tests/meme/meme.lipocalin.classic.anr.html common/lipocalin.s -oc results/mast12 -nostatus &> log
+Can't locate XML/Parser/Expat.pm in @INC (@INC contains: /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/scripts /usr/local/lib64/perl5 /usr/local/share/perl5 /usr/lib64/perl5/vendor_perl /usr/share/perl5/vendor_perl /usr/lib64/perl5 /usr/share/perl5 .) at /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/scripts/mast_xml_to_html line 22.
+BEGIN failed--compilation aborted at /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/scripts/mast_xml_to_html line 22.
+Warning: mast_xml_to_html exited abnormally and may have failed to create HTML output.
+Can't locate XML/Parser/Expat.pm in @INC (@INC contains: /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/scripts /usr/local/lib64/perl5 /usr/local/share/perl5 /usr/lib64/perl5/vendor_perl /usr/share/perl5/vendor_perl /usr/lib64/perl5 /usr/share/perl5 .) at /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/scripts/mast_xml_to_txt line 26.
+BEGIN failed--compilation aborted at /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/scripts/mast_xml_to_txt line 26.
+Warning: mast_xml_to_txt exited abnormally and may have failed to create text output.
+PASSED!
+*******************************************************************************
+Test mast13 ...
+mast /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/tests/meme/meme.adh.classic.oops.txt common/adh.s -oc results/mast13 -nostatus &> log
+Can't locate XML/Parser/Expat.pm in @INC (@INC contains: /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/scripts /usr/local/lib64/perl5 /usr/local/share/perl5 /usr/lib64/perl5/vendor_perl /usr/share/perl5/vendor_perl /usr/lib64/perl5 /usr/share/perl5 .) at /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/scripts/mast_xml_to_html line 22.
+BEGIN failed--compilation aborted at /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/scripts/mast_xml_to_html line 22.
+Warning: mast_xml_to_html exited abnormally and may have failed to create HTML output.
+Can't locate XML/Parser/Expat.pm in @INC (@INC contains: /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/scripts /usr/local/lib64/perl5 /usr/local/share/perl5 /usr/lib64/perl5/vendor_perl /usr/share/perl5/vendor_perl /usr/lib64/perl5 /usr/share/perl5 .) at /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/scripts/mast_xml_to_txt line 26.
+BEGIN failed--compilation aborted at /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/scripts/mast_xml_to_txt line 26.
+Warning: mast_xml_to_txt exited abnormally and may have failed to create text output.
+PASSED!
+*******************************************************************************
+Test mast14 ...
+mast /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/tests/meme/meme.adh.classic.oops.txt - -oc results/mast14 -nostatus -df stdin -dna -seqp < common/mini-drosoph.s &> log
+Can't locate XML/Parser/Expat.pm in @INC (@INC contains: /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/scripts /usr/local/lib64/perl5 /usr/local/share/perl5 /usr/lib64/perl5/vendor_perl /usr/share/perl5/vendor_perl /usr/lib64/perl5 /usr/share/perl5 .) at /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/scripts/mast_xml_to_html line 22.
+BEGIN failed--compilation aborted at /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/scripts/mast_xml_to_html line 22.
+Warning: mast_xml_to_html exited abnormally and may have failed to create HTML output.
+Can't locate XML/Parser/Expat.pm in @INC (@INC contains: /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/scripts /usr/local/lib64/perl5 /usr/local/share/perl5 /usr/lib64/perl5/vendor_perl /usr/share/perl5/vendor_perl /usr/lib64/perl5 /usr/share/perl5 .) at /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/scripts/mast_xml_to_txt line 26.
+BEGIN failed--compilation aborted at /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/scripts/mast_xml_to_txt line 26.
+Warning: mast_xml_to_txt exited abnormally and may have failed to create text output.
+PASSED!
+*******************************************************************************
+Test mast15 ...
+mast /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/tests/meme/meme.adh.classic.zoops.html common/adh.s -oc results/mast15 -nostatus &> log
+Can't locate XML/Parser/Expat.pm in @INC (@INC contains: /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/scripts /usr/local/lib64/perl5 /usr/local/share/perl5 /usr/lib64/perl5/vendor_perl /usr/share/perl5/vendor_perl /usr/lib64/perl5 /usr/share/perl5 .) at /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/scripts/mast_xml_to_html line 22.
+BEGIN failed--compilation aborted at /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/scripts/mast_xml_to_html line 22.
+Warning: mast_xml_to_html exited abnormally and may have failed to create HTML output.
+Can't locate XML/Parser/Expat.pm in @INC (@INC contains: /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/scripts /usr/local/lib64/perl5 /usr/local/share/perl5 /usr/lib64/perl5/vendor_perl /usr/share/perl5/vendor_perl /usr/lib64/perl5 /usr/share/perl5 .) at /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/scripts/mast_xml_to_txt line 26.
+BEGIN failed--compilation aborted at /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/scripts/mast_xml_to_txt line 26.
+Warning: mast_xml_to_txt exited abnormally and may have failed to create text output.
+PASSED!
+*******************************************************************************
+Test mast16 ...
+mast /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/tests/meme/meme.adh.classic.zoops.html - -oc results/mast16 -nostatus -df stdin -dna -seqp < common/mini-drosoph.s &> log
+Can't locate XML/Parser/Expat.pm in @INC (@INC contains: /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/scripts /usr/local/lib64/perl5 /usr/local/share/perl5 /usr/lib64/perl5/vendor_perl /usr/share/perl5/vendor_perl /usr/lib64/perl5 /usr/share/perl5 .) at /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/scripts/mast_xml_to_html line 22.
+BEGIN failed--compilation aborted at /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/scripts/mast_xml_to_html line 22.
+Warning: mast_xml_to_html exited abnormally and may have failed to create HTML output.
+Can't locate XML/Parser/Expat.pm in @INC (@INC contains: /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/scripts /usr/local/lib64/perl5 /usr/local/share/perl5 /usr/lib64/perl5/vendor_perl /usr/share/perl5/vendor_perl /usr/lib64/perl5 /usr/share/perl5 .) at /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/scripts/mast_xml_to_txt line 26.
+BEGIN failed--compilation aborted at /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/scripts/mast_xml_to_txt line 26.
+Warning: mast_xml_to_txt exited abnormally and may have failed to create text output.
+PASSED!
+*******************************************************************************
+Test mast17 ...
+mast /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/tests/meme/meme.adh.classic.anr.xml common/adh.s -oc results/mast17 -nostatus &> log
+Can't locate XML/Parser/Expat.pm in @INC (@INC contains: /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/scripts /usr/local/lib64/perl5 /usr/local/share/perl5 /usr/lib64/perl5/vendor_perl /usr/share/perl5/vendor_perl /usr/lib64/perl5 /usr/share/perl5 .) at /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/scripts/mast_xml_to_html line 22.
+BEGIN failed--compilation aborted at /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/scripts/mast_xml_to_html line 22.
+Warning: mast_xml_to_html exited abnormally and may have failed to create HTML output.
+Can't locate XML/Parser/Expat.pm in @INC (@INC contains: /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/scripts /usr/local/lib64/perl5 /usr/local/share/perl5 /usr/lib64/perl5/vendor_perl /usr/share/perl5/vendor_perl /usr/lib64/perl5 /usr/share/perl5 .) at /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/scripts/mast_xml_to_txt line 26.
+BEGIN failed--compilation aborted at /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/scripts/mast_xml_to_txt line 26.
+Warning: mast_xml_to_txt exited abnormally and may have failed to create text output.
+PASSED!
+*******************************************************************************
+Test mast18 ...
+mast /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/tests/meme/meme.adh.classic.anr.xml - -oc results/mast18 -nostatus -df stdin -dna -seqp < common/mini-drosoph.s &> log
+Can't locate XML/Parser/Expat.pm in @INC (@INC contains: /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/scripts /usr/local/lib64/perl5 /usr/local/share/perl5 /usr/lib64/perl5/vendor_perl /usr/share/perl5/vendor_perl /usr/lib64/perl5 /usr/share/perl5 .) at /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/scripts/mast_xml_to_html line 22.
+BEGIN failed--compilation aborted at /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/scripts/mast_xml_to_html line 22.
+Warning: mast_xml_to_html exited abnormally and may have failed to create HTML output.
+Can't locate XML/Parser/Expat.pm in @INC (@INC contains: /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/scripts /usr/local/lib64/perl5 /usr/local/share/perl5 /usr/lib64/perl5/vendor_perl /usr/share/perl5/vendor_perl /usr/lib64/perl5 /usr/share/perl5 .) at /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/scripts/mast_xml_to_txt line 26.
+BEGIN failed--compilation aborted at /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/scripts/mast_xml_to_txt line 26.
+Warning: mast_xml_to_txt exited abnormally and may have failed to create text output.
+PASSED!
+*******************************************************************************
+Test mast19 ...
+mast /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/tests/meme/meme.INO_up800.classic.anr.txt common/INO_up800.s -oc results/mast19 -nostatus &> log
+Can't locate XML/Parser/Expat.pm in @INC (@INC contains: /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/scripts /usr/local/lib64/perl5 /usr/local/share/perl5 /usr/lib64/perl5/vendor_perl /usr/share/perl5/vendor_perl /usr/lib64/perl5 /usr/share/perl5 .) at /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/scripts/mast_xml_to_html line 22.
+BEGIN failed--compilation aborted at /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/scripts/mast_xml_to_html line 22.
+Warning: mast_xml_to_html exited abnormally and may have failed to create HTML output.
+Can't locate XML/Parser/Expat.pm in @INC (@INC contains: /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/scripts /usr/local/lib64/perl5 /usr/local/share/perl5 /usr/lib64/perl5/vendor_perl /usr/share/perl5/vendor_perl /usr/lib64/perl5 /usr/share/perl5 .) at /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/scripts/mast_xml_to_txt line 26.
+BEGIN failed--compilation aborted at /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/scripts/mast_xml_to_txt line 26.
+Warning: mast_xml_to_txt exited abnormally and may have failed to create text output.
+-------------------------------------------------------------------------------
+mast did not create the file "results/mast19/mast.html"
+FAILED!
+*******************************************************************************
+Test mast20 ...
+mast /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/tests/meme/meme.INO_up800.classic.anr.xml common/INO_up800.s -oc results/mast20 -nostatus &> log
+Can't locate XML/Parser/Expat.pm in @INC (@INC contains: /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/scripts /usr/local/lib64/perl5 /usr/local/share/perl5 /usr/lib64/perl5/vendor_perl /usr/share/perl5/vendor_perl /usr/lib64/perl5 /usr/share/perl5 .) at /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/scripts/mast_xml_to_html line 22.
+BEGIN failed--compilation aborted at /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/scripts/mast_xml_to_html line 22.
+Warning: mast_xml_to_html exited abnormally and may have failed to create HTML output.
+Can't locate XML/Parser/Expat.pm in @INC (@INC contains: /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/scripts /usr/local/lib64/perl5 /usr/local/share/perl5 /usr/lib64/perl5/vendor_perl /usr/share/perl5/vendor_perl /usr/lib64/perl5 /usr/share/perl5 .) at /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/scripts/mast_xml_to_txt line 26.
+BEGIN failed--compilation aborted at /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/scripts/mast_xml_to_txt line 26.
+Warning: mast_xml_to_txt exited abnormally and may have failed to create text output.
+-------------------------------------------------------------------------------
+mast did not create the file "results/mast20/mast.html"
+FAILED!
+*******************************************************************************
+Test mast21 ...
+mast /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/tests/meme/meme.INO_up800.classic.anr.html common/INO_up800.s -oc results/mast21 -nostatus &> log
+Can't locate XML/Parser/Expat.pm in @INC (@INC contains: /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/scripts /usr/local/lib64/perl5 /usr/local/share/perl5 /usr/lib64/perl5/vendor_perl /usr/share/perl5/vendor_perl /usr/lib64/perl5 /usr/share/perl5 .) at /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/scripts/mast_xml_to_html line 22.
+BEGIN failed--compilation aborted at /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/scripts/mast_xml_to_html line 22.
+Warning: mast_xml_to_html exited abnormally and may have failed to create HTML output.
+Can't locate XML/Parser/Expat.pm in @INC (@INC contains: /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/scripts /usr/local/lib64/perl5 /usr/local/share/perl5 /usr/lib64/perl5/vendor_perl /usr/share/perl5/vendor_perl /usr/lib64/perl5 /usr/share/perl5 .) at /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/scripts/mast_xml_to_txt line 26.
+BEGIN failed--compilation aborted at /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/scripts/mast_xml_to_txt line 26.
+Warning: mast_xml_to_txt exited abnormally and may have failed to create text output.
+-------------------------------------------------------------------------------
+mast did not create the file "results/mast21/mast.html"
+FAILED!

@@ -1,0 +1,9 @@
+XXX_SAMPLE_XXX_XXX_TASK_XXX_ATAC-UniBindPWM-samp-peaks:
+    dataspec: ../local/configfiles/models_dataspec/XXX_SAMPLE_XXX_XXX_TASK_XXX_ATAC-UniBindPWM-samp-peaks.yml
+    config: ../local/configfiles/models_config/bpnet9_atacseq.gin
+    jobfile: ../local/src/slurm_train.sh
+    tasks: XXX_TASK_XXX
+    summits: bed/tampere_pc_atac/XXX_SAMPLE_XXX_UniBindPWM_XXX_TASK_XXX_peaks_samp_specific.bed
+    bw: 
+        - XXX_SAMPLE_XXX
+

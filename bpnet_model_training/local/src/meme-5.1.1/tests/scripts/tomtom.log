@@ -1,0 +1,135 @@
+*******************************************************************************
+Test tomtom1 ...
+tomtom -oc results/tomtom1 -verbosity 1 -evalue -thresh 10 -m TGCm1C -mi 3 -xalph -bfile common/dna_with_covalent.bg -dist allr common/dna_with_covalent.meme common/dna_with_covalent.meme common/Jaspar-subset.meme &> log
+Can't locate XML/Parser/Expat.pm in @INC (@INC contains: /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/scripts /usr/local/lib64/perl5 /usr/local/share/perl5 /usr/lib64/perl5/vendor_perl /usr/share/perl5/vendor_perl /usr/lib64/perl5 /usr/share/perl5 .) at /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/scripts/tomtom_xml_to_html line 21.
+BEGIN failed--compilation aborted at /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/scripts/tomtom_xml_to_html line 21.
+Warning: tomtom_xml_to_html exited abnormally and may have failed to create HTML output.
+-------------------------------------------------------------------------------
+tomtom exited with value 1 indicating failure.
+FAILED!
+*******************************************************************************
+Test tomtom_allr ...
+tomtom -verbosity 1 -dist allr -oc results/tomtom2 -incomplete-scores common/sample.meme common/sample.meme &> log
+Can't locate XML/Parser/Expat.pm in @INC (@INC contains: /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/scripts /usr/local/lib64/perl5 /usr/local/share/perl5 /usr/lib64/perl5/vendor_perl /usr/share/perl5/vendor_perl /usr/lib64/perl5 /usr/share/perl5 .) at /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/scripts/tomtom_xml_to_html line 21.
+BEGIN failed--compilation aborted at /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/scripts/tomtom_xml_to_html line 21.
+Warning: tomtom_xml_to_html exited abnormally and may have failed to create HTML output.
+-------------------------------------------------------------------------------
+tomtom exited with value 1 indicating failure.
+FAILED!
+*******************************************************************************
+Test tomtom_ed ...
+tomtom -verbosity 1 -dist ed -oc results/tomtom3 -incomplete-scores common/sample.meme common/sample.meme &> log
+Can't locate XML/Parser/Expat.pm in @INC (@INC contains: /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/scripts /usr/local/lib64/perl5 /usr/local/share/perl5 /usr/lib64/perl5/vendor_perl /usr/share/perl5/vendor_perl /usr/lib64/perl5 /usr/share/perl5 .) at /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/scripts/tomtom_xml_to_html line 21.
+BEGIN failed--compilation aborted at /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/scripts/tomtom_xml_to_html line 21.
+Warning: tomtom_xml_to_html exited abnormally and may have failed to create HTML output.
+-------------------------------------------------------------------------------
+tomtom exited with value 1 indicating failure.
+FAILED!
+*******************************************************************************
+Test tomtom_kullback ...
+tomtom -verbosity 1 -dist kullback -oc results/tomtom4 -incomplete-scores common/sample.meme common/sample.meme &> log
+Can't locate XML/Parser/Expat.pm in @INC (@INC contains: /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/scripts /usr/local/lib64/perl5 /usr/local/share/perl5 /usr/lib64/perl5/vendor_perl /usr/share/perl5/vendor_perl /usr/lib64/perl5 /usr/share/perl5 .) at /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/scripts/tomtom_xml_to_html line 21.
+BEGIN failed--compilation aborted at /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/scripts/tomtom_xml_to_html line 21.
+Warning: tomtom_xml_to_html exited abnormally and may have failed to create HTML output.
+-------------------------------------------------------------------------------
+tomtom exited with value 1 indicating failure.
+FAILED!
+*******************************************************************************
+Test tomtom_pearson ...
+tomtom -verbosity 1 -dist pearson -oc results/tomtom5 -incomplete-scores common/sample.meme common/sample.meme &> log
+Can't locate XML/Parser/Expat.pm in @INC (@INC contains: /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/scripts /usr/local/lib64/perl5 /usr/local/share/perl5 /usr/lib64/perl5/vendor_perl /usr/share/perl5/vendor_perl /usr/lib64/perl5 /usr/share/perl5 .) at /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/scripts/tomtom_xml_to_html line 21.
+BEGIN failed--compilation aborted at /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/scripts/tomtom_xml_to_html line 21.
+Warning: tomtom_xml_to_html exited abnormally and may have failed to create HTML output.
+-------------------------------------------------------------------------------
+tomtom exited with value 1 indicating failure.
+FAILED!
+*******************************************************************************
+Test tomtom_sandelin ...
+tomtom -verbosity 1 -dist sandelin -oc results/tomtom6 -incomplete-scores common/sample.meme common/sample.meme &> log
+Can't locate XML/Parser/Expat.pm in @INC (@INC contains: /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/scripts /usr/local/lib64/perl5 /usr/local/share/perl5 /usr/lib64/perl5/vendor_perl /usr/share/perl5/vendor_perl /usr/lib64/perl5 /usr/share/perl5 .) at /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/scripts/tomtom_xml_to_html line 21.
+BEGIN failed--compilation aborted at /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/scripts/tomtom_xml_to_html line 21.
+Warning: tomtom_xml_to_html exited abnormally and may have failed to create HTML output.
+-------------------------------------------------------------------------------
+tomtom exited with value 1 indicating failure.
+FAILED!
+*******************************************************************************
+Test tomtom_blic1 ...
+tomtom -verbosity 1 -dist blic1 -oc results/tomtom7 -incomplete-scores common/sample.meme common/sample.meme &> log
+Can't locate XML/Parser/Expat.pm in @INC (@INC contains: /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/scripts /usr/local/lib64/perl5 /usr/local/share/perl5 /usr/lib64/perl5/vendor_perl /usr/share/perl5/vendor_perl /usr/lib64/perl5 /usr/share/perl5 .) at /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/scripts/tomtom_xml_to_html line 21.
+BEGIN failed--compilation aborted at /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/scripts/tomtom_xml_to_html line 21.
+Warning: tomtom_xml_to_html exited abnormally and may have failed to create HTML output.
+-------------------------------------------------------------------------------
+tomtom exited with value 1 indicating failure.
+FAILED!
+*******************************************************************************
+Test tomtom_blic5 ...
+tomtom -verbosity 1 -dist blic5 -oc results/tomtom8 -incomplete-scores common/sample.meme common/sample.meme &> log
+Can't locate XML/Parser/Expat.pm in @INC (@INC contains: /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/scripts /usr/local/lib64/perl5 /usr/local/share/perl5 /usr/lib64/perl5/vendor_perl /usr/share/perl5/vendor_perl /usr/lib64/perl5 /usr/share/perl5 .) at /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/scripts/tomtom_xml_to_html line 21.
+BEGIN failed--compilation aborted at /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/scripts/tomtom_xml_to_html line 21.
+Warning: tomtom_xml_to_html exited abnormally and may have failed to create HTML output.
+-------------------------------------------------------------------------------
+tomtom exited with value 1 indicating failure.
+FAILED!
+*******************************************************************************
+Test tomtom_allr_cs ...
+tomtom -verbosity 1 -dist allr -oc results/tomtom9 common/sample.meme common/sample.meme &> log
+Can't locate XML/Parser/Expat.pm in @INC (@INC contains: /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/scripts /usr/local/lib64/perl5 /usr/local/share/perl5 /usr/lib64/perl5/vendor_perl /usr/share/perl5/vendor_perl /usr/lib64/perl5 /usr/share/perl5 .) at /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/scripts/tomtom_xml_to_html line 21.
+BEGIN failed--compilation aborted at /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/scripts/tomtom_xml_to_html line 21.
+Warning: tomtom_xml_to_html exited abnormally and may have failed to create HTML output.
+-------------------------------------------------------------------------------
+tomtom exited with value 1 indicating failure.
+FAILED!
+*******************************************************************************
+Test tomtom_ed_cs ...
+tomtom -verbosity 1 -dist ed -oc results/tomtom10 common/sample.meme common/sample.meme &> log
+Can't locate XML/Parser/Expat.pm in @INC (@INC contains: /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/scripts /usr/local/lib64/perl5 /usr/local/share/perl5 /usr/lib64/perl5/vendor_perl /usr/share/perl5/vendor_perl /usr/lib64/perl5 /usr/share/perl5 .) at /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/scripts/tomtom_xml_to_html line 21.
+BEGIN failed--compilation aborted at /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/scripts/tomtom_xml_to_html line 21.
+Warning: tomtom_xml_to_html exited abnormally and may have failed to create HTML output.
+-------------------------------------------------------------------------------
+tomtom exited with value 1 indicating failure.
+FAILED!
+*******************************************************************************
+Test tomtom_kullback_cs ...
+tomtom -verbosity 1 -dist kullback -oc results/tomtom11 common/sample.meme common/sample.meme &> log
+Can't locate XML/Parser/Expat.pm in @INC (@INC contains: /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/scripts /usr/local/lib64/perl5 /usr/local/share/perl5 /usr/lib64/perl5/vendor_perl /usr/share/perl5/vendor_perl /usr/lib64/perl5 /usr/share/perl5 .) at /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/scripts/tomtom_xml_to_html line 21.
+BEGIN failed--compilation aborted at /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/scripts/tomtom_xml_to_html line 21.
+Warning: tomtom_xml_to_html exited abnormally and may have failed to create HTML output.
+-------------------------------------------------------------------------------
+tomtom exited with value 1 indicating failure.
+FAILED!
+*******************************************************************************
+Test tomtom_pearson_cs ...
+tomtom -verbosity 1 -dist pearson -oc results/tomtom12 common/sample.meme common/sample.meme &> log
+Can't locate XML/Parser/Expat.pm in @INC (@INC contains: /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/scripts /usr/local/lib64/perl5 /usr/local/share/perl5 /usr/lib64/perl5/vendor_perl /usr/share/perl5/vendor_perl /usr/lib64/perl5 /usr/share/perl5 .) at /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/scripts/tomtom_xml_to_html line 21.
+BEGIN failed--compilation aborted at /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/scripts/tomtom_xml_to_html line 21.
+Warning: tomtom_xml_to_html exited abnormally and may have failed to create HTML output.
+-------------------------------------------------------------------------------
+tomtom exited with value 1 indicating failure.
+FAILED!
+*******************************************************************************
+Test tomtom_sandelin_cs ...
+tomtom -verbosity 1 -dist sandelin -oc results/tomtom13 common/sample.meme common/sample.meme &> log
+Can't locate XML/Parser/Expat.pm in @INC (@INC contains: /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/scripts /usr/local/lib64/perl5 /usr/local/share/perl5 /usr/lib64/perl5/vendor_perl /usr/share/perl5/vendor_perl /usr/lib64/perl5 /usr/share/perl5 .) at /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/scripts/tomtom_xml_to_html line 21.
+BEGIN failed--compilation aborted at /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/scripts/tomtom_xml_to_html line 21.
+Warning: tomtom_xml_to_html exited abnormally and may have failed to create HTML output.
+-------------------------------------------------------------------------------
+tomtom exited with value 1 indicating failure.
+FAILED!
+*******************************************************************************
+Test tomtom_blic1_cs ...
+tomtom -verbosity 1 -dist blic1 -oc results/tomtom14 common/sample.meme common/sample.meme &> log
+Can't locate XML/Parser/Expat.pm in @INC (@INC contains: /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/scripts /usr/local/lib64/perl5 /usr/local/share/perl5 /usr/lib64/perl5/vendor_perl /usr/share/perl5/vendor_perl /usr/lib64/perl5 /usr/share/perl5 .) at /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/scripts/tomtom_xml_to_html line 21.
+BEGIN failed--compilation aborted at /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/scripts/tomtom_xml_to_html line 21.
+Warning: tomtom_xml_to_html exited abnormally and may have failed to create HTML output.
+-------------------------------------------------------------------------------
+tomtom exited with value 1 indicating failure.
+FAILED!
+*******************************************************************************
+Test tomtom_blic5_cs ...
+tomtom -verbosity 1 -dist blic5 -oc results/tomtom15 common/sample.meme common/sample.meme &> log
+Can't locate XML/Parser/Expat.pm in @INC (@INC contains: /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/scripts /usr/local/lib64/perl5 /usr/local/share/perl5 /usr/lib64/perl5/vendor_perl /usr/share/perl5/vendor_perl /usr/lib64/perl5 /usr/share/perl5 .) at /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/scripts/tomtom_xml_to_html line 21.
+BEGIN failed--compilation aborted at /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/scripts/tomtom_xml_to_html line 21.
+Warning: tomtom_xml_to_html exited abnormally and may have failed to create HTML output.
+-------------------------------------------------------------------------------
+tomtom exited with value 1 indicating failure.
+FAILED!

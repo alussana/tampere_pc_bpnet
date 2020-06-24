@@ -1,0 +1,516 @@
+ref: /lustre/bmt-data/genomics/reference/hg38.fa 
+
+chr_sizes: /lustre/bmt-data/genomics/reference/hg38.fa.chrom.sizes
+
+bowtie_ref_basename: /bmt-data/genomics/reference/bowtie2_hg38_index/hg38
+
+gtrd: /bmt-data/genomics/reference/gtrd/Homo_sapiens_meta_clusters.interval.gz
+
+UniBind:
+    PWM: https://unibind.uio.no/static/data/bulk/pwm_tfbs_per_tf.tar.gz
+    BEM: https://unibind.uio.no/static/data/bulk/bem_tfbs_per_tf.tar.gz
+    TFFM: https://unibind.uio.no/static/data/bulk/tffm_tfbs_per_tf.tar.gz
+    DNAshaped: https://unibind.uio.no/static/data/bulk/dnashaped_tfbs_per_tf.tar.gz
+
+        ## Sample - tracks relationship
+
+SRA012454:
+    SAMN00011190: SRR039766
+    SAMN00011191: SRR039767,SRR039777
+    SAMN00011192: SRR039768
+    SAMN00011193: SRR039769,SRR039774
+    SAMN00011194: SRR039770
+    SAMN00011195: SRR039771
+    SAMN00011196: SRR039772,SRR039776
+    SAMN00011197: SRR039773,SRR039775
+
+        ## Control tracks
+
+chip_input:
+    SAMN00011190: SAMN00011196
+    SAMN00011191: SAMN00011196
+    SAMN00011192: SAMN00011197
+    SAMN00011193: SAMN00011197
+    SAMN00011194: SAMN00011196
+    SAMN00011195: SAMN00011196
+
+        #######################
+        ### Chip-Seq Models ###
+        #######################
+
+VCaP_AR_toy:
+    dataspec: ../local/configfiles/models_dataspec/VCaP_AR.yml
+    config: ../local/configfiles/models_config/toy_chipseq.gin
+    jobfile: ../local/src/slurm_train_test.sh
+    tasks: AR
+    summits: bed/SRA012454/SAMN00011193_summits_canonCHR.bed
+    bw:
+        - SAMN00011193
+    bias_bw:
+        - SAMN00011197
+
+LNCaP_AR_toy:
+    dataspec: ../local/configfiles/models_dataspec/LNCaP_AR.yml
+    config: ../local/configfiles/models_config/toy_chipseq.gin
+    jobfile: ../local/src/slurm_train_test.sh
+    tasks: AR
+    summits: bed/SRA012454/SAMN00011191_summits_canonCHR.bed
+    bw:
+        - SAMN00011191
+    bias_bw:
+        - SAMN00011196
+
+VCaP_AR_bpnet9:
+    dataspec: ../local/configfiles/models_dataspec/VCaP_AR.yml
+    config: ../local/configfiles/models_config/bpnet9_chipseq.gin
+    jobfile: ../local/src/slurm_train.sh
+    tasks: AR
+    summits: bed/SRA012454/SAMN00011193_summits_canonCHR.bed
+    bw:
+        - SAMN00011193
+    bias_bw:
+        - SAMN00011197
+
+LNCaP_AR_bpnet9:
+    dataspec: ../local/configfiles/models_dataspec/LNCaP_AR.yml
+    config: ../local/configfiles/models_config/bpnet9_chipseq.gin
+    jobfile: ../local/src/slurm_train.sh
+    tasks: AR
+    summits: bed/SRA012454/SAMN00011191_summits_canonCHR.bed
+    bw:
+        - SAMN00011191
+    bias_bw:
+        - SAMN00011196
+
+VCaP_AR_nogin:
+    dataspec: ../local/configfiles/models_dataspec/VCaP_AR.yml
+    config: XXX_nogin_XXX
+    jobfile: ../local/src/slurm_train_nogin.sh
+    tasks: AR
+    summits: bed/SRA012454/SAMN00011193_summits_canonCHR.bed
+    bw:
+        - SAMN00011193
+    bias_bw:
+        - SAMN00011197
+
+LNCaP_AR_nogin:
+    dataspec: ../local/configfiles/models_dataspec/LNCaP_AR.yml
+    config: XXX_nogin_XXX
+    jobfile: ../local/src/slurm_train_nogin.sh
+    tasks: AR
+    summits: bed/SRA012454/SAMN00011191_summits_canonCHR.bed
+    bw:
+        - SAMN00011191
+    bias_bw:
+        - SAMN00011196
+
+VCaP,LNCaP_AR_bpnet9:
+    dataspec: ../local/configfiles/models_dataspec/VCaP,LNCaP_AR.yml
+    config: ../local/configfiles/models_config/bpnet9_multisample.gin
+    jobfile: ../local/src/slurm_train.sh
+    tasks: AR
+    summits: bed/SRA012454/SAMN00011193,SAMN00011191_summits_canonCHR_joined.bed
+    bw:
+        - SAMN00011193
+        - SAMN00011191
+    bias_bw:
+        - SAMN00011197
+        - SAMN00011196
+ 
+VCaP,LNCaP_AR_toy:
+    dataspec: ../local/configfiles/models_dataspec/VCaP,LNCaP_AR.yml
+    config: ../local/configfiles/models_config/toy_multisample.gin
+    jobfile: ../local/src/slurm_train_test.sh
+    tasks: AR
+    summits: bed/SRA012454/SAMN00011193,SAMN00011191_summits_canonCHR_joined.bed
+    bw:
+        - SAMN00011193
+        - SAMN00011191
+    bias_bw:
+        - SAMN00011197
+        - SAMN00011196
+
+          #################################
+          ### ATAC Models on cell lines ###
+          #################################
+          
+          ## Chip-Seq peak summits
+
+VCaP_AR_ATAC-SAMN00011193-peaks:
+    dataspec: ../local/configfiles/models_dataspec/VCaP_AR_ATAC-SAMN00011193-peaks.yml
+    config: ../local/configfiles/models_config/bpnet9_atacseq.gin
+    jobfile: ../local/src/slurm_train.sh
+    tasks: AR
+    summits: bed/SRA012454/SAMN00011193_summits_canonCHR.bed
+    bw:
+        - VCaP
+
+VCaP_AR_toy-ATAC-SAMN00011193-peaks:
+    dataspec: ../local/configfiles/models_dataspec/VCaP_AR_ATAC-SAMN00011193-peaks.yml
+    config: ../local/configfiles/models_config/toy_atacseq.gin
+    jobfile: ../local/src/slurm_train_test.sh
+    tasks: AR
+    summits: bed/SRA012454/SAMN00011193_summits_canonCHR.bed
+    bw:
+        - VCaP
+
+          ## UniBind PWM + ATAC-Seq intersection peak summits
+
+VCaP_AR_ATAC-UniBindPWM:
+    dataspec: ../local/configfiles/models_dataspec/VCaP_AR_ATAC-UniBindPWM.yml
+    config: ../local/configfiles/models_config/bpnet9_atacseq.gin
+    jobfile: ../local/src/slurm_train.sh
+    tasks: AR
+    summits: bed/in_house_atac/VCaP_UniBindPWM_AR_peaks.bed
+    bw:
+        - VCaP
+
+VCaP_ERG_ATAC-UniBindPWM:
+    dataspec: ../local/configfiles/models_dataspec/VCaP_ERG_ATAC-UniBindPWM.yml
+    config: ../local/configfiles/models_config/bpnet9_atacseq.gin
+    jobfile: ../local/src/slurm_train.sh
+    tasks: ERG
+    summits: bed/in_house_atac/VCaP_UniBindPWM_ERG_peaks.bed
+    bw:
+        - VCaP
+
+VCaP_FOXA1_ATAC-UniBindPWM:
+    dataspec: ../local/configfiles/models_dataspec/VCaP_FOXA1_ATAC-UniBindPWM.yml
+    config: ../local/configfiles/models_config/bpnet9_atacseq.gin
+    jobfile: ../local/src/slurm_train.sh
+    tasks: FOXA1
+    summits: bed/in_house_atac/VCaP_UniBindPWM_FOXA1_peaks.bed
+    bw:
+        - VCaP
+
+VCaP_GATA1_ATAC-UniBindPWM:
+    dataspec: ../local/configfiles/models_dataspec/VCaP_GATA1_ATAC-UniBindPWM.yml
+    config: ../local/configfiles/models_config/bpnet9_atacseq.gin
+    jobfile: ../local/src/slurm_train.sh
+    tasks: GATA1
+    summits: bed/in_house_atac/VCaP_UniBindPWM_GATA1_peaks.bed
+    bw:
+        - VCaP
+
+VCaP_GATA2_ATAC-UniBindPWM:
+    dataspec: ../local/configfiles/models_dataspec/VCaP_GATA2_ATAC-UniBindPWM.yml
+    config: ../local/configfiles/models_config/bpnet9_atacseq.gin
+    jobfile: ../local/src/slurm_train.sh
+    tasks: GATA2
+    summits: bed/in_house_atac/VCaP_UniBindPWM_GATA2_peaks.bed
+    bw:
+        - VCaP
+
+VCaP_HOXB13_ATAC-UniBindPWM:
+    dataspec: ../local/configfiles/models_dataspec/VCaP_HOXB13_ATAC-UniBindPWM.yml
+    config: ../local/configfiles/models_config/bpnet9_atacseq.gin
+    jobfile: ../local/src/slurm_train.sh
+    tasks: GATA2
+    summits: bed/in_house_atac/VCaP_UniBindPWM_HOXB13_peaks.bed
+    bw:
+        - VCaP
+
+VCaP_AR_toy-ATAC-UniBindPWM:
+    dataspec: ../local/configfiles/models_dataspec/VCaP_AR_ATAC-UniBindPWM.yml
+    config: ../local/configfiles/models_config/toy_atacseq.gin
+    jobfile: ../local/src/slurm_train_test.sh
+    tasks: AR
+    summits: bed/in_house_atac/VCaP_UniBindPWM_AR_peaks.bed
+    bw:
+        - VCaP
+
+VCaP_AR-ERG-GATA1_ATAC-UniBindPWM:
+    dataspec: ../local/configfiles/models_dataspec/VCaP_AR-ERG-GATA1_ATAC-UniBindPWM.yml
+    config: ../local/configfiles/models_config/bpnet9_atacseq.gin
+    jobfile: ../local/src/slurm_train.sh
+    tasks: AR-ERG-GATA1
+    summits:
+        - bed/in_house_atac/VCaP_UniBindPWM_AR_peaks.bed 
+        - bed/in_house_atac/VCaP_UniBindPWM_ERG_peaks.bed
+        - bed/in_house_atac/VCaP_UniBindPWM_GATA1_peaks.bed
+    bw:
+        - VCaP
+
+VCaP_AR-ERG-GATA2_ATAC-UniBindPWM:
+    dataspec: ../local/configfiles/models_dataspec/VCaP_AR-ERG-GATA2_ATAC-UniBindPWM.yml
+    config: ../local/configfiles/models_config/bpnet9_atacseq.gin
+    jobfile: ../local/src/slurm_train.sh
+    tasks: AR-ERG-GATA2
+    summits:
+        - bed/in_house_atac/VCaP_UniBindPWM_AR_peaks.bed 
+        - bed/in_house_atac/VCaP_UniBindPWM_ERG_peaks.bed
+        - bed/in_house_atac/VCaP_UniBindPWM_GATA2_peaks.bed
+    bw:
+        - VCaP
+          
+VCaP_AR-ERG-GATA1_toy-ATAC-UniBindPWM:
+    dataspec: ../local/configfiles/models_dataspec/VCaP_AR-ERG-GATA1_ATAC-UniBindPWM.yml
+    config: ../local/configfiles/models_config/toy_atacseq.gin
+    jobfile: ../local/src/slurm_train_test.sh
+    tasks: AR-ERG-GATA1
+    summits:
+        - bed/in_house_atac/VCaP_UniBindPWM_AR_peaks.bed 
+        - bed/in_house_atac/VCaP_UniBindPWM_ERG_peaks.bed
+        - bed/in_house_atac/VCaP_UniBindPWM_GATA1_peaks.bed
+    bw:
+        - VCaP
+
+VCaP_AR-ERG-GATA2_toy-ATAC-UniBindPWM:
+    dataspec: ../local/configfiles/models_dataspec/VCaP_AR-ERG-GATA2_ATAC-UniBindPWM.yml
+    config: ../local/configfiles/models_config/toy_atacseq.gin
+    jobfile: ../local/src/slurm_train_test.sh
+    tasks: AR-ERG-GATA2
+    summits:
+        - bed/in_house_atac/VCaP_UniBindPWM_AR_peaks.bed 
+        - bed/in_house_atac/VCaP_UniBindPWM_ERG_peaks.bed
+        - bed/in_house_atac/VCaP_UniBindPWM_GATA2_peaks.bed
+    bw:
+        - VCaP
+
+VCaP_ERG-FOXA1_toy-ATAC-UniBindPWM:
+    dataspec: ../local/configfiles/models_dataspec/VCaP_ERG-FOXA1_ATAC-UniBindPWM.yml
+    config: ../local/configfiles/models_config/toy_atacseq.gin
+    jobfile: ../local/src/slurm_train_test.sh
+    tasks: ERG-FOXA1
+    summits:
+        - bed/in_house_atac/VCaP_UniBindPWM_ERG_peaks.bed
+        - bed/in_house_atac/VCaP_UniBindPWM_FOXA1_peaks.bed
+    bw:
+        - VCaP
+
+          ## GTRD peak summits
+
+VCaP_AR_ATAC-GTRD:
+    dataspec: ../local/configfiles/models_dataspec/VCaP_AR_ATAC-GTRD.yml
+    config: ../local/configfiles/models_config/bpnet9_atacseq.gin
+    jobfile: ../local/src/slurm_train.sh
+    tasks: AR
+    summits: bed/GTRD_TFBS/VCaP/AR.bed
+    bw:
+        - VCaP
+    
+VCaP_ERG_ATAC-GTRD:
+    dataspec: ../local/configfiles/models_dataspec/VCaP_ERG_ATAC-GTRD.yml
+    config: ../local/configfiles/models_config/bpnet9_atacseq.gin
+    jobfile: ../local/src/slurm_train.sh
+    tasks: ERG
+    summits: bed/GTRD_TFBS/VCaP/ERG.bed
+    bw:
+        - VCaP
+
+VCaP_FOXA1_ATAC-GTRD:
+    dataspec: ../local/configfiles/models_dataspec/VCaP_FOXA1_ATAC-GTRD.yml
+    config: ../local/configfiles/models_config/bpnet9_atacseq.gin
+    jobfile: ../local/src/slurm_train.sh
+    tasks: FOXA1
+    summits: bed/GTRD_TFBS/VCaP/FOXA1.bed
+    bw:
+        - VCaP
+
+VCaP_AR_toy-ATAC-GTRD:
+    dataspec: ../local/configfiles/models_dataspec/VCaP_AR_ATAC-GTRD.yml
+    config: ../local/configfiles/models_config/toy_atacseq.gin
+    jobfile: ../local/src/slurm_train_test.sh
+    tasks: AR
+    summits: bed/GTRD_TFBS/VCaP/AR.bed
+    bw:
+        - VCaP
+
+VCaP_ERG_toy-ATAC-GTRD:
+    dataspec: ../local/configfiles/models_dataspec/VCaP_ERG_ATAC-GTRD.yml
+    config: ../local/configfiles/models_config/toy_atacseq.gin
+    jobfile: ../local/src/slurm_train_test.sh
+    tasks: ERG
+    summits: bed/GTRD_TFBS/VCaP/ERG.bed
+    bw:
+        - VCaP
+
+VCaP_FOXA1_toy-ATAC-GTRD:
+    dataspec: ../local/configfiles/models_dataspec/VCaP_FOXA1_ATAC-GTRD.yml
+    config: ../local/configfiles/models_config/toy_atacseq.gin
+    jobfile: ../local/src/slurm_train_test.sh
+    tasks: FOXA1
+    summits: bed/GTRD_TFBS/VCaP/FOXA1.bed
+    bw:
+        - VCaP
+
+VCaP_AR-ERG-FOXA1_ATAC-GTRD:
+    dataspec: ../local/configfiles/models_dataspec/VCaP_AR-ERGFOXA1_ATAC-GTRD.yml
+    config: ../local/configfiles/models_config/bpnet9_atacseq.gin
+    jobfile: ../local/src/slurm_train.sh
+    tasks: AR-ERG-FOXA1
+    summits: 
+        - bed/GTRD_TFBS/VCaP/AR.bed
+        - bed/GTRD_TFBS/VCaP/ERG.bed
+        - bed/GTRD_TFBS/VCaP/FOXA1.bed   
+    bw:
+        - VCaP
+
+VCaP_AR-ERG-FOXA1_toy-ATAC-GTRD:
+    dataspec: ../local/configfiles/models_dataspec/VCaP_AR-ERG-FOXA1_ATAC-GTRD.yml
+    config: ../local/configfiles/models_config/toy_atacseq.gin
+    jobfile: ../local/src/slurm_train_test.sh
+    tasks: AR-ERG-FOXA1
+    summits: 
+        - bed/GTRD_TFBS/VCaP/AR.bed
+        - bed/GTRD_TFBS/VCaP/ERG.bed
+        - bed/GTRD_TFBS/VCaP/FOXA1.bed
+    bw:
+        - VCaP
+          
+          ###########################################
+          ### ATAC-Seq models on clinical samples ###
+          ###########################################
+
+BPH_701_FOXA1_ATAC-UniBindPWM:
+    dataspec: ../local/configfiles/models_dataspec/BPH_701_FOXA1_ATAC-UniBindPWM.yml
+    config: ../local/configfiles/models_config/bpnet9_atacseq.gin
+    jobfile: ../local/src/slurm_train.sh
+    tasks: FOXA1
+    summits: bed/tampere_pc_atac/BPH_701_UniBindPWM_FOXA1_peaks.bed
+    bw:
+        - BPH_701
+
+BPH_701_GATA2_ATAC-UniBindPWM:
+    dataspec: ../local/configfiles/models_dataspec/BPH_701_GATA2_ATAC-UniBindPWM.yml
+    config: ../local/configfiles/models_config/bpnet9_atacseq.gin
+    jobfile: ../local/src/slurm_train.sh
+    tasks: GATA2
+    summits: bed/tampere_pc_atac/BPH_701_UniBindPWM_GATA2_peaks.bed
+    bw:
+        - BPH_701
+
+BPH_701_ERG_ATAC-UniBindPWM:
+    dataspec: ../local/configfiles/models_dataspec/BPH_701_ERG_ATAC-UniBindPWM.yml
+    config: ../local/configfiles/models_config/bpnet9_atacseq.gin
+    jobfile: ../local/src/slurm_train.sh
+    tasks: ERG
+    summits: bed/tampere_pc_atac/BPH_701_UniBindPWM_ERG_peaks.bed
+    bw:
+        - BPH_701
+
+BPH_701_HOXB13_ATAC-UniBindPWM:
+    dataspec: ../local/configfiles/models_dataspec/BPH_701_HOXB13_ATAC-UniBindPWM.yml
+    config: ../local/configfiles/models_config/bpnet9_atacseq.gin
+    jobfile: ../local/src/slurm_train.sh
+    tasks: HOXB13
+    summits: bed/tampere_pc_atac/BPH_701_UniBindPWM_HOXB13_peaks.bed
+    bw:
+        - BPH_701
+
+BPH_701_AR_ATAC-UniBindPWM:
+    dataspec: ../local/configfiles/models_dataspec/BPH_701_AR_ATAC-UniBindPWM.yml
+    config: ../local/configfiles/models_config/bpnet9_atacseq.gin
+    jobfile: ../local/src/slurm_train.sh
+    tasks: AR
+    summits: bed/tampere_pc_atac/BPH_701_UniBindPWM_AR_peaks.bed
+    bw:
+        - BPH_701
+
+PC_17163_FOXA1_ATAC-UniBindPWM:
+    dataspec: ../local/configfiles/models_dataspec/PC_17163_FOXA1_ATAC-UniBindPWM.yml
+    config: ../local/configfiles/models_config/bpnet9_atacseq.gin
+    jobfile: ../local/src/slurm_train.sh
+    tasks: FOXA1
+    summits: bed/tampere_pc_atac/PC_17163_UniBindPWM_FOXA1_peaks.bed
+    bw:
+        - PC_17163
+
+PC_17163_GATA2_ATAC-UniBindPWM:
+    dataspec: ../local/configfiles/models_dataspec/PC_17163_GATA2_ATAC-UniBindPWM.yml
+    config: ../local/configfiles/models_config/bpnet9_atacseq.gin
+    jobfile: ../local/src/slurm_train.sh
+    tasks: GATA2
+    summits: bed/tampere_pc_atac/PC_17163_UniBindPWM_GATA2_peaks.bed
+    bw:
+        - PC_17163
+
+PC_17163_ERG_ATAC-UniBindPWM:
+    dataspec: ../local/configfiles/models_dataspec/PC_17163_ERG_ATAC-UniBindPWM.yml
+    config: ../local/configfiles/models_config/bpnet9_atacseq.gin
+    jobfile: ../local/src/slurm_train.sh
+    tasks: ERG
+    summits: bed/tampere_pc_atac/PC_17163_UniBindPWM_ERG_peaks.bed
+    bw:
+        - PC_17163
+
+PC_17163_HOXB13_ATAC-UniBindPWM:
+    dataspec: ../local/configfiles/models_dataspec/PC_17163_HOXB13_ATAC-UniBindPWM.yml
+    config: ../local/configfiles/models_config/bpnet9_atacseq.gin
+    jobfile: ../local/src/slurm_train.sh
+    tasks: HOXB13
+    summits: bed/tampere_pc_atac/PC_17163_UniBindPWM_HOXB13_peaks.bed
+    bw:
+        - PC_17163
+
+PC_17163_AR_ATAC-UniBindPWM:
+    dataspec: ../local/configfiles/models_dataspec/PC_17163_AR_ATAC-UniBindPWM.yml
+    config: ../local/configfiles/models_config/bpnet9_atacseq.gin
+    jobfile: ../local/src/slurm_train.sh
+    tasks: AR
+    summits: bed/tampere_pc_atac/PC_17163_UniBindPWM_AR_peaks.bed
+    bw:
+        - PC_17163
+
+CRPC_541_FOXA1_ATAC-UniBindPWM:
+    dataspec: ../local/configfiles/models_dataspec/CRPC_541_FOXA1_ATAC-UniBindPWM.yml
+    config: ../local/configfiles/models_config/bpnet9_atacseq.gin
+    jobfile: ../local/src/slurm_train.sh
+    tasks: FOXA1
+    summits: bed/tampere_pc_atac/CRPC_541_UniBindPWM_FOXA1_peaks.bed
+    bw:
+        - CRPC_541
+
+CRPC_541_GATA2_ATAC-UniBindPWM:
+    dataspec: ../local/configfiles/models_dataspec/CRPC_541_GATA2_ATAC-UniBindPWM.yml
+    config: ../local/configfiles/models_config/bpnet9_atacseq.gin
+    jobfile: ../local/src/slurm_train.sh
+    tasks: GATA2
+    summits: bed/tampere_pc_atac/CRPC_541_UniBindPWM_GATA2_peaks.bed
+    bw:
+        - CRPC_541
+
+CRPC_541_ERG_ATAC-UniBindPWM:
+    dataspec: ../local/configfiles/models_dataspec/CRPC_541_ERG_ATAC-UniBindPWM.yml
+    config: ../local/configfiles/models_config/bpnet9_atacseq.gin
+    jobfile: ../local/src/slurm_train.sh
+    tasks: ERG
+    summits: bed/tampere_pc_atac/CRPC_541_UniBindPWM_ERG_peaks.bed
+    bw:
+        - CRPC_541
+
+CRPC_541_HOXB13_ATAC-UniBindPWM:
+    dataspec: ../local/configfiles/models_dataspec/CRPC_541_HOXB13_ATAC-UniBindPWM.yml
+    config: ../local/configfiles/models_config/bpnet9_atacseq.gin
+    jobfile: ../local/src/slurm_train.sh
+    tasks: HOXB13
+    summits: bed/tampere_pc_atac/CRPC_541_UniBindPWM_HOXB13_peaks.bed
+    bw:
+        - CRPC_541
+
+CRPC_541_AR_ATAC-UniBindPWM:
+    dataspec: ../local/configfiles/models_dataspec/CRPC_541_AR_ATAC-UniBindPWM.yml
+    config: ../local/configfiles/models_config/bpnet9_atacseq.gin
+    jobfile: ../local/src/slurm_train.sh
+    tasks: AR
+    summits: bed/tampere_pc_atac/CRPC_541_UniBindPWM_AR_peaks.bed
+    bw:
+        - CRPC_541
+
+BPH_701_AR_toy-ATAC-UniBindPWM:
+    dataspec: ../local/configfiles/models_dataspec/BPH_701_AR_ATAC-UniBindPWM.yml
+    config: ../local/configfiles/models_config/toy_atacseq.gin
+    jobfile: ../local/src/slurm_train_test.sh
+    tasks: AR
+    summits: bed/tampere_pc_atac/BPH_701_UniBindPWM_AR_peaks.bed
+    bw:
+        - BPH_701
+
+CRPC_541_AR_toy-ATAC-UniBindPWM:
+    dataspec: ../local/configfiles/models_dataspec/CRPC_541_AR_ATAC-UniBindPWM.yml
+    config: ../local/configfiles/models_config/toy_atacseq.gin
+    jobfile: ../local/src/slurm_train_test.sh
+    tasks: AR
+    summits: bed/tampere_pc_atac/CRPC_541_UniBindPWM_AR_peaks.bed
+    bw:
+        - CRPC_541

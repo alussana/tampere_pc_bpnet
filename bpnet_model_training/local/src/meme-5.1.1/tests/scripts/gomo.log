@@ -1,0 +1,10 @@
+*******************************************************************************
+Test gomo1 ...
+gomo --seed 1 --nostatus --verbosity 1 --oc results/gomo1 --motifs /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/tests/gomo/motif.meme.txt /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/tests/gomo/GO2Gene.map.csv /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/tests/gomo/ama.nozscoring.xml &> log
+reference /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/tests/gomo/gomo.smallthreshold.tsv output results/gomo1/gomo.tsv
+PASSED!
+*******************************************************************************
+Test gomo2 ...
+gomo --gs --seed 1 --nostatus --verbosity 1 --oc results/gomo2 --motifs /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/tests/gomo/motif.meme.txt /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/tests/gomo/GO2Gene.map.csv /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/tests/gomo/ama.zscoring.xml /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/tests/gomo/ama.nozscoring.xml &> log
+reference /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/tests/gomo/gomo.multipleSpecies.tsv output results/gomo2/gomo.tsv
+PASSED!

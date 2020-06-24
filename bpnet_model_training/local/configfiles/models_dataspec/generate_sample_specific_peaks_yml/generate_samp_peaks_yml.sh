@@ -1,0 +1,1 @@
+for task in $(cat task_list.txt); do for sample in $(cat sample_list.txt); do cat SAMPLE_NAME_TASK_NAME_ATAC-UniBindPWM-samp-peaks.yml | sed "s/XXX_SAMPLE_NAME_XXX/${sample}/g; s/XXX_TASK_NAME_XXX/${task}/g" > ../${sample}_${task}_ATAC-UniBindPWM-samp-peaks.yml; done; done

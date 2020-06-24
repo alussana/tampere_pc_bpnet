@@ -1,0 +1,7 @@
+fasta_file: /lustre/bmt-data/genomics/reference/hg38.fa
+task_specs: 
+  HOXB13:
+    tracks:
+      - bam/tampere_pc_atac/CRPC_489_pos.bw
+      - bam/tampere_pc_atac/CRPC_489_neg.bw
+    peaks: bed/tampere_pc_atac/CRPC_489_UniBindPWM_HOXB13_peaks_samp_specific.bed

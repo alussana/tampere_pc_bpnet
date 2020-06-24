@@ -1,0 +1,40 @@
+*******************************************************************************
+Test dreme1 ...
+dreme -oc results/dreme1 -verbosity 1 -p common/Klf1-200-100.fa -n common/Klf1-200-100-shuffled.py2.fa &> log
+Can't locate XML/Parser/Expat.pm in @INC (@INC contains: /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/scripts /usr/local/lib64/perl5 /usr/local/share/perl5 /usr/lib64/perl5/vendor_perl /usr/share/perl5/vendor_perl /usr/lib64/perl5 /usr/share/perl5 .) at /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/scripts/dreme_xml_to_html line 21.
+BEGIN failed--compilation aborted at /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/scripts/dreme_xml_to_html line 21.
+Can't locate XML/Parser/Expat.pm in @INC (@INC contains: /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/scripts /usr/local/lib64/perl5 /usr/local/share/perl5 /usr/lib64/perl5/vendor_perl /usr/share/perl5/vendor_perl /usr/lib64/perl5 /usr/share/perl5 .) at /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/scripts/dreme_xml_to_txt line 21.
+BEGIN failed--compilation aborted at /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/scripts/dreme_xml_to_txt line 21.
+Failed to create HTML file.
+Failed to create text file.
+PASSED!
+*******************************************************************************
+Test dreme2 ...
+dreme -norc -oc results/dreme2 -verbosity 1 -p common/Klf1-200-100.fa -n common/Klf1-200-100-shuffled.py2.fa &> log
+Can't locate XML/Parser/Expat.pm in @INC (@INC contains: /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/scripts /usr/local/lib64/perl5 /usr/local/share/perl5 /usr/lib64/perl5/vendor_perl /usr/share/perl5/vendor_perl /usr/lib64/perl5 /usr/share/perl5 .) at /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/scripts/dreme_xml_to_html line 21.
+BEGIN failed--compilation aborted at /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/scripts/dreme_xml_to_html line 21.
+Can't locate XML/Parser/Expat.pm in @INC (@INC contains: /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/scripts /usr/local/lib64/perl5 /usr/local/share/perl5 /usr/lib64/perl5/vendor_perl /usr/share/perl5/vendor_perl /usr/lib64/perl5 /usr/share/perl5 .) at /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/scripts/dreme_xml_to_txt line 21.
+BEGIN failed--compilation aborted at /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/scripts/dreme_xml_to_txt line 21.
+Failed to create HTML file.
+Failed to create text file.
+PASSED!
+*******************************************************************************
+Test dreme3 ...
+dreme -oc results/dreme3 -verbosity 1 -p common/Klf1-200-100.fa -n common/Klf1-200-100-shuffled.py2.fa &> log
+Can't locate XML/Parser/Expat.pm in @INC (@INC contains: /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/scripts /usr/local/lib64/perl5 /usr/local/share/perl5 /usr/lib64/perl5/vendor_perl /usr/share/perl5/vendor_perl /usr/lib64/perl5 /usr/share/perl5 .) at /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/scripts/dreme_xml_to_html line 21.
+BEGIN failed--compilation aborted at /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/scripts/dreme_xml_to_html line 21.
+Can't locate XML/Parser/Expat.pm in @INC (@INC contains: /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/scripts /usr/local/lib64/perl5 /usr/local/share/perl5 /usr/lib64/perl5/vendor_perl /usr/share/perl5/vendor_perl /usr/lib64/perl5 /usr/share/perl5 .) at /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/scripts/dreme_xml_to_txt line 21.
+BEGIN failed--compilation aborted at /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/scripts/dreme_xml_to_txt line 21.
+Failed to create HTML file.
+Failed to create text file.
+PASSED!
+*******************************************************************************
+Test dreme4 ...
+dreme -norc -oc results/dreme4 -verbosity 1 -p common/Klf1-200-100.fa -n common/Klf1-200-100-shuffled.py2.fa &> log
+Can't locate XML/Parser/Expat.pm in @INC (@INC contains: /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/scripts /usr/local/lib64/perl5 /usr/local/share/perl5 /usr/lib64/perl5/vendor_perl /usr/share/perl5/vendor_perl /usr/lib64/perl5 /usr/share/perl5 .) at /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/scripts/dreme_xml_to_html line 21.
+BEGIN failed--compilation aborted at /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/scripts/dreme_xml_to_html line 21.
+Can't locate XML/Parser/Expat.pm in @INC (@INC contains: /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/scripts /usr/local/lib64/perl5 /usr/local/share/perl5 /usr/lib64/perl5/vendor_perl /usr/share/perl5/vendor_perl /usr/lib64/perl5 /usr/share/perl5 .) at /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/scripts/dreme_xml_to_txt line 21.
+BEGIN failed--compilation aborted at /lustre/bmt-data/genomics/projects/lussana/bpnet_model_training/local/src/meme-5.1.1/scripts/dreme_xml_to_txt line 21.
+Failed to create HTML file.
+Failed to create text file.
+PASSED!

@@ -1,0 +1,7 @@
+fasta_file: /lustre/bmt-data/genomics/reference/hg38.fa
+task_specs: 
+  ERG:
+    tracks:
+      - bam/tampere_pc_atac/PC_15760_pos.bw
+      - bam/tampere_pc_atac/PC_15760_neg.bw
+    peaks: bed/tampere_pc_atac/PC_15760_UniBindPWM_ERG_peaks_samp_specific.bed
