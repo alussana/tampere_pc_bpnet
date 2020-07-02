@@ -9,9 +9,9 @@
 #SBATCH --cpus-per-task=10
 #
 # time format hours:minutes:seconds or days-hours
-#SBATCH --time=5:59:59
-#SBATCH --mem=60000
-#SBATCH --partition=parallel
+#SBATCH --time=7:59:59
+#SBATCH --mem=128000
+#SBATCH --partition=normal
 
 ## MODEL_DIR is the name of the directory in which the contribution scores (.h5) live
 MODEL_DIR=XXX_DYNAMIC_MODEL_DIR_XXX

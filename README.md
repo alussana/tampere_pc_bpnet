@@ -1,2 +1,2 @@
 # tampere_pc_bpnet
-Backup of critical code at TUT Narvi cluster.
+Backup of critical code at TCSC Narvi cluster

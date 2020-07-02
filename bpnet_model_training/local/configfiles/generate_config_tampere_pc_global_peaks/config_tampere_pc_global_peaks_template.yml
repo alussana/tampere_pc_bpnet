@@ -1,5 +1,5 @@
-XXX_SAMPLE_XXX_GLOBAL_ATAC-UniBindPWM:
-    dataspec: ../local/configfiles/models_dataspec/XXX_SAMPLE_XXX_GLOBAL_ATAC-UniBindPWM.yml
+XXX_SAMPLE_XXX_GLOBAL_ATAC-profile:
+    dataspec: ../local/configfiles/models_dataspec/XXX_SAMPLE_XXX_GLOBAL_ATAC-profile.yml
     config: ../local/configfiles/models_config/bpnet9_atacseq.gin
     jobfile: ../local/src/slurm_train.sh
     tasks: GLOBAL

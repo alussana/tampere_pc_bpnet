@@ -9,7 +9,7 @@
 #SBATCH --cpus-per-task=10
 #
 # time format hours:minutes:seconds or days-hours
-#SBATCH --time=9:59:59
+#SBATCH --time=13:59:59
 #SBATCH --mem=25000
 #SBATCH --partition=parallel
 
@@ -20,7 +20,6 @@ TASKS=XXX_DYNAMIC_TASKS_XXX
 SAMPLE=XXX_DYNAMIC_SAMPLE_XXX
 
 source ../../miniconda3/bin/activate ../../miniconda3/envs/bpnet_training
-python --version
 python ../local/src/train.py \
     $EXP_DIR \
     $DATASPEC \

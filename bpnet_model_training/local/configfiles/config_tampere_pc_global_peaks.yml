@@ -1,5 +1,5 @@
-BPH_337_GLOBAL_ATAC-UniBindPWM:
-    dataspec: ../local/configfiles/models_dataspec/BPH_337_GLOBAL_ATAC-UniBindPWM.yml
+BPH_337_GLOBAL_ATAC-profile:
+    dataspec: ../local/configfiles/models_dataspec/BPH_337_GLOBAL_ATAC-profile.yml
     config: ../local/configfiles/models_config/bpnet9_atacseq.gin
     jobfile: ../local/src/slurm_train.sh
     tasks: GLOBAL
@@ -7,8 +7,8 @@ BPH_337_GLOBAL_ATAC-UniBindPWM:
     bw: 
         - BPH_337
 
-BPH_456_GLOBAL_ATAC-UniBindPWM:
-    dataspec: ../local/configfiles/models_dataspec/BPH_456_GLOBAL_ATAC-UniBindPWM.yml
+BPH_456_GLOBAL_ATAC-profile:
+    dataspec: ../local/configfiles/models_dataspec/BPH_456_GLOBAL_ATAC-profile.yml
     config: ../local/configfiles/models_config/bpnet9_atacseq.gin
     jobfile: ../local/src/slurm_train.sh
     tasks: GLOBAL
@@ -16,8 +16,8 @@ BPH_456_GLOBAL_ATAC-UniBindPWM:
     bw: 
         - BPH_456
 
-BPH_651_GLOBAL_ATAC-UniBindPWM:
-    dataspec: ../local/configfiles/models_dataspec/BPH_651_GLOBAL_ATAC-UniBindPWM.yml
+BPH_651_GLOBAL_ATAC-profile:
+    dataspec: ../local/configfiles/models_dataspec/BPH_651_GLOBAL_ATAC-profile.yml
     config: ../local/configfiles/models_config/bpnet9_atacseq.gin
     jobfile: ../local/src/slurm_train.sh
     tasks: GLOBAL
@@ -25,8 +25,8 @@ BPH_651_GLOBAL_ATAC-UniBindPWM:
     bw: 
         - BPH_651
 
-BPH_652_GLOBAL_ATAC-UniBindPWM:
-    dataspec: ../local/configfiles/models_dataspec/BPH_652_GLOBAL_ATAC-UniBindPWM.yml
+BPH_652_GLOBAL_ATAC-profile:
+    dataspec: ../local/configfiles/models_dataspec/BPH_652_GLOBAL_ATAC-profile.yml
     config: ../local/configfiles/models_config/bpnet9_atacseq.gin
     jobfile: ../local/src/slurm_train.sh
     tasks: GLOBAL
@@ -34,8 +34,8 @@ BPH_652_GLOBAL_ATAC-UniBindPWM:
     bw: 
         - BPH_652
 
-BPH_656_GLOBAL_ATAC-UniBindPWM:
-    dataspec: ../local/configfiles/models_dataspec/BPH_656_GLOBAL_ATAC-UniBindPWM.yml
+BPH_656_GLOBAL_ATAC-profile:
+    dataspec: ../local/configfiles/models_dataspec/BPH_656_GLOBAL_ATAC-profile.yml
     config: ../local/configfiles/models_config/bpnet9_atacseq.gin
     jobfile: ../local/src/slurm_train.sh
     tasks: GLOBAL
@@ -43,8 +43,8 @@ BPH_656_GLOBAL_ATAC-UniBindPWM:
     bw: 
         - BPH_656
 
-BPH_659_GLOBAL_ATAC-UniBindPWM:
-    dataspec: ../local/configfiles/models_dataspec/BPH_659_GLOBAL_ATAC-UniBindPWM.yml
+BPH_659_GLOBAL_ATAC-profile:
+    dataspec: ../local/configfiles/models_dataspec/BPH_659_GLOBAL_ATAC-profile.yml
     config: ../local/configfiles/models_config/bpnet9_atacseq.gin
     jobfile: ../local/src/slurm_train.sh
     tasks: GLOBAL
@@ -52,8 +52,8 @@ BPH_659_GLOBAL_ATAC-UniBindPWM:
     bw: 
         - BPH_659
 
-BPH_671_GLOBAL_ATAC-UniBindPWM:
-    dataspec: ../local/configfiles/models_dataspec/BPH_671_GLOBAL_ATAC-UniBindPWM.yml
+BPH_671_GLOBAL_ATAC-profile:
+    dataspec: ../local/configfiles/models_dataspec/BPH_671_GLOBAL_ATAC-profile.yml
     config: ../local/configfiles/models_config/bpnet9_atacseq.gin
     jobfile: ../local/src/slurm_train.sh
     tasks: GLOBAL
@@ -61,8 +61,8 @@ BPH_671_GLOBAL_ATAC-UniBindPWM:
     bw: 
         - BPH_671
 
-BPH_677_GLOBAL_ATAC-UniBindPWM:
-    dataspec: ../local/configfiles/models_dataspec/BPH_677_GLOBAL_ATAC-UniBindPWM.yml
+BPH_677_GLOBAL_ATAC-profile:
+    dataspec: ../local/configfiles/models_dataspec/BPH_677_GLOBAL_ATAC-profile.yml
     config: ../local/configfiles/models_config/bpnet9_atacseq.gin
     jobfile: ../local/src/slurm_train.sh
     tasks: GLOBAL
@@ -70,17 +70,8 @@ BPH_677_GLOBAL_ATAC-UniBindPWM:
     bw: 
         - BPH_677
 
-BPH_689_GLOBAL_ATAC-UniBindPWM:
-    dataspec: ../local/configfiles/models_dataspec/BPH_689_GLOBAL_ATAC-UniBindPWM.yml
-    config: ../local/configfiles/models_config/bpnet9_atacseq.gin
-    jobfile: ../local/src/slurm_train.sh
-    tasks: GLOBAL
-    summits: bed/tampere_pc_atac/BPH_689_summits_samp_specific.bed
-    bw: 
-        - BPH_689
-
-BPH_688_GLOBAL_ATAC-UniBindPWM:
-    dataspec: ../local/configfiles/models_dataspec/BPH_688_GLOBAL_ATAC-UniBindPWM.yml
+BPH_688_GLOBAL_ATAC-profile:
+    dataspec: ../local/configfiles/models_dataspec/BPH_688_GLOBAL_ATAC-profile.yml
     config: ../local/configfiles/models_config/bpnet9_atacseq.gin
     jobfile: ../local/src/slurm_train.sh
     tasks: GLOBAL
@@ -88,143 +79,26 @@ BPH_688_GLOBAL_ATAC-UniBindPWM:
     bw: 
         - BPH_688
 
-PC_12517_GLOBAL_ATAC-UniBindPWM:
-    dataspec: ../local/configfiles/models_dataspec/PC_12517_GLOBAL_ATAC-UniBindPWM.yml
+BPH_689_GLOBAL_ATAC-profile:
+    dataspec: ../local/configfiles/models_dataspec/BPH_689_GLOBAL_ATAC-profile.yml
     config: ../local/configfiles/models_config/bpnet9_atacseq.gin
     jobfile: ../local/src/slurm_train.sh
     tasks: GLOBAL
-    summits: bed/tampere_pc_atac/PC_12517_summits_samp_specific.bed
+    summits: bed/tampere_pc_atac/BPH_689_summits_samp_specific.bed
     bw: 
-        - PC_12517
+        - BPH_689
 
-PC_15420_GLOBAL_ATAC-UniBindPWM:
-    dataspec: ../local/configfiles/models_dataspec/PC_15420_GLOBAL_ATAC-UniBindPWM.yml
+BPH_701_GLOBAL_ATAC-profile:
+    dataspec: ../local/configfiles/models_dataspec/BPH_701_GLOBAL_ATAC-profile.yml
     config: ../local/configfiles/models_config/bpnet9_atacseq.gin
     jobfile: ../local/src/slurm_train.sh
     tasks: GLOBAL
-    summits: bed/tampere_pc_atac/PC_15420_summits_samp_specific.bed
+    summits: bed/tampere_pc_atac/BPH_701_summits_samp_specific.bed
     bw: 
-        - PC_15420
+        - BPH_701
 
-PC_15760_GLOBAL_ATAC-UniBindPWM:
-    dataspec: ../local/configfiles/models_dataspec/PC_15760_GLOBAL_ATAC-UniBindPWM.yml
-    config: ../local/configfiles/models_config/bpnet9_atacseq.gin
-    jobfile: ../local/src/slurm_train.sh
-    tasks: GLOBAL
-    summits: bed/tampere_pc_atac/PC_15760_summits_samp_specific.bed
-    bw: 
-        - PC_15760
-
-PC_6488_GLOBAL_ATAC-UniBindPWM:
-    dataspec: ../local/configfiles/models_dataspec/PC_6488_GLOBAL_ATAC-UniBindPWM.yml
-    config: ../local/configfiles/models_config/bpnet9_atacseq.gin
-    jobfile: ../local/src/slurm_train.sh
-    tasks: GLOBAL
-    summits: bed/tampere_pc_atac/PC_6488_summits_samp_specific.bed
-    bw: 
-        - PC_6488
-
-PC_7875_GLOBAL_ATAC-UniBindPWM:
-    dataspec: ../local/configfiles/models_dataspec/PC_7875_GLOBAL_ATAC-UniBindPWM.yml
-    config: ../local/configfiles/models_config/bpnet9_atacseq.gin
-    jobfile: ../local/src/slurm_train.sh
-    tasks: GLOBAL
-    summits: bed/tampere_pc_atac/PC_7875_summits_samp_specific.bed
-    bw: 
-        - PC_7875
-
-PC_8131_GLOBAL_ATAC-UniBindPWM:
-    dataspec: ../local/configfiles/models_dataspec/PC_8131_GLOBAL_ATAC-UniBindPWM.yml
-    config: ../local/configfiles/models_config/bpnet9_atacseq.gin
-    jobfile: ../local/src/slurm_train.sh
-    tasks: GLOBAL
-    summits: bed/tampere_pc_atac/PC_8131_summits_samp_specific.bed
-    bw: 
-        - PC_8131
-
-PC_14670_GLOBAL_ATAC-UniBindPWM:
-    dataspec: ../local/configfiles/models_dataspec/PC_14670_GLOBAL_ATAC-UniBindPWM.yml
-    config: ../local/configfiles/models_config/bpnet9_atacseq.gin
-    jobfile: ../local/src/slurm_train.sh
-    tasks: GLOBAL
-    summits: bed/tampere_pc_atac/PC_14670_summits_samp_specific.bed
-    bw: 
-        - PC_14670
-
-PC_17447_GLOBAL_ATAC-UniBindPWM:
-    dataspec: ../local/configfiles/models_dataspec/PC_17447_GLOBAL_ATAC-UniBindPWM.yml
-    config: ../local/configfiles/models_config/bpnet9_atacseq.gin
-    jobfile: ../local/src/slurm_train.sh
-    tasks: GLOBAL
-    summits: bed/tampere_pc_atac/PC_17447_summits_samp_specific.bed
-    bw: 
-        - PC_17447
-
-PC_9324_GLOBAL_ATAC-UniBindPWM:
-    dataspec: ../local/configfiles/models_dataspec/PC_9324_GLOBAL_ATAC-UniBindPWM.yml
-    config: ../local/configfiles/models_config/bpnet9_atacseq.gin
-    jobfile: ../local/src/slurm_train.sh
-    tasks: GLOBAL
-    summits: bed/tampere_pc_atac/PC_9324_summits_samp_specific.bed
-    bw: 
-        - PC_9324
-
-PC_470_GLOBAL_ATAC-UniBindPWM:
-    dataspec: ../local/configfiles/models_dataspec/PC_470_GLOBAL_ATAC-UniBindPWM.yml
-    config: ../local/configfiles/models_config/bpnet9_atacseq.gin
-    jobfile: ../local/src/slurm_train.sh
-    tasks: GLOBAL
-    summits: bed/tampere_pc_atac/PC_470_summits_samp_specific.bed
-    bw: 
-        - PC_470
-
-PC_4980_GLOBAL_ATAC-UniBindPWM:
-    dataspec: ../local/configfiles/models_dataspec/PC_4980_GLOBAL_ATAC-UniBindPWM.yml
-    config: ../local/configfiles/models_config/bpnet9_atacseq.gin
-    jobfile: ../local/src/slurm_train.sh
-    tasks: GLOBAL
-    summits: bed/tampere_pc_atac/PC_4980_summits_samp_specific.bed
-    bw: 
-        - PC_4980
-
-PC_6174_GLOBAL_ATAC-UniBindPWM:
-    dataspec: ../local/configfiles/models_dataspec/PC_6174_GLOBAL_ATAC-UniBindPWM.yml
-    config: ../local/configfiles/models_config/bpnet9_atacseq.gin
-    jobfile: ../local/src/slurm_train.sh
-    tasks: GLOBAL
-    summits: bed/tampere_pc_atac/PC_6174_summits_samp_specific.bed
-    bw: 
-        - PC_6174
-
-PC_18307_GLOBAL_ATAC-UniBindPWM:
-    dataspec: ../local/configfiles/models_dataspec/PC_18307_GLOBAL_ATAC-UniBindPWM.yml
-    config: ../local/configfiles/models_config/bpnet9_atacseq.gin
-    jobfile: ../local/src/slurm_train.sh
-    tasks: GLOBAL
-    summits: bed/tampere_pc_atac/PC_18307_summits_samp_specific.bed
-    bw: 
-        - PC_18307
-
-PC_19403_GLOBAL_ATAC-UniBindPWM:
-    dataspec: ../local/configfiles/models_dataspec/PC_19403_GLOBAL_ATAC-UniBindPWM.yml
-    config: ../local/configfiles/models_config/bpnet9_atacseq.gin
-    jobfile: ../local/src/slurm_train.sh
-    tasks: GLOBAL
-    summits: bed/tampere_pc_atac/PC_19403_summits_samp_specific.bed
-    bw: 
-        - PC_19403
-
-PC_8438_GLOBAL_ATAC-UniBindPWM:
-    dataspec: ../local/configfiles/models_dataspec/PC_8438_GLOBAL_ATAC-UniBindPWM.yml
-    config: ../local/configfiles/models_config/bpnet9_atacseq.gin
-    jobfile: ../local/src/slurm_train.sh
-    tasks: GLOBAL
-    summits: bed/tampere_pc_atac/PC_8438_summits_samp_specific.bed
-    bw: 
-        - PC_8438
-
-CRPC_261_GLOBAL_ATAC-UniBindPWM:
-    dataspec: ../local/configfiles/models_dataspec/CRPC_261_GLOBAL_ATAC-UniBindPWM.yml
+CRPC_261_GLOBAL_ATAC-profile:
+    dataspec: ../local/configfiles/models_dataspec/CRPC_261_GLOBAL_ATAC-profile.yml
     config: ../local/configfiles/models_config/bpnet9_atacseq.gin
     jobfile: ../local/src/slurm_train.sh
     tasks: GLOBAL
@@ -232,8 +106,8 @@ CRPC_261_GLOBAL_ATAC-UniBindPWM:
     bw: 
         - CRPC_261
 
-CRPC_278_GLOBAL_ATAC-UniBindPWM:
-    dataspec: ../local/configfiles/models_dataspec/CRPC_278_GLOBAL_ATAC-UniBindPWM.yml
+CRPC_278_GLOBAL_ATAC-profile:
+    dataspec: ../local/configfiles/models_dataspec/CRPC_278_GLOBAL_ATAC-profile.yml
     config: ../local/configfiles/models_config/bpnet9_atacseq.gin
     jobfile: ../local/src/slurm_train.sh
     tasks: GLOBAL
@@ -241,8 +115,8 @@ CRPC_278_GLOBAL_ATAC-UniBindPWM:
     bw: 
         - CRPC_278
 
-CRPC_305_GLOBAL_ATAC-UniBindPWM:
-    dataspec: ../local/configfiles/models_dataspec/CRPC_305_GLOBAL_ATAC-UniBindPWM.yml
+CRPC_305_GLOBAL_ATAC-profile:
+    dataspec: ../local/configfiles/models_dataspec/CRPC_305_GLOBAL_ATAC-profile.yml
     config: ../local/configfiles/models_config/bpnet9_atacseq.gin
     jobfile: ../local/src/slurm_train.sh
     tasks: GLOBAL
@@ -250,8 +124,8 @@ CRPC_305_GLOBAL_ATAC-UniBindPWM:
     bw: 
         - CRPC_305
 
-CRPC_348_GLOBAL_ATAC-UniBindPWM:
-    dataspec: ../local/configfiles/models_dataspec/CRPC_348_GLOBAL_ATAC-UniBindPWM.yml
+CRPC_348_GLOBAL_ATAC-profile:
+    dataspec: ../local/configfiles/models_dataspec/CRPC_348_GLOBAL_ATAC-profile.yml
     config: ../local/configfiles/models_config/bpnet9_atacseq.gin
     jobfile: ../local/src/slurm_train.sh
     tasks: GLOBAL
@@ -259,8 +133,8 @@ CRPC_348_GLOBAL_ATAC-UniBindPWM:
     bw: 
         - CRPC_348
 
-CRPC_435_GLOBAL_ATAC-UniBindPWM:
-    dataspec: ../local/configfiles/models_dataspec/CRPC_435_GLOBAL_ATAC-UniBindPWM.yml
+CRPC_435_GLOBAL_ATAC-profile:
+    dataspec: ../local/configfiles/models_dataspec/CRPC_435_GLOBAL_ATAC-profile.yml
     config: ../local/configfiles/models_config/bpnet9_atacseq.gin
     jobfile: ../local/src/slurm_train.sh
     tasks: GLOBAL
@@ -268,8 +142,8 @@ CRPC_435_GLOBAL_ATAC-UniBindPWM:
     bw: 
         - CRPC_435
 
-CRPC_489_GLOBAL_ATAC-UniBindPWM:
-    dataspec: ../local/configfiles/models_dataspec/CRPC_489_GLOBAL_ATAC-UniBindPWM.yml
+CRPC_489_GLOBAL_ATAC-profile:
+    dataspec: ../local/configfiles/models_dataspec/CRPC_489_GLOBAL_ATAC-profile.yml
     config: ../local/configfiles/models_config/bpnet9_atacseq.gin
     jobfile: ../local/src/slurm_train.sh
     tasks: GLOBAL
@@ -277,17 +151,8 @@ CRPC_489_GLOBAL_ATAC-UniBindPWM:
     bw: 
         - CRPC_489
 
-CRPC_543_GLOBAL_ATAC-UniBindPWM:
-    dataspec: ../local/configfiles/models_dataspec/CRPC_543_GLOBAL_ATAC-UniBindPWM.yml
-    config: ../local/configfiles/models_config/bpnet9_atacseq.gin
-    jobfile: ../local/src/slurm_train.sh
-    tasks: GLOBAL
-    summits: bed/tampere_pc_atac/CRPC_543_summits_samp_specific.bed
-    bw: 
-        - CRPC_543
-
-CRPC_539_GLOBAL_ATAC-UniBindPWM:
-    dataspec: ../local/configfiles/models_dataspec/CRPC_539_GLOBAL_ATAC-UniBindPWM.yml
+CRPC_539_GLOBAL_ATAC-profile:
+    dataspec: ../local/configfiles/models_dataspec/CRPC_539_GLOBAL_ATAC-profile.yml
     config: ../local/configfiles/models_config/bpnet9_atacseq.gin
     jobfile: ../local/src/slurm_train.sh
     tasks: GLOBAL
@@ -295,8 +160,17 @@ CRPC_539_GLOBAL_ATAC-UniBindPWM:
     bw: 
         - CRPC_539
 
-CRPC_542_GLOBAL_ATAC-UniBindPWM:
-    dataspec: ../local/configfiles/models_dataspec/CRPC_542_GLOBAL_ATAC-UniBindPWM.yml
+CRPC_541_GLOBAL_ATAC-profile:
+    dataspec: ../local/configfiles/models_dataspec/CRPC_541_GLOBAL_ATAC-profile.yml
+    config: ../local/configfiles/models_config/bpnet9_atacseq.gin
+    jobfile: ../local/src/slurm_train.sh
+    tasks: GLOBAL
+    summits: bed/tampere_pc_atac/CRPC_541_summits_samp_specific.bed
+    bw: 
+        - CRPC_541
+
+CRPC_542_GLOBAL_ATAC-profile:
+    dataspec: ../local/configfiles/models_dataspec/CRPC_542_GLOBAL_ATAC-profile.yml
     config: ../local/configfiles/models_config/bpnet9_atacseq.gin
     jobfile: ../local/src/slurm_train.sh
     tasks: GLOBAL
@@ -304,12 +178,165 @@ CRPC_542_GLOBAL_ATAC-UniBindPWM:
     bw: 
         - CRPC_542
 
-CRPC_697_GLOBAL_ATAC-UniBindPWM:
-    dataspec: ../local/configfiles/models_dataspec/CRPC_697_GLOBAL_ATAC-UniBindPWM.yml
+CRPC_543_GLOBAL_ATAC-profile:
+    dataspec: ../local/configfiles/models_dataspec/CRPC_543_GLOBAL_ATAC-profile.yml
+    config: ../local/configfiles/models_config/bpnet9_atacseq.gin
+    jobfile: ../local/src/slurm_train.sh
+    tasks: GLOBAL
+    summits: bed/tampere_pc_atac/CRPC_543_summits_samp_specific.bed
+    bw: 
+        - CRPC_543
+
+CRPC_697_GLOBAL_ATAC-profile:
+    dataspec: ../local/configfiles/models_dataspec/CRPC_697_GLOBAL_ATAC-profile.yml
     config: ../local/configfiles/models_config/bpnet9_atacseq.gin
     jobfile: ../local/src/slurm_train.sh
     tasks: GLOBAL
     summits: bed/tampere_pc_atac/CRPC_697_summits_samp_specific.bed
     bw: 
         - CRPC_697
+
+PC_12517_GLOBAL_ATAC-profile:
+    dataspec: ../local/configfiles/models_dataspec/PC_12517_GLOBAL_ATAC-profile.yml
+    config: ../local/configfiles/models_config/bpnet9_atacseq.gin
+    jobfile: ../local/src/slurm_train.sh
+    tasks: GLOBAL
+    summits: bed/tampere_pc_atac/PC_12517_summits_samp_specific.bed
+    bw: 
+        - PC_12517
+
+PC_14670_GLOBAL_ATAC-profile:
+    dataspec: ../local/configfiles/models_dataspec/PC_14670_GLOBAL_ATAC-profile.yml
+    config: ../local/configfiles/models_config/bpnet9_atacseq.gin
+    jobfile: ../local/src/slurm_train.sh
+    tasks: GLOBAL
+    summits: bed/tampere_pc_atac/PC_14670_summits_samp_specific.bed
+    bw: 
+        - PC_14670
+
+PC_15420_GLOBAL_ATAC-profile:
+    dataspec: ../local/configfiles/models_dataspec/PC_15420_GLOBAL_ATAC-profile.yml
+    config: ../local/configfiles/models_config/bpnet9_atacseq.gin
+    jobfile: ../local/src/slurm_train.sh
+    tasks: GLOBAL
+    summits: bed/tampere_pc_atac/PC_15420_summits_samp_specific.bed
+    bw: 
+        - PC_15420
+
+PC_15760_GLOBAL_ATAC-profile:
+    dataspec: ../local/configfiles/models_dataspec/PC_15760_GLOBAL_ATAC-profile.yml
+    config: ../local/configfiles/models_config/bpnet9_atacseq.gin
+    jobfile: ../local/src/slurm_train.sh
+    tasks: GLOBAL
+    summits: bed/tampere_pc_atac/PC_15760_summits_samp_specific.bed
+    bw: 
+        - PC_15760
+
+PC_17163_GLOBAL_ATAC-profile:
+    dataspec: ../local/configfiles/models_dataspec/PC_17163_GLOBAL_ATAC-profile.yml
+    config: ../local/configfiles/models_config/bpnet9_atacseq.gin
+    jobfile: ../local/src/slurm_train.sh
+    tasks: GLOBAL
+    summits: bed/tampere_pc_atac/PC_17163_summits_samp_specific.bed
+    bw: 
+        - PC_17163
+
+PC_17447_GLOBAL_ATAC-profile:
+    dataspec: ../local/configfiles/models_dataspec/PC_17447_GLOBAL_ATAC-profile.yml
+    config: ../local/configfiles/models_config/bpnet9_atacseq.gin
+    jobfile: ../local/src/slurm_train.sh
+    tasks: GLOBAL
+    summits: bed/tampere_pc_atac/PC_17447_summits_samp_specific.bed
+    bw: 
+        - PC_17447
+
+PC_18307_GLOBAL_ATAC-profile:
+    dataspec: ../local/configfiles/models_dataspec/PC_18307_GLOBAL_ATAC-profile.yml
+    config: ../local/configfiles/models_config/bpnet9_atacseq.gin
+    jobfile: ../local/src/slurm_train.sh
+    tasks: GLOBAL
+    summits: bed/tampere_pc_atac/PC_18307_summits_samp_specific.bed
+    bw: 
+        - PC_18307
+
+PC_19403_GLOBAL_ATAC-profile:
+    dataspec: ../local/configfiles/models_dataspec/PC_19403_GLOBAL_ATAC-profile.yml
+    config: ../local/configfiles/models_config/bpnet9_atacseq.gin
+    jobfile: ../local/src/slurm_train.sh
+    tasks: GLOBAL
+    summits: bed/tampere_pc_atac/PC_19403_summits_samp_specific.bed
+    bw: 
+        - PC_19403
+
+PC_470_GLOBAL_ATAC-profile:
+    dataspec: ../local/configfiles/models_dataspec/PC_470_GLOBAL_ATAC-profile.yml
+    config: ../local/configfiles/models_config/bpnet9_atacseq.gin
+    jobfile: ../local/src/slurm_train.sh
+    tasks: GLOBAL
+    summits: bed/tampere_pc_atac/PC_470_summits_samp_specific.bed
+    bw: 
+        - PC_470
+
+PC_4980_GLOBAL_ATAC-profile:
+    dataspec: ../local/configfiles/models_dataspec/PC_4980_GLOBAL_ATAC-profile.yml
+    config: ../local/configfiles/models_config/bpnet9_atacseq.gin
+    jobfile: ../local/src/slurm_train.sh
+    tasks: GLOBAL
+    summits: bed/tampere_pc_atac/PC_4980_summits_samp_specific.bed
+    bw: 
+        - PC_4980
+
+PC_6174_GLOBAL_ATAC-profile:
+    dataspec: ../local/configfiles/models_dataspec/PC_6174_GLOBAL_ATAC-profile.yml
+    config: ../local/configfiles/models_config/bpnet9_atacseq.gin
+    jobfile: ../local/src/slurm_train.sh
+    tasks: GLOBAL
+    summits: bed/tampere_pc_atac/PC_6174_summits_samp_specific.bed
+    bw: 
+        - PC_6174
+
+PC_6488_GLOBAL_ATAC-profile:
+    dataspec: ../local/configfiles/models_dataspec/PC_6488_GLOBAL_ATAC-profile.yml
+    config: ../local/configfiles/models_config/bpnet9_atacseq.gin
+    jobfile: ../local/src/slurm_train.sh
+    tasks: GLOBAL
+    summits: bed/tampere_pc_atac/PC_6488_summits_samp_specific.bed
+    bw: 
+        - PC_6488
+
+PC_7875_GLOBAL_ATAC-profile:
+    dataspec: ../local/configfiles/models_dataspec/PC_7875_GLOBAL_ATAC-profile.yml
+    config: ../local/configfiles/models_config/bpnet9_atacseq.gin
+    jobfile: ../local/src/slurm_train.sh
+    tasks: GLOBAL
+    summits: bed/tampere_pc_atac/PC_7875_summits_samp_specific.bed
+    bw: 
+        - PC_7875
+
+PC_8131_GLOBAL_ATAC-profile:
+    dataspec: ../local/configfiles/models_dataspec/PC_8131_GLOBAL_ATAC-profile.yml
+    config: ../local/configfiles/models_config/bpnet9_atacseq.gin
+    jobfile: ../local/src/slurm_train.sh
+    tasks: GLOBAL
+    summits: bed/tampere_pc_atac/PC_8131_summits_samp_specific.bed
+    bw: 
+        - PC_8131
+
+PC_8438_GLOBAL_ATAC-profile:
+    dataspec: ../local/configfiles/models_dataspec/PC_8438_GLOBAL_ATAC-profile.yml
+    config: ../local/configfiles/models_config/bpnet9_atacseq.gin
+    jobfile: ../local/src/slurm_train.sh
+    tasks: GLOBAL
+    summits: bed/tampere_pc_atac/PC_8438_summits_samp_specific.bed
+    bw: 
+        - PC_8438
+
+PC_9324_GLOBAL_ATAC-profile:
+    dataspec: ../local/configfiles/models_dataspec/PC_9324_GLOBAL_ATAC-profile.yml
+    config: ../local/configfiles/models_config/bpnet9_atacseq.gin
+    jobfile: ../local/src/slurm_train.sh
+    tasks: GLOBAL
+    summits: bed/tampere_pc_atac/PC_9324_summits_samp_specific.bed
+    bw: 
+        - PC_9324
 

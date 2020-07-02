@@ -1,0 +1,33 @@
+/bmt-data/genomics/projects/tampere_pc_bpnet
+
+    ################
+    ### Contents ###
+
+Here are the workspaces used by Alessandro Lussana for the development of
+bpnet-related projects.
+
+Current project involves the adaptation of bpnet to be used with the
+integration of ATAC-seq data and TF binding sites data.
+The adapted framework is being used to analyze the chromatin accessibility of
+the samples in the Tampere Prostate Cancer Dataset.
+
+Relevant data and code is in bpnet_model_training/
+
+    ##############
+    ### Backup ###
+
+Parts of the code are pushed on github:
+https://github.com/alussana/tampere_pc_bpnet
+
+Directories currently backed up are:
+* bpnet_model_training/local/
+
+    #############
+    ### Notes ###
+
+Due to persistent Lustre issues, on 2020-06-22 this directory was copied from
+/lustre/bmt-data/genomics/projects/lussana
+
+The workspaces have evolved since then.
+At /lustre/bmt-data/genomics/projects/lussana there still are the old
+workspaces.

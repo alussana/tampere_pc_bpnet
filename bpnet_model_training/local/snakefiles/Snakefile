@@ -1,6 +1,7 @@
 configfile: "../local/configfiles/config.yml"
 configfile: "../local/configfiles/config_tampere_pc.yml"
 configfile: "../local/configfiles/config_tampere_pc_samp_peaks.yml"
+configfile: "../local/configfiles/config_tampere_pc_global_peaks.yml"
 
 #############################
 ### Prepare Training Data ###
@@ -269,7 +270,8 @@ rule intersect_UniBind_unified_tfbs:
         chr_sizes=lambda wildcards: config["chr_sizes"]
     shell:
         "bedtools slop -i {input.summits} -g {params.chr_sizes} -b 50 > {output}.tmp; "
-        "bedtools intersect -wa -a {output}.tmp -b {input.tfbs} | uniq > {output}; "
+        "bedtools intersect -wa -a {output}.tmp -b {input.tfbs} | uniq "
+        "| awk '{{print $1\"\t\"$2+50\"\t\"$3-50}}' > {output}; "
         "rm {output}.tmp"
 
 ## Select input regions intersecting ATAC-Seq sample-specific summits,
@@ -285,7 +287,8 @@ rule intersect_UniBind_sample_specific_tfbs:
         chr_sizes=lambda wildcards: config["chr_sizes"]
     shell:
         "bedtools slop -i {input.summits} -g {params.chr_sizes} -b 50 > {output}.tmp; "
-        "bedtools intersect -wa -a {output}.tmp -b {input.tfbs} | uniq > {output}; "
+        "bedtools intersect -wa -a {output}.tmp -b {input.tfbs} | uniq "
+        "| awk '{{print $1\"\t\"$2+50\"\t\"$3-50}}' > {output}; "
         "rm {output}.tmp"
 
 ## Merge two peak summits bed files with canonical CHRs only
@@ -391,6 +394,7 @@ def bpnet_train_bias_bw_requirement(wildcards):
 ## e.g. sankemake models/tampere_pc_atac/BPH_701_AR_ATAC-UniBindPWM_1000lambda_0.004lr_128batch_1000width_25tconv/seq_model.pkl
 ## e.g. sankemake models/tampere_pc_atac/BPH_701_AR_toy-ATAC-UniBindPWM_10lambda_0.004lr_128batch_200width_25tconv/seq_model.pkl
 ## e.g. sankemake models/tampere_pc_atac/BPH_701_AR_ATAC-UniBindPWM-samp-peaks_1000lambda_0.004lr_128batch_1000width_25tconv/seq_model.pkl
+## e.g. sankemake models/tampere_pc_atac/BPH_701_GLOBAL_ATAC-profile_1000lambda_0.004lr_128batch_1000width_25tconv/seq_model.pkl
 rule bpnet_train_params_search:
     input:
         summits=lambda wildcards: config[wildcards.cell_lines + "_" + wildcards.tasks + "_" + wildcards.freetext]["summits"],
@@ -592,7 +596,7 @@ rule run_tomtom:
         "python ../local/src/run_tomtom.py {params.model_dir} $TASKS; "
         "touch {output}"
 
-## process the tomtom output joining together the different
+## Process the tomtom output joining together the different
 ## metaclusters results of the same task together
 ## e.g. snakemake models/tampere_pc_atac/BPH_701_AR_ATAC-UniBindPWM_1000lambda_0.004lr_128batch_1000width_25tconv/modisco/AR/tomtom_results.txt
 rule join_tomtom_results:
