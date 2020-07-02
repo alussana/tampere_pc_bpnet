@@ -1,4 +1,4 @@
-fasta_file: /lustre/bmt-data/genomics/reference/hg38.fa
+fasta_file: /bmt-data/genomics/reference/hg38.fa
 task_specs: 
   GATA2:
     tracks:
