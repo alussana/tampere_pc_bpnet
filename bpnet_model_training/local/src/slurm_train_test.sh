@@ -10,7 +10,7 @@
 #
 # time format hours:minutes:seconds or days-hours
 #SBATCH --time=3:59:59
-#SBATCH --mem=20000
+#SBATCH --mem=25000
 #SBATCH --partition=test
 
 EXP_DIR=XXX_DYNAMIC_EXP_DIR_XXX
@@ -19,8 +19,7 @@ CONFIGGIN=XXX_DYNAMIC_CONFIGGIN_XXX
 TASKS=XXX_DYNAMIC_TASKS_XXX
 SAMPLE=XXX_DYNAMIC_SAMPLE_XXX
 
-source /lustre/bmt-data/genomics/projects/lussana/miniconda3/bin/activate bpnet_training
-
+source ../../miniconda3/bin/activate ../../miniconda3/envs/bpnet_training
 python ../local/src/train_test.py \
     $EXP_DIR \
     $DATASPEC \

@@ -28,7 +28,7 @@ tasks = sys.argv[6]
 ### WandB ###
 
 import wandb
-wandb.init(project='bpnet_on_chip_seq', entity='alussana', dir=str(exp_dir))
+wandb.init(project='bpnet_tampere_pc', entity='alussana', dir=str(exp_dir))
 
 ##############
 ### Run ID ###
@@ -44,8 +44,8 @@ command = f"bpnet train {dataspec} {exp_dir}\
                 --premade=bpnet9 \
                 --config=\"{configgin}\" \
                 --run-id '{run_id}'\
-                --num-workers 8 \
-                --wandb=alussana/bpnet_on_chip_seq \
+                --num-workers 10 \
+                --wandb=alussana/bpnet_tampere_pc \
                 --in-memory \
                 --vmtouch"
 

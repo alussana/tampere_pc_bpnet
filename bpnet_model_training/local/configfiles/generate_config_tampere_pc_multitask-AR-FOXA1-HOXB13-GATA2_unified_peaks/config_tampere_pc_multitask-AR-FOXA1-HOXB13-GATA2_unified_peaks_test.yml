@@ -1,0 +1,25 @@
+BPH_701_MULTITASK-AR-FOXA1-HOXB13-GATA2_ATAC-UniBindPWM:
+    dataspec: ../local/configfiles/models_dataspec/BPH_701_MULTITASK-AR-FOXA1-HOXB13-GATA2_ATAC-UniBindPWM.yml
+    config: ../local/configfiles/models_config/bpnet9_atacseq.gin
+    jobfile: ../local/src/slurm_train.sh
+    tasks: AR-FOXA1-HOXB13-GATA2
+    summits: 
+        - bed/tampere_pc_atac/BPH_701_UniBindPWM_AR_peaks.bed
+        - bed/tampere_pc_atac/BPH_701_UniBindPWM_FOXA1_peaks.bed
+        - bed/tampere_pc_atac/BPH_701_UniBindPWM_HOXB13_peaks.bed
+        - bed/tampere_pc_atac/BPH_701_UniBindPWM_GATA2_peaks.bed
+    bw: 
+        - BPH_701
+
+BPH_701_MULTITASK-AR-FOXA1-HOXB13-GATA2_toy-ATAC-UniBindPWM:
+    dataspec: ../local/configfiles/models_dataspec/BPH_701_MULTITASK-AR-FOXA1-HOXB13-GATA2_ATAC-UniBindPWM.yml
+    config: ../local/configfiles/models_config/toy_atacseq.gin
+    jobfile: ../local/src/slurm_train_test.sh
+    tasks: AR-FOXA1-HOXB13-GATA2
+    summits: 
+        - bed/tampere_pc_atac/BPH_701_UniBindPWM_AR_peaks.bed
+        - bed/tampere_pc_atac/BPH_701_UniBindPWM_FOXA1_peaks.bed
+        - bed/tampere_pc_atac/BPH_701_UniBindPWM_HOXB13_peaks.bed
+        - bed/tampere_pc_atac/BPH_701_UniBindPWM_GATA2_peaks.bed
+    bw: 
+        - BPH_701

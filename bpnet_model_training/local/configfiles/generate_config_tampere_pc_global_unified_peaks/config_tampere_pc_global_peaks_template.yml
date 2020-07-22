@@ -1,0 +1,9 @@
+XXX_SAMPLE_XXX_GLOBAL_ATAC-profile-unified:
+    dataspec: ../local/configfiles/models_dataspec/XXX_SAMPLE_XXX_GLOBAL_ATAC-profile-unified.yml
+    config: ../local/configfiles/models_config/bpnet9_atacseq.gin
+    jobfile: ../local/src/slurm_train.sh
+    tasks: GLOBAL
+    summits: bed/tampere_pc_atac/XXX_SAMPLE_XXX_summits.bed
+    bw: 
+        - XXX_SAMPLE_XXX
+

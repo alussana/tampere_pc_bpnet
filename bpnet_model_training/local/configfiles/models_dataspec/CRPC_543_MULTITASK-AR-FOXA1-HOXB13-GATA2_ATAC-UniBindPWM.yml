@@ -1,0 +1,22 @@
+fasta_file: /bmt-data/genomics/reference/hg38.fa
+task_specs: # specifies multiple tasks (AR, FOXA1, HOXB13, and GATA2)
+    AR:
+        tracks:
+            - bam/tampere_pc_atac/CRPC_543_pos.bw
+            - bam/tampere_pc_atac/CRPC_543_neg.bw
+        peaks: bed/tampere_pc_atac/CRPC_543_UniBindPWM_AR_peaks.bed
+    FOXA1:
+        tracks:
+            - bam/tampere_pc_atac/CRPC_543_pos.bw
+            - bam/tampere_pc_atac/CRPC_543_neg.bw
+        peaks: bed/tampere_pc_atac/CRPC_543_UniBindPWM_FOXA1_peaks.bed
+    HOXB13:
+        tracks:
+            - bam/tampere_pc_atac/CRPC_543_pos.bw
+            - bam/tampere_pc_atac/CRPC_543_neg.bw
+        peaks: bed/tampere_pc_atac/CRPC_543_UniBindPWM_HOXB13_peaks.bed
+    GATA2:
+        tracks:
+            - bam/tampere_pc_atac/CRPC_543_pos.bw
+            - bam/tampere_pc_atac/CRPC_543_neg.bw
+        peaks: bed/tampere_pc_atac/CRPC_543_UniBindPWM_GATA2_peaks.bed

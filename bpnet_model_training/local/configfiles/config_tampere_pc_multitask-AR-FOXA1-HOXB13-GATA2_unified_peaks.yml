@@ -1,0 +1,494 @@
+BPH_337_MULTITASK-AR-FOXA1-HOXB13-GATA2_ATAC-UniBindPWM:
+    dataspec: ../local/configfiles/models_dataspec/BPH_337_MULTITASK-AR-FOXA1-HOXB13-GATA2_ATAC-UniBindPWM.yml
+    config: ../local/configfiles/models_config/bpnet9_atacseq.gin
+    jobfile: ../local/src/slurm_train.sh
+    tasks: AR-FOXA1-HOXB13-GATA2
+    summits: 
+        - bed/tampere_pc_atac/BPH_337_UniBindPWM_AR_peaks.bed
+        - bed/tampere_pc_atac/BPH_337_UniBindPWM_FOXA1_peaks.bed
+        - bed/tampere_pc_atac/BPH_337_UniBindPWM_HOXB13_peaks.bed
+        - bed/tampere_pc_atac/BPH_337_UniBindPWM_GATA2_peaks.bed
+    bw: 
+        - BPH_337
+
+BPH_456_MULTITASK-AR-FOXA1-HOXB13-GATA2_ATAC-UniBindPWM:
+    dataspec: ../local/configfiles/models_dataspec/BPH_456_MULTITASK-AR-FOXA1-HOXB13-GATA2_ATAC-UniBindPWM.yml
+    config: ../local/configfiles/models_config/bpnet9_atacseq.gin
+    jobfile: ../local/src/slurm_train.sh
+    tasks: AR-FOXA1-HOXB13-GATA2
+    summits: 
+        - bed/tampere_pc_atac/BPH_456_UniBindPWM_AR_peaks.bed
+        - bed/tampere_pc_atac/BPH_456_UniBindPWM_FOXA1_peaks.bed
+        - bed/tampere_pc_atac/BPH_456_UniBindPWM_HOXB13_peaks.bed
+        - bed/tampere_pc_atac/BPH_456_UniBindPWM_GATA2_peaks.bed
+    bw: 
+        - BPH_456
+
+BPH_651_MULTITASK-AR-FOXA1-HOXB13-GATA2_ATAC-UniBindPWM:
+    dataspec: ../local/configfiles/models_dataspec/BPH_651_MULTITASK-AR-FOXA1-HOXB13-GATA2_ATAC-UniBindPWM.yml
+    config: ../local/configfiles/models_config/bpnet9_atacseq.gin
+    jobfile: ../local/src/slurm_train.sh
+    tasks: AR-FOXA1-HOXB13-GATA2
+    summits: 
+        - bed/tampere_pc_atac/BPH_651_UniBindPWM_AR_peaks.bed
+        - bed/tampere_pc_atac/BPH_651_UniBindPWM_FOXA1_peaks.bed
+        - bed/tampere_pc_atac/BPH_651_UniBindPWM_HOXB13_peaks.bed
+        - bed/tampere_pc_atac/BPH_651_UniBindPWM_GATA2_peaks.bed
+    bw: 
+        - BPH_651
+
+BPH_652_MULTITASK-AR-FOXA1-HOXB13-GATA2_ATAC-UniBindPWM:
+    dataspec: ../local/configfiles/models_dataspec/BPH_652_MULTITASK-AR-FOXA1-HOXB13-GATA2_ATAC-UniBindPWM.yml
+    config: ../local/configfiles/models_config/bpnet9_atacseq.gin
+    jobfile: ../local/src/slurm_train.sh
+    tasks: AR-FOXA1-HOXB13-GATA2
+    summits: 
+        - bed/tampere_pc_atac/BPH_652_UniBindPWM_AR_peaks.bed
+        - bed/tampere_pc_atac/BPH_652_UniBindPWM_FOXA1_peaks.bed
+        - bed/tampere_pc_atac/BPH_652_UniBindPWM_HOXB13_peaks.bed
+        - bed/tampere_pc_atac/BPH_652_UniBindPWM_GATA2_peaks.bed
+    bw: 
+        - BPH_652
+
+BPH_656_MULTITASK-AR-FOXA1-HOXB13-GATA2_ATAC-UniBindPWM:
+    dataspec: ../local/configfiles/models_dataspec/BPH_656_MULTITASK-AR-FOXA1-HOXB13-GATA2_ATAC-UniBindPWM.yml
+    config: ../local/configfiles/models_config/bpnet9_atacseq.gin
+    jobfile: ../local/src/slurm_train.sh
+    tasks: AR-FOXA1-HOXB13-GATA2
+    summits: 
+        - bed/tampere_pc_atac/BPH_656_UniBindPWM_AR_peaks.bed
+        - bed/tampere_pc_atac/BPH_656_UniBindPWM_FOXA1_peaks.bed
+        - bed/tampere_pc_atac/BPH_656_UniBindPWM_HOXB13_peaks.bed
+        - bed/tampere_pc_atac/BPH_656_UniBindPWM_GATA2_peaks.bed
+    bw: 
+        - BPH_656
+
+BPH_659_MULTITASK-AR-FOXA1-HOXB13-GATA2_ATAC-UniBindPWM:
+    dataspec: ../local/configfiles/models_dataspec/BPH_659_MULTITASK-AR-FOXA1-HOXB13-GATA2_ATAC-UniBindPWM.yml
+    config: ../local/configfiles/models_config/bpnet9_atacseq.gin
+    jobfile: ../local/src/slurm_train.sh
+    tasks: AR-FOXA1-HOXB13-GATA2
+    summits: 
+        - bed/tampere_pc_atac/BPH_659_UniBindPWM_AR_peaks.bed
+        - bed/tampere_pc_atac/BPH_659_UniBindPWM_FOXA1_peaks.bed
+        - bed/tampere_pc_atac/BPH_659_UniBindPWM_HOXB13_peaks.bed
+        - bed/tampere_pc_atac/BPH_659_UniBindPWM_GATA2_peaks.bed
+    bw: 
+        - BPH_659
+
+BPH_671_MULTITASK-AR-FOXA1-HOXB13-GATA2_ATAC-UniBindPWM:
+    dataspec: ../local/configfiles/models_dataspec/BPH_671_MULTITASK-AR-FOXA1-HOXB13-GATA2_ATAC-UniBindPWM.yml
+    config: ../local/configfiles/models_config/bpnet9_atacseq.gin
+    jobfile: ../local/src/slurm_train.sh
+    tasks: AR-FOXA1-HOXB13-GATA2
+    summits: 
+        - bed/tampere_pc_atac/BPH_671_UniBindPWM_AR_peaks.bed
+        - bed/tampere_pc_atac/BPH_671_UniBindPWM_FOXA1_peaks.bed
+        - bed/tampere_pc_atac/BPH_671_UniBindPWM_HOXB13_peaks.bed
+        - bed/tampere_pc_atac/BPH_671_UniBindPWM_GATA2_peaks.bed
+    bw: 
+        - BPH_671
+
+BPH_677_MULTITASK-AR-FOXA1-HOXB13-GATA2_ATAC-UniBindPWM:
+    dataspec: ../local/configfiles/models_dataspec/BPH_677_MULTITASK-AR-FOXA1-HOXB13-GATA2_ATAC-UniBindPWM.yml
+    config: ../local/configfiles/models_config/bpnet9_atacseq.gin
+    jobfile: ../local/src/slurm_train.sh
+    tasks: AR-FOXA1-HOXB13-GATA2
+    summits: 
+        - bed/tampere_pc_atac/BPH_677_UniBindPWM_AR_peaks.bed
+        - bed/tampere_pc_atac/BPH_677_UniBindPWM_FOXA1_peaks.bed
+        - bed/tampere_pc_atac/BPH_677_UniBindPWM_HOXB13_peaks.bed
+        - bed/tampere_pc_atac/BPH_677_UniBindPWM_GATA2_peaks.bed
+    bw: 
+        - BPH_677
+
+BPH_689_MULTITASK-AR-FOXA1-HOXB13-GATA2_ATAC-UniBindPWM:
+    dataspec: ../local/configfiles/models_dataspec/BPH_689_MULTITASK-AR-FOXA1-HOXB13-GATA2_ATAC-UniBindPWM.yml
+    config: ../local/configfiles/models_config/bpnet9_atacseq.gin
+    jobfile: ../local/src/slurm_train.sh
+    tasks: AR-FOXA1-HOXB13-GATA2
+    summits: 
+        - bed/tampere_pc_atac/BPH_689_UniBindPWM_AR_peaks.bed
+        - bed/tampere_pc_atac/BPH_689_UniBindPWM_FOXA1_peaks.bed
+        - bed/tampere_pc_atac/BPH_689_UniBindPWM_HOXB13_peaks.bed
+        - bed/tampere_pc_atac/BPH_689_UniBindPWM_GATA2_peaks.bed
+    bw: 
+        - BPH_689
+
+BPH_688_MULTITASK-AR-FOXA1-HOXB13-GATA2_ATAC-UniBindPWM:
+    dataspec: ../local/configfiles/models_dataspec/BPH_688_MULTITASK-AR-FOXA1-HOXB13-GATA2_ATAC-UniBindPWM.yml
+    config: ../local/configfiles/models_config/bpnet9_atacseq.gin
+    jobfile: ../local/src/slurm_train.sh
+    tasks: AR-FOXA1-HOXB13-GATA2
+    summits: 
+        - bed/tampere_pc_atac/BPH_688_UniBindPWM_AR_peaks.bed
+        - bed/tampere_pc_atac/BPH_688_UniBindPWM_FOXA1_peaks.bed
+        - bed/tampere_pc_atac/BPH_688_UniBindPWM_HOXB13_peaks.bed
+        - bed/tampere_pc_atac/BPH_688_UniBindPWM_GATA2_peaks.bed
+    bw: 
+        - BPH_688
+
+BPH_701_MULTITASK-AR-FOXA1-HOXB13-GATA2_ATAC-UniBindPWM:
+    dataspec: ../local/configfiles/models_dataspec/BPH_701_MULTITASK-AR-FOXA1-HOXB13-GATA2_ATAC-UniBindPWM.yml
+    config: ../local/configfiles/models_config/bpnet9_atacseq.gin
+    jobfile: ../local/src/slurm_train.sh
+    tasks: AR-FOXA1-HOXB13-GATA2
+    summits: 
+        - bed/tampere_pc_atac/BPH_701_UniBindPWM_AR_peaks.bed
+        - bed/tampere_pc_atac/BPH_701_UniBindPWM_FOXA1_peaks.bed
+        - bed/tampere_pc_atac/BPH_701_UniBindPWM_HOXB13_peaks.bed
+        - bed/tampere_pc_atac/BPH_701_UniBindPWM_GATA2_peaks.bed
+    bw: 
+        - BPH_701
+
+PC_12517_MULTITASK-AR-FOXA1-HOXB13-GATA2_ATAC-UniBindPWM:
+    dataspec: ../local/configfiles/models_dataspec/PC_12517_MULTITASK-AR-FOXA1-HOXB13-GATA2_ATAC-UniBindPWM.yml
+    config: ../local/configfiles/models_config/bpnet9_atacseq.gin
+    jobfile: ../local/src/slurm_train.sh
+    tasks: AR-FOXA1-HOXB13-GATA2
+    summits: 
+        - bed/tampere_pc_atac/PC_12517_UniBindPWM_AR_peaks.bed
+        - bed/tampere_pc_atac/PC_12517_UniBindPWM_FOXA1_peaks.bed
+        - bed/tampere_pc_atac/PC_12517_UniBindPWM_HOXB13_peaks.bed
+        - bed/tampere_pc_atac/PC_12517_UniBindPWM_GATA2_peaks.bed
+    bw: 
+        - PC_12517
+
+PC_15420_MULTITASK-AR-FOXA1-HOXB13-GATA2_ATAC-UniBindPWM:
+    dataspec: ../local/configfiles/models_dataspec/PC_15420_MULTITASK-AR-FOXA1-HOXB13-GATA2_ATAC-UniBindPWM.yml
+    config: ../local/configfiles/models_config/bpnet9_atacseq.gin
+    jobfile: ../local/src/slurm_train.sh
+    tasks: AR-FOXA1-HOXB13-GATA2
+    summits: 
+        - bed/tampere_pc_atac/PC_15420_UniBindPWM_AR_peaks.bed
+        - bed/tampere_pc_atac/PC_15420_UniBindPWM_FOXA1_peaks.bed
+        - bed/tampere_pc_atac/PC_15420_UniBindPWM_HOXB13_peaks.bed
+        - bed/tampere_pc_atac/PC_15420_UniBindPWM_GATA2_peaks.bed
+    bw: 
+        - PC_15420
+
+PC_15760_MULTITASK-AR-FOXA1-HOXB13-GATA2_ATAC-UniBindPWM:
+    dataspec: ../local/configfiles/models_dataspec/PC_15760_MULTITASK-AR-FOXA1-HOXB13-GATA2_ATAC-UniBindPWM.yml
+    config: ../local/configfiles/models_config/bpnet9_atacseq.gin
+    jobfile: ../local/src/slurm_train.sh
+    tasks: AR-FOXA1-HOXB13-GATA2
+    summits: 
+        - bed/tampere_pc_atac/PC_15760_UniBindPWM_AR_peaks.bed
+        - bed/tampere_pc_atac/PC_15760_UniBindPWM_FOXA1_peaks.bed
+        - bed/tampere_pc_atac/PC_15760_UniBindPWM_HOXB13_peaks.bed
+        - bed/tampere_pc_atac/PC_15760_UniBindPWM_GATA2_peaks.bed
+    bw: 
+        - PC_15760
+
+PC_6488_MULTITASK-AR-FOXA1-HOXB13-GATA2_ATAC-UniBindPWM:
+    dataspec: ../local/configfiles/models_dataspec/PC_6488_MULTITASK-AR-FOXA1-HOXB13-GATA2_ATAC-UniBindPWM.yml
+    config: ../local/configfiles/models_config/bpnet9_atacseq.gin
+    jobfile: ../local/src/slurm_train.sh
+    tasks: AR-FOXA1-HOXB13-GATA2
+    summits: 
+        - bed/tampere_pc_atac/PC_6488_UniBindPWM_AR_peaks.bed
+        - bed/tampere_pc_atac/PC_6488_UniBindPWM_FOXA1_peaks.bed
+        - bed/tampere_pc_atac/PC_6488_UniBindPWM_HOXB13_peaks.bed
+        - bed/tampere_pc_atac/PC_6488_UniBindPWM_GATA2_peaks.bed
+    bw: 
+        - PC_6488
+
+PC_7875_MULTITASK-AR-FOXA1-HOXB13-GATA2_ATAC-UniBindPWM:
+    dataspec: ../local/configfiles/models_dataspec/PC_7875_MULTITASK-AR-FOXA1-HOXB13-GATA2_ATAC-UniBindPWM.yml
+    config: ../local/configfiles/models_config/bpnet9_atacseq.gin
+    jobfile: ../local/src/slurm_train.sh
+    tasks: AR-FOXA1-HOXB13-GATA2
+    summits: 
+        - bed/tampere_pc_atac/PC_7875_UniBindPWM_AR_peaks.bed
+        - bed/tampere_pc_atac/PC_7875_UniBindPWM_FOXA1_peaks.bed
+        - bed/tampere_pc_atac/PC_7875_UniBindPWM_HOXB13_peaks.bed
+        - bed/tampere_pc_atac/PC_7875_UniBindPWM_GATA2_peaks.bed
+    bw: 
+        - PC_7875
+
+PC_8131_MULTITASK-AR-FOXA1-HOXB13-GATA2_ATAC-UniBindPWM:
+    dataspec: ../local/configfiles/models_dataspec/PC_8131_MULTITASK-AR-FOXA1-HOXB13-GATA2_ATAC-UniBindPWM.yml
+    config: ../local/configfiles/models_config/bpnet9_atacseq.gin
+    jobfile: ../local/src/slurm_train.sh
+    tasks: AR-FOXA1-HOXB13-GATA2
+    summits: 
+        - bed/tampere_pc_atac/PC_8131_UniBindPWM_AR_peaks.bed
+        - bed/tampere_pc_atac/PC_8131_UniBindPWM_FOXA1_peaks.bed
+        - bed/tampere_pc_atac/PC_8131_UniBindPWM_HOXB13_peaks.bed
+        - bed/tampere_pc_atac/PC_8131_UniBindPWM_GATA2_peaks.bed
+    bw: 
+        - PC_8131
+
+PC_14670_MULTITASK-AR-FOXA1-HOXB13-GATA2_ATAC-UniBindPWM:
+    dataspec: ../local/configfiles/models_dataspec/PC_14670_MULTITASK-AR-FOXA1-HOXB13-GATA2_ATAC-UniBindPWM.yml
+    config: ../local/configfiles/models_config/bpnet9_atacseq.gin
+    jobfile: ../local/src/slurm_train.sh
+    tasks: AR-FOXA1-HOXB13-GATA2
+    summits: 
+        - bed/tampere_pc_atac/PC_14670_UniBindPWM_AR_peaks.bed
+        - bed/tampere_pc_atac/PC_14670_UniBindPWM_FOXA1_peaks.bed
+        - bed/tampere_pc_atac/PC_14670_UniBindPWM_HOXB13_peaks.bed
+        - bed/tampere_pc_atac/PC_14670_UniBindPWM_GATA2_peaks.bed
+    bw: 
+        - PC_14670
+
+PC_17163_MULTITASK-AR-FOXA1-HOXB13-GATA2_ATAC-UniBindPWM:
+    dataspec: ../local/configfiles/models_dataspec/PC_17163_MULTITASK-AR-FOXA1-HOXB13-GATA2_ATAC-UniBindPWM.yml
+    config: ../local/configfiles/models_config/bpnet9_atacseq.gin
+    jobfile: ../local/src/slurm_train.sh
+    tasks: AR-FOXA1-HOXB13-GATA2
+    summits: 
+        - bed/tampere_pc_atac/PC_17163_UniBindPWM_AR_peaks.bed
+        - bed/tampere_pc_atac/PC_17163_UniBindPWM_FOXA1_peaks.bed
+        - bed/tampere_pc_atac/PC_17163_UniBindPWM_HOXB13_peaks.bed
+        - bed/tampere_pc_atac/PC_17163_UniBindPWM_GATA2_peaks.bed
+    bw: 
+        - PC_17163
+
+PC_17447_MULTITASK-AR-FOXA1-HOXB13-GATA2_ATAC-UniBindPWM:
+    dataspec: ../local/configfiles/models_dataspec/PC_17447_MULTITASK-AR-FOXA1-HOXB13-GATA2_ATAC-UniBindPWM.yml
+    config: ../local/configfiles/models_config/bpnet9_atacseq.gin
+    jobfile: ../local/src/slurm_train.sh
+    tasks: AR-FOXA1-HOXB13-GATA2
+    summits: 
+        - bed/tampere_pc_atac/PC_17447_UniBindPWM_AR_peaks.bed
+        - bed/tampere_pc_atac/PC_17447_UniBindPWM_FOXA1_peaks.bed
+        - bed/tampere_pc_atac/PC_17447_UniBindPWM_HOXB13_peaks.bed
+        - bed/tampere_pc_atac/PC_17447_UniBindPWM_GATA2_peaks.bed
+    bw: 
+        - PC_17447
+
+PC_9324_MULTITASK-AR-FOXA1-HOXB13-GATA2_ATAC-UniBindPWM:
+    dataspec: ../local/configfiles/models_dataspec/PC_9324_MULTITASK-AR-FOXA1-HOXB13-GATA2_ATAC-UniBindPWM.yml
+    config: ../local/configfiles/models_config/bpnet9_atacseq.gin
+    jobfile: ../local/src/slurm_train.sh
+    tasks: AR-FOXA1-HOXB13-GATA2
+    summits: 
+        - bed/tampere_pc_atac/PC_9324_UniBindPWM_AR_peaks.bed
+        - bed/tampere_pc_atac/PC_9324_UniBindPWM_FOXA1_peaks.bed
+        - bed/tampere_pc_atac/PC_9324_UniBindPWM_HOXB13_peaks.bed
+        - bed/tampere_pc_atac/PC_9324_UniBindPWM_GATA2_peaks.bed
+    bw: 
+        - PC_9324
+
+PC_470_MULTITASK-AR-FOXA1-HOXB13-GATA2_ATAC-UniBindPWM:
+    dataspec: ../local/configfiles/models_dataspec/PC_470_MULTITASK-AR-FOXA1-HOXB13-GATA2_ATAC-UniBindPWM.yml
+    config: ../local/configfiles/models_config/bpnet9_atacseq.gin
+    jobfile: ../local/src/slurm_train.sh
+    tasks: AR-FOXA1-HOXB13-GATA2
+    summits: 
+        - bed/tampere_pc_atac/PC_470_UniBindPWM_AR_peaks.bed
+        - bed/tampere_pc_atac/PC_470_UniBindPWM_FOXA1_peaks.bed
+        - bed/tampere_pc_atac/PC_470_UniBindPWM_HOXB13_peaks.bed
+        - bed/tampere_pc_atac/PC_470_UniBindPWM_GATA2_peaks.bed
+    bw: 
+        - PC_470
+
+PC_4980_MULTITASK-AR-FOXA1-HOXB13-GATA2_ATAC-UniBindPWM:
+    dataspec: ../local/configfiles/models_dataspec/PC_4980_MULTITASK-AR-FOXA1-HOXB13-GATA2_ATAC-UniBindPWM.yml
+    config: ../local/configfiles/models_config/bpnet9_atacseq.gin
+    jobfile: ../local/src/slurm_train.sh
+    tasks: AR-FOXA1-HOXB13-GATA2
+    summits: 
+        - bed/tampere_pc_atac/PC_4980_UniBindPWM_AR_peaks.bed
+        - bed/tampere_pc_atac/PC_4980_UniBindPWM_FOXA1_peaks.bed
+        - bed/tampere_pc_atac/PC_4980_UniBindPWM_HOXB13_peaks.bed
+        - bed/tampere_pc_atac/PC_4980_UniBindPWM_GATA2_peaks.bed
+    bw: 
+        - PC_4980
+
+PC_6174_MULTITASK-AR-FOXA1-HOXB13-GATA2_ATAC-UniBindPWM:
+    dataspec: ../local/configfiles/models_dataspec/PC_6174_MULTITASK-AR-FOXA1-HOXB13-GATA2_ATAC-UniBindPWM.yml
+    config: ../local/configfiles/models_config/bpnet9_atacseq.gin
+    jobfile: ../local/src/slurm_train.sh
+    tasks: AR-FOXA1-HOXB13-GATA2
+    summits: 
+        - bed/tampere_pc_atac/PC_6174_UniBindPWM_AR_peaks.bed
+        - bed/tampere_pc_atac/PC_6174_UniBindPWM_FOXA1_peaks.bed
+        - bed/tampere_pc_atac/PC_6174_UniBindPWM_HOXB13_peaks.bed
+        - bed/tampere_pc_atac/PC_6174_UniBindPWM_GATA2_peaks.bed
+    bw: 
+        - PC_6174
+
+PC_18307_MULTITASK-AR-FOXA1-HOXB13-GATA2_ATAC-UniBindPWM:
+    dataspec: ../local/configfiles/models_dataspec/PC_18307_MULTITASK-AR-FOXA1-HOXB13-GATA2_ATAC-UniBindPWM.yml
+    config: ../local/configfiles/models_config/bpnet9_atacseq.gin
+    jobfile: ../local/src/slurm_train.sh
+    tasks: AR-FOXA1-HOXB13-GATA2
+    summits: 
+        - bed/tampere_pc_atac/PC_18307_UniBindPWM_AR_peaks.bed
+        - bed/tampere_pc_atac/PC_18307_UniBindPWM_FOXA1_peaks.bed
+        - bed/tampere_pc_atac/PC_18307_UniBindPWM_HOXB13_peaks.bed
+        - bed/tampere_pc_atac/PC_18307_UniBindPWM_GATA2_peaks.bed
+    bw: 
+        - PC_18307
+
+PC_19403_MULTITASK-AR-FOXA1-HOXB13-GATA2_ATAC-UniBindPWM:
+    dataspec: ../local/configfiles/models_dataspec/PC_19403_MULTITASK-AR-FOXA1-HOXB13-GATA2_ATAC-UniBindPWM.yml
+    config: ../local/configfiles/models_config/bpnet9_atacseq.gin
+    jobfile: ../local/src/slurm_train.sh
+    tasks: AR-FOXA1-HOXB13-GATA2
+    summits: 
+        - bed/tampere_pc_atac/PC_19403_UniBindPWM_AR_peaks.bed
+        - bed/tampere_pc_atac/PC_19403_UniBindPWM_FOXA1_peaks.bed
+        - bed/tampere_pc_atac/PC_19403_UniBindPWM_HOXB13_peaks.bed
+        - bed/tampere_pc_atac/PC_19403_UniBindPWM_GATA2_peaks.bed
+    bw: 
+        - PC_19403
+
+PC_8438_MULTITASK-AR-FOXA1-HOXB13-GATA2_ATAC-UniBindPWM:
+    dataspec: ../local/configfiles/models_dataspec/PC_8438_MULTITASK-AR-FOXA1-HOXB13-GATA2_ATAC-UniBindPWM.yml
+    config: ../local/configfiles/models_config/bpnet9_atacseq.gin
+    jobfile: ../local/src/slurm_train.sh
+    tasks: AR-FOXA1-HOXB13-GATA2
+    summits: 
+        - bed/tampere_pc_atac/PC_8438_UniBindPWM_AR_peaks.bed
+        - bed/tampere_pc_atac/PC_8438_UniBindPWM_FOXA1_peaks.bed
+        - bed/tampere_pc_atac/PC_8438_UniBindPWM_HOXB13_peaks.bed
+        - bed/tampere_pc_atac/PC_8438_UniBindPWM_GATA2_peaks.bed
+    bw: 
+        - PC_8438
+
+CRPC_261_MULTITASK-AR-FOXA1-HOXB13-GATA2_ATAC-UniBindPWM:
+    dataspec: ../local/configfiles/models_dataspec/CRPC_261_MULTITASK-AR-FOXA1-HOXB13-GATA2_ATAC-UniBindPWM.yml
+    config: ../local/configfiles/models_config/bpnet9_atacseq.gin
+    jobfile: ../local/src/slurm_train.sh
+    tasks: AR-FOXA1-HOXB13-GATA2
+    summits: 
+        - bed/tampere_pc_atac/CRPC_261_UniBindPWM_AR_peaks.bed
+        - bed/tampere_pc_atac/CRPC_261_UniBindPWM_FOXA1_peaks.bed
+        - bed/tampere_pc_atac/CRPC_261_UniBindPWM_HOXB13_peaks.bed
+        - bed/tampere_pc_atac/CRPC_261_UniBindPWM_GATA2_peaks.bed
+    bw: 
+        - CRPC_261
+
+CRPC_278_MULTITASK-AR-FOXA1-HOXB13-GATA2_ATAC-UniBindPWM:
+    dataspec: ../local/configfiles/models_dataspec/CRPC_278_MULTITASK-AR-FOXA1-HOXB13-GATA2_ATAC-UniBindPWM.yml
+    config: ../local/configfiles/models_config/bpnet9_atacseq.gin
+    jobfile: ../local/src/slurm_train.sh
+    tasks: AR-FOXA1-HOXB13-GATA2
+    summits: 
+        - bed/tampere_pc_atac/CRPC_278_UniBindPWM_AR_peaks.bed
+        - bed/tampere_pc_atac/CRPC_278_UniBindPWM_FOXA1_peaks.bed
+        - bed/tampere_pc_atac/CRPC_278_UniBindPWM_HOXB13_peaks.bed
+        - bed/tampere_pc_atac/CRPC_278_UniBindPWM_GATA2_peaks.bed
+    bw: 
+        - CRPC_278
+
+CRPC_305_MULTITASK-AR-FOXA1-HOXB13-GATA2_ATAC-UniBindPWM:
+    dataspec: ../local/configfiles/models_dataspec/CRPC_305_MULTITASK-AR-FOXA1-HOXB13-GATA2_ATAC-UniBindPWM.yml
+    config: ../local/configfiles/models_config/bpnet9_atacseq.gin
+    jobfile: ../local/src/slurm_train.sh
+    tasks: AR-FOXA1-HOXB13-GATA2
+    summits: 
+        - bed/tampere_pc_atac/CRPC_305_UniBindPWM_AR_peaks.bed
+        - bed/tampere_pc_atac/CRPC_305_UniBindPWM_FOXA1_peaks.bed
+        - bed/tampere_pc_atac/CRPC_305_UniBindPWM_HOXB13_peaks.bed
+        - bed/tampere_pc_atac/CRPC_305_UniBindPWM_GATA2_peaks.bed
+    bw: 
+        - CRPC_305
+
+CRPC_348_MULTITASK-AR-FOXA1-HOXB13-GATA2_ATAC-UniBindPWM:
+    dataspec: ../local/configfiles/models_dataspec/CRPC_348_MULTITASK-AR-FOXA1-HOXB13-GATA2_ATAC-UniBindPWM.yml
+    config: ../local/configfiles/models_config/bpnet9_atacseq.gin
+    jobfile: ../local/src/slurm_train.sh
+    tasks: AR-FOXA1-HOXB13-GATA2
+    summits: 
+        - bed/tampere_pc_atac/CRPC_348_UniBindPWM_AR_peaks.bed
+        - bed/tampere_pc_atac/CRPC_348_UniBindPWM_FOXA1_peaks.bed
+        - bed/tampere_pc_atac/CRPC_348_UniBindPWM_HOXB13_peaks.bed
+        - bed/tampere_pc_atac/CRPC_348_UniBindPWM_GATA2_peaks.bed
+    bw: 
+        - CRPC_348
+
+CRPC_435_MULTITASK-AR-FOXA1-HOXB13-GATA2_ATAC-UniBindPWM:
+    dataspec: ../local/configfiles/models_dataspec/CRPC_435_MULTITASK-AR-FOXA1-HOXB13-GATA2_ATAC-UniBindPWM.yml
+    config: ../local/configfiles/models_config/bpnet9_atacseq.gin
+    jobfile: ../local/src/slurm_train.sh
+    tasks: AR-FOXA1-HOXB13-GATA2
+    summits: 
+        - bed/tampere_pc_atac/CRPC_435_UniBindPWM_AR_peaks.bed
+        - bed/tampere_pc_atac/CRPC_435_UniBindPWM_FOXA1_peaks.bed
+        - bed/tampere_pc_atac/CRPC_435_UniBindPWM_HOXB13_peaks.bed
+        - bed/tampere_pc_atac/CRPC_435_UniBindPWM_GATA2_peaks.bed
+    bw: 
+        - CRPC_435
+
+CRPC_489_MULTITASK-AR-FOXA1-HOXB13-GATA2_ATAC-UniBindPWM:
+    dataspec: ../local/configfiles/models_dataspec/CRPC_489_MULTITASK-AR-FOXA1-HOXB13-GATA2_ATAC-UniBindPWM.yml
+    config: ../local/configfiles/models_config/bpnet9_atacseq.gin
+    jobfile: ../local/src/slurm_train.sh
+    tasks: AR-FOXA1-HOXB13-GATA2
+    summits: 
+        - bed/tampere_pc_atac/CRPC_489_UniBindPWM_AR_peaks.bed
+        - bed/tampere_pc_atac/CRPC_489_UniBindPWM_FOXA1_peaks.bed
+        - bed/tampere_pc_atac/CRPC_489_UniBindPWM_HOXB13_peaks.bed
+        - bed/tampere_pc_atac/CRPC_489_UniBindPWM_GATA2_peaks.bed
+    bw: 
+        - CRPC_489
+
+CRPC_541_MULTITASK-AR-FOXA1-HOXB13-GATA2_ATAC-UniBindPWM:
+    dataspec: ../local/configfiles/models_dataspec/CRPC_541_MULTITASK-AR-FOXA1-HOXB13-GATA2_ATAC-UniBindPWM.yml
+    config: ../local/configfiles/models_config/bpnet9_atacseq.gin
+    jobfile: ../local/src/slurm_train.sh
+    tasks: AR-FOXA1-HOXB13-GATA2
+    summits: 
+        - bed/tampere_pc_atac/CRPC_541_UniBindPWM_AR_peaks.bed
+        - bed/tampere_pc_atac/CRPC_541_UniBindPWM_FOXA1_peaks.bed
+        - bed/tampere_pc_atac/CRPC_541_UniBindPWM_HOXB13_peaks.bed
+        - bed/tampere_pc_atac/CRPC_541_UniBindPWM_GATA2_peaks.bed
+    bw: 
+        - CRPC_541
+
+CRPC_543_MULTITASK-AR-FOXA1-HOXB13-GATA2_ATAC-UniBindPWM:
+    dataspec: ../local/configfiles/models_dataspec/CRPC_543_MULTITASK-AR-FOXA1-HOXB13-GATA2_ATAC-UniBindPWM.yml
+    config: ../local/configfiles/models_config/bpnet9_atacseq.gin
+    jobfile: ../local/src/slurm_train.sh
+    tasks: AR-FOXA1-HOXB13-GATA2
+    summits: 
+        - bed/tampere_pc_atac/CRPC_543_UniBindPWM_AR_peaks.bed
+        - bed/tampere_pc_atac/CRPC_543_UniBindPWM_FOXA1_peaks.bed
+        - bed/tampere_pc_atac/CRPC_543_UniBindPWM_HOXB13_peaks.bed
+        - bed/tampere_pc_atac/CRPC_543_UniBindPWM_GATA2_peaks.bed
+    bw: 
+        - CRPC_543
+
+CRPC_539_MULTITASK-AR-FOXA1-HOXB13-GATA2_ATAC-UniBindPWM:
+    dataspec: ../local/configfiles/models_dataspec/CRPC_539_MULTITASK-AR-FOXA1-HOXB13-GATA2_ATAC-UniBindPWM.yml
+    config: ../local/configfiles/models_config/bpnet9_atacseq.gin
+    jobfile: ../local/src/slurm_train.sh
+    tasks: AR-FOXA1-HOXB13-GATA2
+    summits: 
+        - bed/tampere_pc_atac/CRPC_539_UniBindPWM_AR_peaks.bed
+        - bed/tampere_pc_atac/CRPC_539_UniBindPWM_FOXA1_peaks.bed
+        - bed/tampere_pc_atac/CRPC_539_UniBindPWM_HOXB13_peaks.bed
+        - bed/tampere_pc_atac/CRPC_539_UniBindPWM_GATA2_peaks.bed
+    bw: 
+        - CRPC_539
+
+CRPC_542_MULTITASK-AR-FOXA1-HOXB13-GATA2_ATAC-UniBindPWM:
+    dataspec: ../local/configfiles/models_dataspec/CRPC_542_MULTITASK-AR-FOXA1-HOXB13-GATA2_ATAC-UniBindPWM.yml
+    config: ../local/configfiles/models_config/bpnet9_atacseq.gin
+    jobfile: ../local/src/slurm_train.sh
+    tasks: AR-FOXA1-HOXB13-GATA2
+    summits: 
+        - bed/tampere_pc_atac/CRPC_542_UniBindPWM_AR_peaks.bed
+        - bed/tampere_pc_atac/CRPC_542_UniBindPWM_FOXA1_peaks.bed
+        - bed/tampere_pc_atac/CRPC_542_UniBindPWM_HOXB13_peaks.bed
+        - bed/tampere_pc_atac/CRPC_542_UniBindPWM_GATA2_peaks.bed
+    bw: 
+        - CRPC_542
+
+CRPC_697_MULTITASK-AR-FOXA1-HOXB13-GATA2_ATAC-UniBindPWM:
+    dataspec: ../local/configfiles/models_dataspec/CRPC_697_MULTITASK-AR-FOXA1-HOXB13-GATA2_ATAC-UniBindPWM.yml
+    config: ../local/configfiles/models_config/bpnet9_atacseq.gin
+    jobfile: ../local/src/slurm_train.sh
+    tasks: AR-FOXA1-HOXB13-GATA2
+    summits: 
+        - bed/tampere_pc_atac/CRPC_697_UniBindPWM_AR_peaks.bed
+        - bed/tampere_pc_atac/CRPC_697_UniBindPWM_FOXA1_peaks.bed
+        - bed/tampere_pc_atac/CRPC_697_UniBindPWM_HOXB13_peaks.bed
+        - bed/tampere_pc_atac/CRPC_697_UniBindPWM_GATA2_peaks.bed
+    bw: 
+        - CRPC_697
+

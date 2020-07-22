@@ -1,7 +1,10 @@
 configfile: "../local/configfiles/config.yml"
 configfile: "../local/configfiles/config_tampere_pc.yml"
-configfile: "../local/configfiles/config_tampere_pc_samp_peaks.yml"
-configfile: "../local/configfiles/config_tampere_pc_global_peaks.yml"
+configfile: "../local/configfiles/config_tampere_pc_sample_specific_peaks.yml"
+configfile: "../local/configfiles/config_tampere_pc_global_sample_specific_peaks.yml"
+configfile: "../local/configfiles/config_tampere_pc_global_unified_peaks.yml"
+configfile: "../local/configfiles/config_tampere_pc_multitask-AR-FOXA1-HOXB13-GATA2_unified_peaks_test.yml"
+configfile: "../local/configfiles/config_tampere_pc_multitask-AR-FOXA1-HOXB13-GATA2_unified_peaks.yml"
 
 #############################
 ### Prepare Training Data ###
@@ -147,7 +150,7 @@ rule process_tampere_pc_atac_sample_specific_peaks:
         ## (or, filter low intensity peaks and exclude non-canonical chr)
         #"cat {input} | awk '{{if($5>5 && $1!~/chr.+_/){{print $0}}}}' > {output}"
         ## (or, exclude non-canonical chr)
-        "cat {input} | awk '{{if($1!~/chr.+_/){{print $0}}}}' > {output}"
+        "cat {input} | awk '{{if(($1!~/chr.+_/) && ($1!~/M/)){{print $0}}}}' > {output}"
 
 ## Call peaks with emacs2 from BAM files (exp + input)
 ## e.g. snakemake bed/SRA012454/SAMN00011191_summits.bed
@@ -395,6 +398,9 @@ def bpnet_train_bias_bw_requirement(wildcards):
 ## e.g. sankemake models/tampere_pc_atac/BPH_701_AR_toy-ATAC-UniBindPWM_10lambda_0.004lr_128batch_200width_25tconv/seq_model.pkl
 ## e.g. sankemake models/tampere_pc_atac/BPH_701_AR_ATAC-UniBindPWM-samp-peaks_1000lambda_0.004lr_128batch_1000width_25tconv/seq_model.pkl
 ## e.g. sankemake models/tampere_pc_atac/BPH_701_GLOBAL_ATAC-profile_1000lambda_0.004lr_128batch_1000width_25tconv/seq_model.pkl
+## e.g. sankemake models/tampere_pc_atac/BPH_701_GLOBAL_ATAC-profile-unified_1000lambda_0.004lr_128batch_1000width_25tconv/seq_model.pkl
+## e.g. snakemake models/tampere_pc_atac/BPH_701_MULTITASK-AR-FOXA1-HOXB13-GATA2_toy-ATAC-UniBindPWM_1000lambda_0.004lr_128batch_1000width_25tconv/seq_model.pkl
+## e.g. snakemake models/tampere_pc_atac/BPH_701_MULTITASK-AR-FOXA1-HOXB13-GATA2_ATAC-UniBindPWM_1000lambda_0.004lr_128batch_1000width_25tconv/seq_model.pkl
 rule bpnet_train_params_search:
     input:
         summits=lambda wildcards: config[wildcards.cell_lines + "_" + wildcards.tasks + "_" + wildcards.freetext]["summits"],

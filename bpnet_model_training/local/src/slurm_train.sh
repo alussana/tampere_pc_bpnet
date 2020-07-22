@@ -9,9 +9,9 @@
 #SBATCH --cpus-per-task=10
 #
 # time format hours:minutes:seconds or days-hours
-#SBATCH --time=13:59:59
+#SBATCH --time=19:59:59
 #SBATCH --mem=25000
-#SBATCH --partition=parallel
+#SBATCH --partition=normal
 
 EXP_DIR=XXX_DYNAMIC_EXP_DIR_XXX
 DATASPEC=XXX_DYNAMIC_DATASPEC_XXX

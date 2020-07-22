@@ -11,7 +11,7 @@
 # time format hours:minutes:seconds or days-hours
 #SBATCH --time=3:59:59
 #SBATCH --mem=40000
-#SBATCH --partition=parallel
+#SBATCH --partition=normal
 
 source ../../miniconda3/bin/activate ../../miniconda3/envs/bpnet_training
 
