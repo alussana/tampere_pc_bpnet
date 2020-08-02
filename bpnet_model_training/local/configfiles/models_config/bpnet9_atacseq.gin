@@ -51,8 +51,8 @@ train.num_workers = 16
 
 # seq_width  -> specified from gin-bindings
 # [...]
-bpnet_data.interval_augmentation_shift = 400
-#bpnet_data.interval_augmentation_shift = 200
+#bpnet_data.interval_augmentation_shift = 400
+bpnet_data.interval_augmentation_shift = 200
 bpnet_data.intervals_format = 'bed'
 
 # transform the bias track by aggregating it in a
@@ -72,18 +72,19 @@ report_template.name = 'evaluate.ipynb'
 augment_interval = True
 
 lambda = XXX_DYNAMIC_LAMBDA_XXX  # count loss weight 
-filters = 64
+filters = XXX_DYNAMIC_FILTERS_XXX
 tconv_kernel_size = XXX_DYNAMIC_TCONV_XXX
 lr = XXX_DYNAMIC_LR_XXX
-n_dil_layers = 9
+n_dil_layers = XXX_DYNAMIC_LAYERS_XXX
 train.batch_size = XXX_DYNAMIC_BATCH_XXX
 batchnorm = False
 seq_width = XXX_DYNAMIC_WIDTH_XXX
 
 # TODO - important parameters you might want to adjust
-#valid_chr = ['chr2', 'chr3', 'chr4']
+valid_chr = ['chr2', 'chr3', 'chr4']
+#valid_chr = ['chr1', 'chr8', 'chr9']
 #valid_chr = ['chr5', 'chr6', 'chr7']
-valid_chr = ['chr12', 'chr13', 'chr14']
+#valid_chr = ['chr12', 'chr13', 'chr14']
 #test_chr = ['chr1', 'chr8', 'chr9']
 test_chr = []
 #exclude_chr = ['chrX', 'chrY']

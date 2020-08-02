@@ -401,18 +401,22 @@ def bpnet_train_bias_bw_requirement(wildcards):
 ## e.g. sankemake models/tampere_pc_atac/BPH_701_GLOBAL_ATAC-profile-unified_1000lambda_0.004lr_128batch_1000width_25tconv/seq_model.pkl
 ## e.g. snakemake models/tampere_pc_atac/BPH_701_MULTITASK-AR-FOXA1-HOXB13-GATA2_toy-ATAC-UniBindPWM_1000lambda_0.004lr_128batch_1000width_25tconv/seq_model.pkl
 ## e.g. snakemake models/tampere_pc_atac/BPH_701_MULTITASK-AR-FOXA1-HOXB13-GATA2_ATAC-UniBindPWM_1000lambda_0.004lr_128batch_1000width_25tconv/seq_model.pkl
+## NEW:
+## e.g. snakemake models/tampere_pc_atac/BPH_701_AR_ATAC-UniBindPWM_1000lambda_0.004lr_128batch_1000width_25tconv_9l_64f/seq_model.pkl
+## e.g. snakemake models/tampere_pc_atac/BPH_701_AR_ATAC-UniBindPWM_1000lambda_0.004lr_128batch_1000width_25tconv_4l_64f/seq_model.pkl
 rule bpnet_train_params_search:
     input:
         summits=lambda wildcards: config[wildcards.cell_lines + "_" + wildcards.tasks + "_" + wildcards.freetext]["summits"],
         bw=bpnet_train_bw_requirement
         #bw_bias=bpnet_train_bias_bw_requirement
     output:
-        "models/{study_source}/{cell_lines}_{tasks}_{freetext}_{Lambda}lambda_{lr}lr_{batch}batch_{width}width_{k}tconv/seq_model.pkl"
+        "models/{study_source}/{cell_lines}_{tasks}_{freetext}_{Lambda}lambda_{lr}lr_{batch}batch_{width}width_{k}tconv_{l}l_{f}f/seq_model.pkl"
     params:
         dataspec=lambda wildcards: config[wildcards.cell_lines + "_" + wildcards.tasks + "_" + wildcards.freetext]["dataspec"],
         config=lambda wildcards: config[wildcards.cell_lines + "_" + wildcards.tasks + "_" + wildcards.freetext]["config"],
         exp_dir=lambda wildcards: 'models/' + wildcards.study_source + '/' + wildcards.cell_lines + '_' + wildcards.tasks + '_' + wildcards.freetext + 
-                "_" + wildcards.Lambda + "lambda_" + wildcards.lr + "lr_" + wildcards.batch + "batch_" + wildcards.width + "width_" + wildcards.k + "tconv",
+                "_" + wildcards.Lambda + "lambda_" + wildcards.lr + "lr_" + wildcards.batch + "batch_" + wildcards.width + "width_" +
+                wildcards.k + "tconv_" + wildcards.l + "l_" + wildcards.f + "f",                
         jobfile=lambda wildcards: config[wildcards.cell_lines + "_" + wildcards.tasks + "_" + wildcards.freetext]["jobfile"],
         Lambda=lambda wildcards: wildcards.Lambda,
         lr=lambda wildcards: wildcards.lr,
@@ -420,7 +424,9 @@ rule bpnet_train_params_search:
         width=lambda wildcards: wildcards.width,
         k_size=lambda wildcards: wildcards.k,
         tasks=lambda wildcards: wildcards.tasks,
-        sample=lambda wildcards: wildcards.cell_lines
+        sample=lambda wildcards: wildcards.cell_lines,
+        dil_layers=lambda wildcards: wildcards.l,
+        n_filters=lambda wildcards: wildcards.f
     shell:
         "mkdir -p {params.exp_dir}/slurm_logs; "
         "mkdir -p {params.exp_dir}/slurm_errors; "
@@ -431,16 +437,18 @@ rule bpnet_train_params_search:
             "  s#train.batch_size = XXX_DYNAMIC_BATCH_XXX#train.batch_size = {params.batch}#g;"
             "  s#seq_width = XXX_DYNAMIC_WIDTH_XXX#seq_width = {params.width}#g;"
             "  s#tconv_kernel_size = XXX_DYNAMIC_TCONV_XXX#tconv_kernel_size = {params.k_size}#g;"
-            "  s#lr = XXX_DYNAMIC_LR_XXX#lr = {params.lr}#g\" "
-            " {params.config} > {params.config}_{params.sample}_{params.tasks}_{params.Lambda}lambda_{params.lr}lr_{params.batch}batch_{params.width}width_{params.k_size}tconv.tmp; "
+            "  s#lr = XXX_DYNAMIC_LR_XXX#lr = {params.lr}#g;"
+            "  s#filters = XXX_DYNAMIC_FILTERS_XXX#filters = {params.n_filters}#g;"
+            "  s#n_dil_layers = XXX_DYNAMIC_LAYERS_XXX#n_dil_layers = {params.dil_layers}#g\" "
+            " {params.config} > {params.config}_{params.sample}_{params.tasks}_{params.Lambda}lambda_{params.lr}lr_{params.batch}batch_{params.width}width_{params.k_size}tconv_{params.dil_layers}l_{params.n_filters}f.tmp; "
         "sed "
             "\"s#XXX_DYNAMIC_EXP_DIR_XXX#{params.exp_dir}#g;"
             "  s#XXX_DYNAMIC_DATASPEC_XXX#{params.dataspec}#g;"
             "  s#XXX_DYNAMIC_TASKS_XXX#{params.tasks}#g;"
             "  s#XXX_DYNAMIC_SAMPLE_XXX#{params.sample}#g;"
-            "  s#XXX_DYNAMIC_CONFIGGIN_XXX#{params.config}_{params.sample}_{params.tasks}_{params.Lambda}lambda_{params.lr}lr_{params.batch}batch_{params.width}width_{params.k_size}tconv.tmp#g\" "
-            " {params.jobfile} > {params.jobfile}_{params.sample}_{params.tasks}_{params.Lambda}lambda_{params.lr}lr_{params.batch}batch_{params.width}width_{params.k_size}tconv.tmp; "
-        "sbatch {params.jobfile}_{params.sample}_{params.tasks}_{params.Lambda}lambda_{params.lr}lr_{params.batch}batch_{params.width}width_{params.k_size}tconv.tmp; "
+            "  s#XXX_DYNAMIC_CONFIGGIN_XXX#{params.config}_{params.sample}_{params.tasks}_{params.Lambda}lambda_{params.lr}lr_{params.batch}batch_{params.width}width_{params.k_size}tconv_{params.dil_layers}l_{params.n_filters}f.tmp#g\" "
+            " {params.jobfile} > {params.jobfile}_{params.sample}_{params.tasks}_{params.Lambda}lambda_{params.lr}lr_{params.batch}batch_{params.width}width_{params.k_size}tconv_{params.dil_layers}l_{params.n_filters}f.tmp; "
+        "sbatch {params.jobfile}_{params.sample}_{params.tasks}_{params.Lambda}lambda_{params.lr}lr_{params.batch}batch_{params.width}width_{params.k_size}tconv_{params.dil_layers}l_{params.n_filters}f.tmp; "
         "touch {output}"
 
 ###################################
@@ -456,30 +464,33 @@ rule bpnet_train_params_search:
 ## e.g. sankemake models/in_house_atac/VCaP_AR_ATAC-UniBindPWM_10lambda_0.004lr_128batch_1000width_25tconv/contrib.deeplift.h5
 rule compute_contrib_scores:
     input:
-        "models/{study_source}/{cell_lines}_{tasks}_{freetext}_{Lambda}lambda_{lr}lr_{batch}batch_{width}width_{k}tconv/seq_model.pkl"
+        "models/{study_source}/{cell_lines}_{tasks}_{freetext}_{Lambda}lambda_{lr}lr_{batch}batch_{width}width_{k}tconv_{l}l_{f}f/seq_model.pkl"
     output:
-        contrib="models/{study_source}/{cell_lines}_{tasks}_{freetext}_{Lambda}lambda_{lr}lr_{batch}batch_{width}width_{k}tconv/contrib.deeplift.h5",
-        nll_contrib="models/{study_source}/{cell_lines}_{tasks}_{freetext}_{Lambda}lambda_{lr}lr_{batch}batch_{width}width_{k}tconv/contrib.deeplift.null.h5"
+        contrib="models/{study_source}/{cell_lines}_{tasks}_{freetext}_{Lambda}lambda_{lr}lr_{batch}batch_{width}width_{k}tconv_{l}l_{f}f/contrib.deeplift.h5",
+        nll_contrib="models/{study_source}/{cell_lines}_{tasks}_{freetext}_{Lambda}lambda_{lr}lr_{batch}batch_{width}width_{k}tconv_{l}l_{f}f/contrib.deeplift.null.h5"
     params:
         model_dir=lambda wildcards: 'models/' + wildcards.study_source + '/' + wildcards.cell_lines + '_' + wildcards.tasks + '_' + wildcards.freetext + 
-                  "_" + wildcards.Lambda + "lambda_" + wildcards.lr + "lr_" + wildcards.batch + "batch_" + wildcards.width + "width_" + wildcards.k + "tconv",
+                  "_" + wildcards.Lambda + "lambda_" + wildcards.lr + "lr_" + wildcards.batch + "batch_" + wildcards.width + "width_" +
+                  wildcards.k + "tconv_" + wildcards.l + "l_" + wildcards.f + "f",
         Lambda=lambda wildcards: wildcards.Lambda,
         lr=lambda wildcards: wildcards.lr,
         batch=lambda wildcards: wildcards.batch,
         width=lambda wildcards: wildcards.width,
         k_size=lambda wildcards: wildcards.k,
         tasks=lambda wildcards: wildcards.tasks,
-        sample=lambda wildcards: wildcards.cell_lines
+        sample=lambda wildcards: wildcards.cell_lines,
+        dil_layers=lambda wildcards: wildcards.l,
+        n_filters=lambda wildcards: wildcards.f
     shell:
         "mkdir -p {params.model_dir}/slurm_logs; "
         "mkdir -p {params.model_dir}/slurm_errors; "
         "sed "
             "\"s#XXX_DYNAMIC_MODEL_DIR_XXX#{params.model_dir}#g\" ../local/src/slurm_contrib_scores.sh"
-            "  > ../local/src/slurm_contrib_scores_{params.sample}_{params.tasks}_{params.Lambda}lambda_{params.lr}lr_{params.batch}batch_{params.width}width_{params.k_size}tconv.sh.tmp; "
+            "  > ../local/src/slurm_contrib_scores_{params.sample}_{params.tasks}_{params.Lambda}lambda_{params.lr}lr_{params.batch}batch_{params.width}width_{params.k_size}tconv_{params.dil_layers}l_{params.n_filters}f.sh.tmp; "
         "CURRENT_MODEL_DIR=$(readlink -f {params.model_dir}/seq_model.pkl | rev | cut -d '/' -f2 | rev); "
         "rm {params.model_dir}/seq_model.pkl; "
         "cp -fr {params.model_dir}/${{CURRENT_MODEL_DIR}}/* {params.model_dir}; "
-        "sbatch ../local/src/slurm_contrib_scores_{params.sample}_{params.tasks}_{params.Lambda}lambda_{params.lr}lr_{params.batch}batch_{params.width}width_{params.k_size}tconv.sh.tmp; "
+        "sbatch ../local/src/slurm_contrib_scores_{params.sample}_{params.tasks}_{params.Lambda}lambda_{params.lr}lr_{params.batch}batch_{params.width}width_{params.k_size}tconv_{params.dil_layers}l_{params.n_filters}f.sh.tmp; "
         "touch {output}"
 
 ## Plot contribution scores for given regions
@@ -490,27 +501,30 @@ rule compute_contrib_scores:
 ## e.g. sankemake models/in_house_atac/VCaP_AR_ATAC-UniBindPWM_10lambda_0.004lr_128batch_1000width_25tconv/contrib_plots/.done
 rule plot_contrib_scores:
     input:
-        "models/{study_source}/{cell_lines}_{tasks}_{freetext}_{Lambda}lambda_{lr}lr_{batch}batch_{width}width_{k}tconv/contrib.deeplift.h5"
+        "models/{study_source}/{cell_lines}_{tasks}_{freetext}_{Lambda}lambda_{lr}lr_{batch}batch_{width}width_{k}tconv_{l}l_{f}f/contrib.deeplift.h5"
     output:
-        "models/{study_source}/{cell_lines}_{tasks}_{freetext}_{Lambda}lambda_{lr}lr_{batch}batch_{width}width_{k}tconv/contrib_plots/.done"
+        "models/{study_source}/{cell_lines}_{tasks}_{freetext}_{Lambda}lambda_{lr}lr_{batch}batch_{width}width_{k}tconv_{l}l_{f}f/contrib_plots/.done"
     params:
         tasks=lambda wildcards: wildcards.tasks,
         model_dir=lambda wildcards: 'models/' + wildcards.study_source + '/' + wildcards.cell_lines + '_' + wildcards.tasks + '_' + wildcards.freetext +
-                  "_" + wildcards.Lambda + "lambda_" + wildcards.lr + "lr_" + wildcards.batch + "batch_" + wildcards.width + "width_" + wildcards.k + "tconv",
+                  "_" + wildcards.Lambda + "lambda_" + wildcards.lr + "lr_" + wildcards.batch + "batch_" + wildcards.width + "width_" +
+                  wildcards.k + "tconv_" + wildcards.l + "l_" + wildcards.f + "f",
         Lambda=lambda wildcards: wildcards.Lambda,
         lr=lambda wildcards: wildcards.lr,
         batch=lambda wildcards: wildcards.batch,
         width=lambda wildcards: wildcards.width,
         k_size=lambda wildcards: wildcards.k,
-        sample=lambda wildcards: wildcards.cell_lines
+        sample=lambda wildcards: wildcards.cell_lines,
+        dil_layers=lambda wildcards: wildcards.l,
+        n_filters=lambda wildcards: wildcards.f
     shell:
         "mkdir -p {params.model_dir}/slurm_logs; "
         "mkdir -p {params.model_dir}/slurm_errors; "
         "sed "
             "\"s#XXX_DYNAMIC_MODEL_DIR_XXX#{params.model_dir}#g;"
             "  s#XXX_DYNAMIC_SEQ_LENGTH_XXX#{params.width}#g\" ../local/src/slurm_plot_contrib_scores.sh"
-            "  > ../local/src/slurm_plot_contrib_scores_{params.sample}_{params.tasks}_{params.Lambda}lambda_{params.lr}lr_{params.batch}batch_{params.width}width_{params.k_size}tconv.sh.tmp; "
-        "sbatch ../local/src/slurm_plot_contrib_scores_{params.sample}_{params.tasks}_{params.Lambda}lambda_{params.lr}lr_{params.batch}batch_{params.width}width_{params.k_size}tconv.sh.tmp; "
+            "  > ../local/src/slurm_plot_contrib_scores_{params.sample}_{params.tasks}_{params.Lambda}lambda_{params.lr}lr_{params.batch}batch_{params.width}width_{params.k_size}tconv_{params.dil_layers}l_{params.n_filters}f.sh.tmp; "
+        "sbatch ../local/src/slurm_plot_contrib_scores_{params.sample}_{params.tasks}_{params.Lambda}lambda_{params.lr}lr_{params.batch}batch_{params.width}width_{params.k_size}tconv_{params.dil_layers}l_{params.n_filters}f.sh.tmp; "
         "touch {output}"
 
 #########################
@@ -524,28 +538,31 @@ rule plot_contrib_scores:
 ## e.g. sankemake models/in_house_atac/VCaP_AR_ATAC-UniBindPWM_10lambda_0.004lr_128batch_1000width_25tconv/modisco/.done
 rule run_modisco:
     input:
-        contrib="models/{study_source}/{cell_lines}_{tasks}_{freetext}_{Lambda}lambda_{lr}lr_{batch}batch_{width}width_{k}tconv/contrib.deeplift.h5",
-        nll_contrib="models/{study_source}/{cell_lines}_{tasks}_{freetext}_{Lambda}lambda_{lr}lr_{batch}batch_{width}width_{k}tconv/contrib.deeplift.null.h5"
+        contrib="models/{study_source}/{cell_lines}_{tasks}_{freetext}_{Lambda}lambda_{lr}lr_{batch}batch_{width}width_{k}tconv_{l}l_{f}f/contrib.deeplift.h5",
+        nll_contrib="models/{study_source}/{cell_lines}_{tasks}_{freetext}_{Lambda}lambda_{lr}lr_{batch}batch_{width}width_{k}tconv_{l}l_{f}f/contrib.deeplift.null.h5"
     output:
-        "models/{study_source}/{cell_lines}_{tasks}_{freetext}_{Lambda}lambda_{lr}lr_{batch}batch_{width}width_{k}tconv/modisco/.done"
+        "models/{study_source}/{cell_lines}_{tasks}_{freetext}_{Lambda}lambda_{lr}lr_{batch}batch_{width}width_{k}tconv_{l}l_{f}f/modisco/.done"
     params:
         tasks=lambda wildcards: wildcards.tasks,
         model_dir=lambda wildcards: 'models/' + wildcards.study_source + '/' + wildcards.cell_lines + '_' + wildcards.tasks + '_' + wildcards.freetext + 
-                  "_" + wildcards.Lambda + "lambda_" + wildcards.lr + "lr_" + wildcards.batch + "batch_" + wildcards.width + "width_" + wildcards.k + "tconv",
+                  "_" + wildcards.Lambda + "lambda_" + wildcards.lr + "lr_" + wildcards.batch + "batch_" + wildcards.width + "width_" +
+                  wildcards.k + "tconv_" + wildcards.l + "l_" + wildcards.f + "f",
         Lambda=lambda wildcards: wildcards.Lambda,
         lr=lambda wildcards: wildcards.lr,
         batch=lambda wildcards: wildcards.batch,
         width=lambda wildcards: wildcards.width,
         k_size=lambda wildcards: wildcards.k,
-        sample=lambda wildcards: wildcards.cell_lines
+        sample=lambda wildcards: wildcards.cell_lines,
+        dil_layers=lambda wildcards: wildcards.l,
+        n_filters=lambda wildcards: wildcards.f
     shell:
         "mkdir -p {params.model_dir}/slurm_logs; "
         "mkdir -p {params.model_dir}/slurm_errors; "
         "sed "
             "\"s#XXX_DYNAMIC_MODEL_DIR_XXX#{params.model_dir}#g;"
             "  s#XXX_DYNAMIC_TASKS_XXX#{params.tasks}#g\" ../local/src/slurm_modisco_run.sh"
-            "  > ../local/src/slurm_modisco_run_{params.sample}_{params.tasks}_{params.Lambda}lambda_{params.lr}lr_{params.batch}batch_{params.width}width_{params.k_size}tconv.sh.tmp; "
-        "sbatch ../local/src/slurm_modisco_run_{params.sample}_{params.tasks}_{params.Lambda}lambda_{params.lr}lr_{params.batch}batch_{params.width}width_{params.k_size}tconv.sh.tmp; "
+            "  > ../local/src/slurm_modisco_run_{params.sample}_{params.tasks}_{params.Lambda}lambda_{params.lr}lr_{params.batch}batch_{params.width}width_{params.k_size}tconv_{params.dil_layers}l_{params.n_filters}f.sh.tmp; "
+        "sbatch ../local/src/slurm_modisco_run_{params.sample}_{params.tasks}_{params.Lambda}lambda_{params.lr}lr_{params.batch}batch_{params.width}width_{params.k_size}tconv_{params.dil_layers}l_{params.n_filters}f.sh.tmp; "
         "touch {output}"
 
 ## Plot the sequence logos of the patterns from modisco results
@@ -554,27 +571,30 @@ rule run_modisco:
 ## e.g. snakemake models/tampere_pc_atac/BPH_701_AR_ATAC-UniBindPWM_1000lambda_0.004lr_128batch_1000width_25tconv/modisco/.plot_done
 rule plot_modisco_patterns:
     input:
-        "models/{study_source}/{cell_lines}_{tasks}_{freetext}_{Lambda}lambda_{lr}lr_{batch}batch_{width}width_{k}tconv/modisco/.done"
+        "models/{study_source}/{cell_lines}_{tasks}_{freetext}_{Lambda}lambda_{lr}lr_{batch}batch_{width}width_{k}tconv_{l}l_{f}f/modisco/.done"
     output:
-        "models/{study_source}/{cell_lines}_{tasks}_{freetext}_{Lambda}lambda_{lr}lr_{batch}batch_{width}width_{k}tconv/modisco/.plot_done"
+        "models/{study_source}/{cell_lines}_{tasks}_{freetext}_{Lambda}lambda_{lr}lr_{batch}batch_{width}width_{k}tconv_{l}l_{f}f/modisco/.plot_done"
     params:
         tasks=lambda wildcards: wildcards.tasks,
         model_dir=lambda wildcards: 'models/' + wildcards.study_source + '/' + wildcards.cell_lines + '_' + wildcards.tasks + '_' + wildcards.freetext + 
-                  "_" + wildcards.Lambda + "lambda_" + wildcards.lr + "lr_" + wildcards.batch + "batch_" + wildcards.width + "width_" + wildcards.k + "tconv",
+                  "_" + wildcards.Lambda + "lambda_" + wildcards.lr + "lr_" + wildcards.batch + "batch_" + wildcards.width + "width_" +
+                  wildcards.k + "tconv_" + wildcards.l + "l_" + wildcards.f + "f",
         Lambda=lambda wildcards: wildcards.Lambda,
         lr=lambda wildcards: wildcards.lr,
         batch=lambda wildcards: wildcards.batch,
         width=lambda wildcards: wildcards.width,
         k_size=lambda wildcards: wildcards.k,
-        sample=lambda wildcards: wildcards.cell_lines
+        sample=lambda wildcards: wildcards.cell_lines,
+        dil_layers=lambda wildcards: wildcards.l,
+        n_filters=lambda wildcards: wildcards.f
     shell:
         "mkdir -p {params.model_dir}/slurm_logs; "
         "mkdir -p {params.model_dir}/slurm_errors; "
         "sed "
             "\"s#XXX_DYNAMIC_MODEL_DIR_XXX#{params.model_dir}#g;"
             "  s#XXX_DYNAMIC_TASKS_XXX#{params.tasks}#g\" ../local/src/slurm_modisco_visualize.sh"
-            "  > ../local/src/slurm_modisco_visualize_{params.sample}_{params.tasks}_{params.Lambda}lambda_{params.lr}lr_{params.batch}batch_{params.width}width_{params.k_size}tconv.sh.tmp; "
-        "sbatch ../local/src/slurm_modisco_visualize_{params.sample}_{params.tasks}_{params.Lambda}lambda_{params.lr}lr_{params.batch}batch_{params.width}width_{params.k_size}tconv.sh.tmp; "
+            "  > ../local/src/slurm_modisco_visualize_{params.sample}_{params.tasks}_{params.Lambda}lambda_{params.lr}lr_{params.batch}batch_{params.width}width_{params.k_size}tconv_{params.dil_layers}l_{params.n_filters}f.sh.tmp; "
+        "sbatch ../local/src/slurm_modisco_visualize_{params.sample}_{params.tasks}_{params.Lambda}lambda_{params.lr}lr_{params.batch}batch_{params.width}width_{params.k_size}tconv_{params.dil_layers}l_{params.n_filters}f.sh.tmp; "
         "touch {output}"
 
 ## Run tomtom to identify similarity between modisco patterns and
@@ -584,17 +604,20 @@ rule plot_modisco_patterns:
 ## e.g. sankemake models/in_house_atac/VCaP_AR_ATAC-UniBindPWM_10lambda_0.004lr_128batch_1000width_25tconv/modisco/.tomtom_done
 rule run_tomtom:
     input:
-        "models/{study_source}/{cell_lines}_{tasks}_{freetext}_{Lambda}lambda_{lr}lr_{batch}batch_{width}width_{k}tconv/modisco/.done"
+        "models/{study_source}/{cell_lines}_{tasks}_{freetext}_{Lambda}lambda_{lr}lr_{batch}batch_{width}width_{k}tconv_{l}l_{f}f/modisco/.done"
     output:
-        "models/{study_source}/{cell_lines}_{tasks}_{freetext}_{Lambda}lambda_{lr}lr_{batch}batch_{width}width_{k}tconv/modisco/.tomtom_done"
+        "models/{study_source}/{cell_lines}_{tasks}_{freetext}_{Lambda}lambda_{lr}lr_{batch}batch_{width}width_{k}tconv_{l}l_{f}f/modisco/.tomtom_done"
     params:
         tasks=lambda wildcards: wildcards.tasks,
         model_dir=lambda wildcards: 'models/' + wildcards.study_source + '/' + wildcards.cell_lines + '_' + wildcards.tasks + '_' + wildcards.freetext +
-                  "_" + wildcards.Lambda + "lambda_" + wildcards.lr + "lr_" + wildcards.batch + "batch_" + wildcards.width + "width_" + wildcards.k + "tconv",
+                  "_" + wildcards.Lambda + "lambda_" + wildcards.lr + "lr_" + wildcards.batch + "batch_" + wildcards.width + "width_" +
+                  wildcards.k + "tconv_" + wildcards.l + "l_" + wildcards.f + "f",
         Lambda=lambda wildcards: wildcards.Lambda,
         lr=lambda wildcards: wildcards.lr,
         batch=lambda wildcards: wildcards.batch,
-        width=lambda wildcards: wildcards.width 
+        width=lambda wildcards: wildcards.width,
+        dil_layers=lambda wildcards: wildcards.l,
+        n_filters=lambda wildcards: wildcards.f 
     shell:
         "mkdir -p {params.model_dir}/slurm_logs; "
         "mkdir -p {params.model_dir}/slurm_errors; "
@@ -607,18 +630,21 @@ rule run_tomtom:
 ## e.g. snakemake models/tampere_pc_atac/BPH_701_AR_ATAC-UniBindPWM_1000lambda_0.004lr_128batch_1000width_25tconv/modisco/AR/tomtom_results.txt
 rule join_tomtom_results:
     input:
-        "models/{study_source}/{cell_lines}_{tasks}_{freetext}_{Lambda}lambda_{lr}lr_{batch}batch_{width}width_{k}tconv/modisco/.tomtom_done"
+        "models/{study_source}/{cell_lines}_{tasks}_{freetext}_{Lambda}lambda_{lr}lr_{batch}batch_{width}width_{k}tconv_{l}l_{f}f/modisco/.tomtom_done"
     output:
-        "models/{study_source}/{cell_lines}_{tasks}_{freetext}_{Lambda}lambda_{lr}lr_{batch}batch_{width}width_{k}tconv/modisco/{task}/tomtom_results.txt"
+        "models/{study_source}/{cell_lines}_{tasks}_{freetext}_{Lambda}lambda_{lr}lr_{batch}batch_{width}width_{k}tconv_{l}l_{f}f/modisco/{task}/tomtom_results.txt"
     params:
         tasks=lambda wildcards: wildcards.tasks,
         model_dir=lambda wildcards: 'models/' + wildcards.study_source + '/' + wildcards.cell_lines + '_' + wildcards.tasks + '_' + wildcards.freetext +
-                  "_" + wildcards.Lambda + "lambda_" + wildcards.lr + "lr_" + wildcards.batch + "batch_" + wildcards.width + "width_" + wildcards.k + "tconv",
+                  "_" + wildcards.Lambda + "lambda_" + wildcards.lr + "lr_" + wildcards.batch + "batch_" + wildcards.width + "width_" +
+                  wildcards.k + "tconv_" + wildcards.l + "l_" + wildcards.f + "f",
         Lambda=lambda wildcards: wildcards.Lambda,
         lr=lambda wildcards: wildcards.lr,
         batch=lambda wildcards: wildcards.batch,
         width=lambda wildcards: wildcards.width,
-        task=lambda wildcards: wildcards.task
+        task=lambda wildcards: wildcards.task,
+        dil_layers=lambda wildcards: wildcards.l,
+        n_filters=lambda wildcards: wildcards.f
     shell:
         "for clust in $(ls {params.model_dir}/modisco/{params.task}/tomtom); do "
             "echo -e \"===========================\n$clust\"; echo; "
@@ -626,6 +652,30 @@ rule join_tomtom_results:
             "| awk '{{split($2,a,\"_\"); printf(a[1]\" (q=\"$5\"), \")}}'; "
             "echo; echo; "
         "done > {output}"
+
+####################
+### Model Report ###
+####################
+
+rule generate_report_of_patterns:
+    input:
+        tomtom="models/{study_source}/{cell_lines}_{tasks}_{freetext}_{Lambda}lambda_{lr}lr_{batch}batch_{width}width_{k}tconv_{l}l_{f}f/modisco/{task}/tomtom_results.txt",
+        plot="models/{study_source}/{cell_lines}_{tasks}_{freetext}_{Lambda}lambda_{lr}lr_{batch}batch_{width}width_{k}tconv_{l}l_{f}f/modisco/.plot_done" 
+    output:
+        done="models/{study_source}/{cell_lines}_{tasks}_{freetext}_{Lambda}lambda_{lr}lr_{batch}batch_{width}width_{k}tconv_{l}l_{f}f/modisco/{task}/.report_done",
+        report="models/{study_source}/{cell_lines}_{tasks}_{freetext}_{Lambda}lambda_{lr}lr_{batch}batch_{width}width_{k}tconv_{l}l_{f}f/modisco/{task}/{cell_lines}_{task}.md",
+    params:
+        model_dir=lambda wildcards: 'models/' + wildcards.study_source + '/' + wildcards.cell_lines + '_' + wildcards.tasks + '_' + wildcards.freetext +
+                  "_" + wildcards.Lambda + "lambda_" + wildcards.lr + "lr_" + wildcards.batch + "batch_" + wildcards.width + "width_" +
+                  wildcards.k + "tconv_" + wildcards.l + "l_" + wildcards.f + "f",
+        task=lambda wildcards: wildcards.task,
+        sample=lambda wildcards: wildcards.cell_lines,
+    shell:
+        "cat ../local/docs/report_template.md | sed \"s#XXX_SAMPLE_XXX#{params.sample}#g; s#XXX_TASK_XXX#{params.task}#g; "
+        "s#XXX_MODEL_DIR_XXX#{params.model_dir}#g;\" > {output.report}.tmp; "
+        "cat {output.report}.tmp {input.tomtom} > {output.report}; rm {output.report}.tmp; touch {output.done}; "
+        "cp {output.report} {params.model_dir}/report.md; "
+        "sed -i \"s#../modisco_plots/all_patterns.png#modisco/modisco_plots/all_patterns.png#g\" {params.model_dir}/report.md"
 
 ##########################
 ### Scan For Instances ###
@@ -636,27 +686,30 @@ rule join_tomtom_results:
 ## e.g. sankemake models/tampere_pc_atac/CRPC_541_FOXA1_ATAC-UniBindPWM_1000lambda_0.004lr_128batch_1000width_25tconv/modisco/.cwm_scan_done
 rule cwm_scan:
     input:
-        "models/{study_source}/{cell_lines}_{tasks}_{freetext}_{Lambda}lambda_{lr}lr_{batch}batch_{width}width_{k}tconv/contrib.deeplift.h5"
+        "models/{study_source}/{cell_lines}_{tasks}_{freetext}_{Lambda}lambda_{lr}lr_{batch}batch_{width}width_{k}tconv_{l}l_{f}f/contrib.deeplift.h5"
     output:
-        "models/{study_source}/{cell_lines}_{tasks}_{freetext}_{Lambda}lambda_{lr}lr_{batch}batch_{width}width_{k}tconv/modisco/.cwm_scan_done"
+        "models/{study_source}/{cell_lines}_{tasks}_{freetext}_{Lambda}lambda_{lr}lr_{batch}batch_{width}width_{k}tconv_{l}l_{f}f/modisco/.cwm_scan_done"
     params:
         tasks=lambda wildcards: wildcards.tasks,
         model_dir=lambda wildcards: 'models/' + wildcards.study_source + '/' + wildcards.cell_lines + '_' + wildcards.tasks + '_' + wildcards.freetext + 
-                  "_" + wildcards.Lambda + "lambda_" + wildcards.lr + "lr_" + wildcards.batch + "batch_" + wildcards.width + "width_" + wildcards.k + "tconv",
+                  "_" + wildcards.Lambda + "lambda_" + wildcards.lr + "lr_" + wildcards.batch + "batch_" + wildcards.width + "width_" +
+                  wildcards.k + "tconv_" + wildcards.l + "l_" + wildcards.f + "f", 
         Lambda=lambda wildcards: wildcards.Lambda,
         lr=lambda wildcards: wildcards.lr,
         batch=lambda wildcards: wildcards.batch,
         width=lambda wildcards: wildcards.width,
         k_size=lambda wildcards: wildcards.k,
-        sample=lambda wildcards: wildcards.cell_lines
+        sample=lambda wildcards: wildcards.cell_lines,
+        dil_layers=lambda wildcards: wildcards.l,
+        n_filters=lambda wildcards: wildcards.f
     shell:
         "mkdir -p {params.model_dir}/slurm_logs; "
         "mkdir -p {params.model_dir}/slurm_errors; "
         "sed "
             "\"s#XXX_DYNAMIC_MODEL_DIR_XXX#{params.model_dir}#g;"
             "  s#XXX_DYNAMIC_TASKS_XXX#{params.tasks}#g\" ../local/src/slurm_cwm_scan.sh"
-            "  > ../local/src/slurm_cwm_scan_{params.sample}_{params.tasks}_{params.Lambda}lambda_{params.lr}lr_{params.batch}batch_{params.width}width_{params.k_size}tconv.sh.tmp; "
-        "sbatch ../local/src/slurm_cwm_scan_{params.sample}_{params.tasks}_{params.Lambda}lambda_{params.lr}lr_{params.batch}batch_{params.width}width_{params.k_size}tconv.sh.tmp; "
+            "  > ../local/src/slurm_cwm_scan_{params.sample}_{params.tasks}_{params.Lambda}lambda_{params.lr}lr_{params.batch}batch_{params.width}width_{params.k_size}tconv_{params.dil_layers}l_{params.n_filters}f.sh.tmp; "
+        "sbatch ../local/src/slurm_cwm_scan_{params.sample}_{params.tasks}_{params.Lambda}lambda_{params.lr}lr_{params.batch}batch_{params.width}width_{params.k_size}tconv_{params.dil_layers}l_{params.n_filters}f.sh.tmp; "
         "touch {output}"
 
 ## Plot an instance corresponding to a given idx from a 
@@ -665,13 +718,14 @@ rule cwm_scan:
 ## e.g. snakemake  models/tampere_pc_atac/CRPC_541_FOXA1_ATAC-UniBindPWM_1000lambda_0.004lr_128batch_1000width_25tconv/modisco/motif_instance_plots/instance_1.svg
 rule visualize_instances:
     input:
-        "models/{study_source}/{cell_lines}_{tasks}_{freetext}_{Lambda}lambda_{lr}lr_{batch}batch_{width}width_{k}tconv/modisco/.cwm_scan_done"
+        "models/{study_source}/{cell_lines}_{tasks}_{freetext}_{Lambda}lambda_{lr}lr_{batch}batch_{width}width_{k}tconv_{l}l_{f}f/modisco/.cwm_scan_done"
     output:
-        "models/{study_source}/{cell_lines}_{tasks}_{freetext}_{Lambda}lambda_{lr}lr_{batch}batch_{width}width_{k}tconv/modisco/motif_instance_plots/instance_{idx}.svg"
+        "models/{study_source}/{cell_lines}_{tasks}_{freetext}_{Lambda}lambda_{lr}lr_{batch}batch_{width}width_{k}tconv_{l}l_{f}f/modisco/motif_instance_plots/instance_{idx}.svg"
     params:
         tasks=lambda wildcards: wildcards.tasks,
         model_dir=lambda wildcards: 'models/' + wildcards.study_source + '/' + wildcards.cell_lines + '_' + wildcards.tasks + '_' + wildcards.freetext + 
-                  "_" + wildcards.Lambda + "lambda_" + wildcards.lr + "lr_" + wildcards.batch + "batch_" + wildcards.width + "width_" + wildcards.k + "tconv",
+                  "_" + wildcards.Lambda + "lambda_" + wildcards.lr + "lr_" + wildcards.batch + "batch_" + wildcards.width + "width_" +
+                      wildcards.k + "tconv_" + wildcards.l + "l_" + wildcards.f + "f",
         idx=lambda wildcards: wildcards.idx
     shell:
         "mkdir -p {params.model_dir}/modisco/motif_instance_plots; "
@@ -688,12 +742,13 @@ ruleorder: filter_jaccard_distance > subset_motif_instances
 ## e.g. snakemake models/tampere_pc_atac/CRPC_541_FOXA1_ATAC-UniBindPWM_1000lambda_0.004lr_128batch_1000width_25tconv/modisco/FOXA1/motif-instances_m1_p0.tsv
 rule subset_motif_instances:
     input:
-        "models/{study_source}/{cell_lines}_{tasks}_{freetext}_{Lambda}lambda_{lr}lr_{batch}batch_{width}width_{k}tconv/modisco/.cwm_scan_done"
+        "models/{study_source}/{cell_lines}_{tasks}_{freetext}_{Lambda}lambda_{lr}lr_{batch}batch_{width}width_{k}tconv_{l}l_{f}f/modisco/.cwm_scan_done"
     output:
-        "models/{study_source}/{cell_lines}_{tasks}_{freetext}_{Lambda}lambda_{lr}lr_{batch}batch_{width}width_{k}tconv/modisco/{task}/motif-instances_{pattern_short}.tsv"
+        "models/{study_source}/{cell_lines}_{tasks}_{freetext}_{Lambda}lambda_{lr}lr_{batch}batch_{width}width_{k}tconv_{l}l_{f}f/modisco/{task}/motif-instances_{pattern_short}.tsv"
     params:
         model_dir=lambda wildcards: 'models/' + wildcards.study_source + '/' + wildcards.cell_lines + '_' + wildcards.tasks + '_' + wildcards.freetext + 
-                  "_" + wildcards.Lambda + "lambda_" + wildcards.lr + "lr_" + wildcards.batch + "batch_" + wildcards.width + "width_" + wildcards.k + "tconv",
+                  "_" + wildcards.Lambda + "lambda_" + wildcards.lr + "lr_" + wildcards.batch + "batch_" + wildcards.width + "width_" + 
+                  wildcards.k + "tconv_" + wildcards.l + "l_" + wildcards.f + "f",
         task=lambda wildcards: wildcards.task,
         pattern_short=lambda wildcards: wildcards.pattern_short
     shell:
@@ -703,12 +758,13 @@ rule subset_motif_instances:
 ## e.g. snakemake models/tampere_pc_atac/CRPC_541_FOXA1_ATAC-UniBindPWM_1000lambda_0.004lr_128batch_1000width_25tconv/modisco/FOXA1/motif-instances_m1_p0_jaccard0.5.tsv
 rule filter_jaccard_distance:
     input:
-        "models/{study_source}/{cell_lines}_{tasks}_{freetext}_{Lambda}lambda_{lr}lr_{batch}batch_{width}width_{k}tconv/modisco/{task}/motif-instances_{pattern_short}.tsv"
+        "models/{study_source}/{cell_lines}_{tasks}_{freetext}_{Lambda}lambda_{lr}lr_{batch}batch_{width}width_{k}tconv_{l}l_{f}f/modisco/{task}/motif-instances_{pattern_short}.tsv"
     output:
-        "models/{study_source}/{cell_lines}_{tasks}_{freetext}_{Lambda}lambda_{lr}lr_{batch}batch_{width}width_{k}tconv/modisco/{task}/motif-instances_{pattern_short}_jaccard{jac_dist}.tsv"
+        "models/{study_source}/{cell_lines}_{tasks}_{freetext}_{Lambda}lambda_{lr}lr_{batch}batch_{width}width_{k}tconv_{l}l_{f}f/modisco/{task}/motif-instances_{pattern_short}_jaccard{jac_dist}.tsv"
     params:
         model_dir=lambda wildcards: 'models/' + wildcards.study_source + '/' + wildcards.cell_lines + '_' + wildcards.tasks + '_' + wildcards.freetext + 
-                  "_" + wildcards.Lambda + "lambda_" + wildcards.lr + "lr_" + wildcards.batch + "batch_" + wildcards.width + "width_" + wildcards.k + "tconv",
+                  "_" + wildcards.Lambda + "lambda_" + wildcards.lr + "lr_" + wildcards.batch + "batch_" + wildcards.width + "width_" +
+                  wildcards.k + "tconv_" + wildcards.l + "l_" + wildcards.f + "f",
         jac_dist=lambda wildcards: wildcards.jac_dist
     shell:
         "cat {input} | awk '$7>{params.jac_dist}' > {output}"
@@ -717,9 +773,9 @@ rule filter_jaccard_distance:
 ## e.g. snakemake models/tampere_pc_atac/CRPC_541_FOXA1_ATAC-UniBindPWM_1000lambda_0.004lr_128batch_1000width_25tconv/modisco/FOXA1/motif-instances_m1_p0_jaccard0.5_homer_out
 rule run_homer:
     input:
-        "models/{study_source}/{cell_lines}_{tasks}_{freetext}_{Lambda}lambda_{lr}lr_{batch}batch_{width}width_{k}tconv/modisco/{task}/motif-instances_{pattern_short}_jaccard{jac_dist}.tsv"
+        "models/{study_source}/{cell_lines}_{tasks}_{freetext}_{Lambda}lambda_{lr}lr_{batch}batch_{width}width_{k}tconv_{l}l_{f}f/modisco/{task}/motif-instances_{pattern_short}_jaccard{jac_dist}.tsv"
     output:
-        "models/{study_source}/{cell_lines}_{tasks}_{freetext}_{Lambda}lambda_{lr}lr_{batch}batch_{width}width_{k}tconv/modisco/{task}/motif-instances_{pattern_short}_jaccard{jac_dist}_homer_out"
+        "models/{study_source}/{cell_lines}_{tasks}_{freetext}_{Lambda}lambda_{lr}lr_{batch}batch_{width}width_{k}tconv_{l}l_{f}f/modisco/{task}/motif-instances_{pattern_short}_jaccard{jac_dist}_homer_out"
     shell:
         "annotatePeaks.pl {input} hg38 > {output}"
 
@@ -729,8 +785,8 @@ rule run_homer:
 ## e.g. snakemake models/tampere_pc_atac/PC_17163_FOXA1_ATAC-UniBindPWM_1000lambda_0.004lr_128batch_1000width_25tconv/modisco/FOXA1/motif-instances_m0_p1_jaccard0.5_ensg_list
 rule list_ensg:
     input:
-        "models/{study_source}/{cell_lines}_{tasks}_{freetext}_{Lambda}lambda_{lr}lr_{batch}batch_{width}width_{k}tconv/modisco/{task}/motif-instances_{pattern_short}_jaccard{jac_dist}_homer_out"
+        "models/{study_source}/{cell_lines}_{tasks}_{freetext}_{Lambda}lambda_{lr}lr_{batch}batch_{width}width_{k}tconv_{l}l_{f}f/modisco/{task}/motif-instances_{pattern_short}_jaccard{jac_dist}_homer_out"
     output:
-        "models/{study_source}/{cell_lines}_{tasks}_{freetext}_{Lambda}lambda_{lr}lr_{batch}batch_{width}width_{k}tconv/modisco/{task}/motif-instances_{pattern_short}_jaccard{jac_dist}_ensg_list"
+        "models/{study_source}/{cell_lines}_{tasks}_{freetext}_{Lambda}lambda_{lr}lr_{batch}batch_{width}width_{k}tconv_{l}l_{f}f/modisco/{task}/motif-instances_{pattern_short}_jaccard{jac_dist}_ensg_list"
     shell:
         "cat {input} | sed '1d' | cut -f15 > {output}"

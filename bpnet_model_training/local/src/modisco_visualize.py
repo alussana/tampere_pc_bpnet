@@ -3,6 +3,7 @@
 from pathlib import Path
 import seaborn as sns
 import matplotlib.pyplot as plt
+import matplotlib.image as mpimg
 from bpnet.modisco.files import ModiscoFile, ModiscoFileGroup
 import os
 import sys
@@ -30,8 +31,25 @@ for t in task_metacluster_dirs:
     Path(f"{modisco_dir}/modisco_plots/{t}").mkdir(parents=True, exist_ok=True)
 
 ## Plot all the patterns
+fig_names = []
 for p in mf.patterns():
     fig = p.plot("seq_ic", title=f"{p.name} ({mf.n_seqlets(p.name)})")
     plt.ylim([0, 2])
     sns.despine(top=True, bottom=True, right=True)
-    fig.savefig(f"{modisco_dir}/modisco_plots/{p.name}.svg", bbox_inches = "tight")
+    fig.savefig(f"{modisco_dir}/modisco_plots/{p.name}.png", bbox_inches = "tight", dpi=300)
+    fig_names.append(f"{modisco_dir}/modisco_plots/{p.name}.png")
+
+print(fig_names)
+
+
+## Join the plots
+fig, ax = plt.subplots(len(mf.patterns()), frameon=False)
+for p in range(len(fig_names)):
+    name = fig_names[p]
+    img=mpimg.imread(name)
+    ax[p].frameon=False
+    ax[p].set_frame_on(False)
+    ax[p].xaxis.set_visible(False)
+    ax[p].yaxis.set_visible(False)
+    ax[p].imshow(img)
+fig.savefig(f"{modisco_dir}/modisco_plots/all_patterns.png", bbox_inches = "tight", dpi=1200)
